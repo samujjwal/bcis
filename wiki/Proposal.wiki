@@ -54,6 +54,10 @@ def relation 1 meter = 100 centimeters
 def relation 1 kilogram = 2.2 pounds
 }}}
 
+Relations can be automatically reversed by the interpreter.  So after the definition 1 meter = 100 centimeters in the example above, the interpreter also knows that 1 centimeter = 0.01 meters.
+
+Algebraic relations can be automatically rewritten in terms of any variable by the interpreter.  So, given the definition above that speed = distance / time, the interpreter also known that time = distance / speed.
+
 A *function* is a garden-variety function with any number of inputs and a single output.  The types of function arguments and return values are not specified.
 {{{
 def function gcd(a,b) 
@@ -65,6 +69,14 @@ def function gcd(a,b)
     return a
 }}}
 
+Relations may also be defined as functions, but such relations cannot be automatically reversed.  Relations including functions must be defined from both directions, for example:
+{{{
+def relation degrees_farenheit to degrees_celsius (f)
+    return (5/9) * (f - 32)
+
+def relation degrees_celsius to degrees_farenheit (c)
+    return ((9/5) * c) - 32
+}}}
 
 = Inferred Calculation =
 
@@ -107,3 +119,4 @@ Adding or subtracting two numbers with different *measures* (see "Definitions" a
 *Lists* are arrays of numbers.  Lists are zero-indexed.  The numbers in a list may have different units.  Literal lists are enclosed in square brackets, with items separated by commas, e.g. `[3, 4, 5, 6]`.
 
 *Vectors* are fixed-length arrays of numbers.  Vectors may have any number of dimensions.  Vectors may be added and subtracted with other vectors.  Vectors may be multiplied and divided by numbers.  The components of a vector must have the same *measure*.  Literal vectors are enclosed in angled brackets, with items separated by commas, and may be optionally followed by units, e.g. `<3, 4> meters/second`.
+ 
