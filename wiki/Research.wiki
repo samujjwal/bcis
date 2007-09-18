@@ -3,9 +3,11 @@
 
 = Concepts to Research =
 
-== Significant Digits ==
+== Significant Digits & Decimal Arithmetic ==
 
 We need to understand significant digits / significant figures.  We need a list of rules for how they work to make sure we implement it correctly.
+
+we need to know how to do decimal-accurate arithmetic with significant digits.
 
 == Symbolic Algebra ==
 
@@ -15,3 +17,4 @@ We need to know how to do simple symbolic algebra with addition, subtraction, mu
 == Inferred Calculations ==
 
 We need to know how to figure out how to automatically calculate something given a set of known values and algebraic relationships.  Maybe this is as simple as a shortest-path search through a graph of relationships, or maybe it requires some logic programming.
+ 
