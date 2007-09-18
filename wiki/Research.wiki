@@ -7,14 +7,23 @@
 
 We need to understand significant digits / significant figures.  We need a list of rules for how they work to make sure we implement it correctly.
 
-we need to know how to do decimal-accurate arithmetic with significant digits.
+We need to know how to do decimal-accurate arithmetic with significant digits.
+
+See http://en.wikipedia.org/wiki/Significant_digits
 
 == Symbolic Algebra ==
 
 We need to know how to do simple symbolic algebra with addition, subtraction, multiplication, division, and exponents.
 
+Possibly of use:
+
+*jscl-meditor*: Java computer algebra system.  http://jscl-meditor.sourceforge.net/
+
+*Mathomatic*: written in C, does simple algebra.  Console-based interface.  May be a useful model to follow for the interactive BCIS interpreter.  Not a programming language, but generates code in C and Java.  http://en.wikipedia.org/wiki/Mathomatic
+
 
 == Inferred Calculations ==
 
 We need to know how to figure out how to automatically calculate something given a set of known values and algebraic relationships.  Maybe this is as simple as a shortest-path search through a graph of relationships, or maybe it requires some logic programming.
+ 
  
