@@ -1,0 +1,100 @@
+#summary Draft for the project proposal submitted Sept. 25, 2007
+#labels Featured,Phase-Design
+
+= Introduction =
+
+BCIS is an interpreted, imperative, dynamically-typed programming language for educational and scientific use.  The interpreter is written in Java and can be run either interactively or with a file containing BCIS source code.
+
+The defining feature of BCIS is that all numeric types include units (meters, seconds, etc.) and significant digits.  All calculations will be decimal-accurate, where possible, to the correct number of significant digits.  Units are combined algebraically to return the correct result (e.g. 10 meters divided by 2 seconds will return 5 meters/second).
+
+New units and the algebraic relationships between them may be defined by the user.  Given a set of relationships, a set of known values, and a desired units, the interpreter can infer the correct series of mathematical operations and unit conversions to produce the desired result, and display the sequence of operations it used.  (See "Inferred Calculation," below.)
+
+BCIS syntax is as simple as possible, using mostly English words.  Whitespace is significant for identifying blocks as in Python.  Standard imperative-language features such as loops, if/then/else branching, and user-defined functions are provided.  Standard C-like mathematical operators are provided, with the addition of "^" for exponentiation.  I/O is limited to reading data in from a file and
+printing out results.  
+
+BCIS will be useful as an educational tool for students studying physics, chemistry, or other sciences.  It may also be useful for exploratory data analysis in scientific fields.
+
+= Definitions =
+
+A BCIS program usually begins with a series of definitions.  Four things may be defined:
+
+A *measure* defines a type of physical quantity that can be measured, possibly with a variety of different units.  E.g. "length", "time", or "mass".  Examples
+{{{
+def measure length
+def measure time
+def measure mass
+}}}
+
+A *unit* defines a single unit of measurement for a given *measure*.  Examples:
+{{{
+def unit meters for length
+def unit seconds for time
+}}}
+
+A *relation* defines an algebraic relationship between either a) different *measures*, or b) different *units*.  Examples:
+{{{
+def relation speed = distance / time
+def relation force = mass * acceleration
+
+def relation 1 meter = 100 centimeters
+def relation 1 kilogram = 2.2 pounds
+}}}
+
+A *function* is a garden-variety function with any number of inputs and a single output.  The types of function arguments and return values are not specified.
+{{{
+def function gcd(a,b) 
+    while a != b
+        if a > b
+             a = a - b
+        else
+             b = b - a
+    return a
+}}}
+
+
+= Inferred Calculation =
+
+An interesting feature of the BCIS interpreter is the ability to infer the necessary steps to obtain a desired result, given nothing more than the relationships between measures.  An example is clearer:
+{{{
+def measure force
+def measure mass
+def measure acceleration
+def measure distance
+def measure time
+def measure speed
+
+def relation speed = distance / time
+def relation acceleration = speed / time
+def relation force = mass * acceleration
+
+def unit kilograms for mass
+def unit Newtons for force
+def unit meters for distance
+def unit seconds for time
+
+find acceleration in meters/seconds^2
+    given force = 10 Newtons
+    and mass = 1 kilograms
+
+# returns "10 meters/second^2"
+}}}
+
+
+= Types =
+
+Native types are strings, numbers, lists, and vectors.
+
+*Strings* are simple character-arrays, dynamically resized.  BCIS is not a string processing language, so string manipulation extremely limited.
+
+*Numbers* are arbitrary-precision decimals.  A number always carries type information that identifies a unit (pounds, meters/second, etc.).  Bare numbers like "2" have an null unit type.  Numbers carry information on their number of significant digits.  All arithmetical operations are decimal-accurate to the correct number of significant digits.
+
+Number literals may entered in scientific notation (e.g. "6.022e23") and may have 
+
+Adding or subtracting two numbers with different "measures" (see "Definitions" below) is an error, but multiplying or dividing them is not (e.g. "3 Newtons * 4 meters" is allowed, the result is "12 Newton*meters").
+
+*Lists* are arrays of numbers.  Lists are zero-indexed.  The numbers in a list may have different units.  
+
+*Vectors* are fixed-length arrays of numbers.  Vectors may have any number of dimensions.  Vectors may be added and subtracted with other vectors.  Vectors may be multiplied and divided by numbers.
+
+ 
+ 
