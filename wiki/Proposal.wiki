@@ -32,7 +32,7 @@ printing out results.
 
 A BCIS program usually begins with a series of definitions.  Four things may be defined:
 
-A *measure* defines a type of physical quantity that can be measured, possibly with a variety of different units.  E.g. "length", "time", or "mass".  Examples
+A *measure* defines a type of physical quantity that can be measured, possibly with a variety of different units.  E.g. "length", "time", or "mass".  Examples:
 {{{
 def measure length
 def measure time
@@ -108,8 +108,9 @@ Adding or subtracting two numbers with different "measures" (see "Definitions" b
 
 *Lists* are arrays of numbers.  Lists are zero-indexed.  The numbers in a list may have different units.  
 
-*Vectors* are fixed-length arrays of numbers.  Vectors may have any number of dimensions.  Vectors may be added and subtracted with other vectors.  Vectors may be multiplied and divided by numbers.
+*Vectors* are fixed-length arrays of numbers.  Vectors may have any number of dimensions.  Vectors may be added and subtracted with other vectors.  Vectors may be multiplied and divided by numbers.  The components of a vector must have the same *measure*.
 
+ 
  
  
  
