@@ -1,0 +1,17 @@
+#summary Useful references and sites to know about
+#labels Featured,Phase-Design
+
+= Prerequisites =
+
+== Tools ==
+
+If you're rusty on Java (as I am), I can't recommend enough Bruce Eckel's _Thinking in Java_, free on the web at http://www.mindview.net/Books/TIJ/
+
+If you haven't used Subversion before, see http://subversion.tigris.org/
+
+
+== Concepts ==
+
+We need to understand significant digits / significant figures.  We need a list of rules for how they work to make sure we implement it correctly.
+
+We need to know how to do simple symbolic algebra with addition, subtraction, multiplication, division, and exponents.
