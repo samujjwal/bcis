@@ -90,11 +90,13 @@ Native types are strings, numbers, lists, and vectors.
 
 Number literals may entered in scientific notation (e.g. "6.022e23") and may have 
 
-Adding or subtracting two numbers with different "measures" (see "Definitions" below) is an error, but multiplying or dividing them is not (e.g. "3 Newtons * 4 meters" is allowed, the result is "12 Newton*meters").
+Adding or subtracting two numbers with different "measures" (see "Definitions" below) is an error, but multiplying or dividing them is not (e.g. `3 Newtons * 4 meters` is allowed, the result is `12 Newton*meters`).
 
 *Lists* are arrays of numbers.  Lists are zero-indexed.  The numbers in a list may have different units.  
 
 *Vectors* are fixed-length arrays of numbers.  Vectors may have any number of dimensions.  Vectors may be added and subtracted with other vectors.  Vectors may be multiplied and divided by numbers.
 
+ 
+ 
  
  
