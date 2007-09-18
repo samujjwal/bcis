@@ -100,16 +100,15 @@ Native types are strings, numbers, lists, and vectors.
 
 *Strings* are simple character-arrays, dynamically resized.  BCIS is not a string processing language, so string manipulation extremely limited.
 
-*Numbers* are arbitrary-precision decimals.  A number always carries type information that identifies a unit (pounds, meters/second, etc.).  Bare numbers like "2" have an null unit type.  Numbers carry information on their number of significant digits.  All arithmetical operations are decimal-accurate to the correct number of significant digits.
+*Numbers* are arbitrary-precision decimals.  A number always carries type information that identifies a unit (pounds, meters/second, etc.).  Bare numbers like "2" have an null unit type.  Numbers carry information on their number of significant digits.  All arithmetical operations are decimal-accurate to the correct number of significant digits.  Number literals may entered as decimals or in scientific notation (e.g. "6.022e23").
 
-Number literals may entered in scientific notation (e.g. "6.022e23") and may have 
-
-Adding or subtracting two numbers with different "measures" (see "Definitions" below) is an error, but multiplying or dividing them is not (e.g. `3 Newtons * 4 meters` is allowed, the result is `12 Newton*meters`).
+Adding or subtracting two numbers with different *measures* (see "Definitions" above) is an error, but multiplying or dividing them is not (e.g. `3 Newtons * 4 meters` is allowed, the result is `12 Newton*meters` or `12 Joules`).
 
 *Lists* are arrays of numbers.  Lists are zero-indexed.  The numbers in a list may have different units.  
 
 *Vectors* are fixed-length arrays of numbers.  Vectors may have any number of dimensions.  Vectors may be added and subtracted with other vectors.  Vectors may be multiplied and divided by numbers.  The components of a vector must have the same *measure*.
 
+ 
  
  
  
