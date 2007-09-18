@@ -1,9 +1,24 @@
-#summary Draft for the project proposal submitted Sept. 25, 2007
+#summary Draft for the project proposal due Sept. 25, 2007
 #labels Featured,Phase-Design
 
 = Introduction =
 
-BCIS is an interpreted, imperative, dynamically-typed programming language for educational and scientific use.  The interpreter is written in Java and can be run either interactively or with a file containing BCIS source code.
+BCIS is an interpreted, imperative, dynamically-typed programming language for simple scientific computation.
+
+BCIS is like a fancy calculator that understands units like "meters/second."  It will be useful for students learning how to do scientific calculations in which maintaining the correct units is important.
+
+Superficially, the behavior of BCIS resembles that of the Google Calculator, [http://www.google.com/help/calculator.html].  The differences from Google Calculator are: 
+
+  # BCIS is a full-featured imperative programming language with variables, loops, branching, and user-defined functions;
+  # BCIS programs can define new units and the relationships between them; and
+  # BCIS can infer the necessary calculations to obtain a desired result given a set of input variables.
+
+BCIS will be useful as an educational tool for students studying beginning and intermediate-level physics, chemistry, or other sciences.  It may also be useful for exploratory data analysis in scientific fields.
+
+
+= Language Overview =
+
+The interpreter is written in Java and can be run either interactively or with a file containing BCIS source code.
 
 The defining feature of BCIS is that all numeric types include units (meters, seconds, etc.) and significant digits.  All calculations will be decimal-accurate, where possible, to the correct number of significant digits.  Units are combined algebraically to return the correct result (e.g. 10 meters divided by 2 seconds will return 5 meters/second).
 
@@ -12,7 +27,6 @@ New units and the algebraic relationships between them may be defined by the use
 BCIS syntax is as simple as possible, using mostly English words.  Whitespace is significant for identifying blocks as in Python.  Standard imperative-language features such as loops, if/then/else branching, and user-defined functions are provided.  Standard C-like mathematical operators are provided, with the addition of "^" for exponentiation.  I/O is limited to reading data in from a file and
 printing out results.  
 
-BCIS will be useful as an educational tool for students studying physics, chemistry, or other sciences.  It may also be useful for exploratory data analysis in scientific fields.
 
 = Definitions =
 
@@ -96,6 +110,7 @@ Adding or subtracting two numbers with different "measures" (see "Definitions" b
 
 *Vectors* are fixed-length arrays of numbers.  Vectors may have any number of dimensions.  Vectors may be added and subtracted with other vectors.  Vectors may be multiplied and divided by numbers.
 
+ 
  
  
  
