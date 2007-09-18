@@ -15,3 +15,5 @@ If you haven't used Subversion before, see http://subversion.tigris.org/
 We need to understand significant digits / significant figures.  We need a list of rules for how they work to make sure we implement it correctly.
 
 We need to know how to do simple symbolic algebra with addition, subtraction, multiplication, division, and exponents.
+
+We need to know how to figure out how to automatically calculate something given a set of known values and algebraic relationships.  Maybe this is simple as a shortest-path search through a graph of relationships, or maybe it requires some logic programming.
