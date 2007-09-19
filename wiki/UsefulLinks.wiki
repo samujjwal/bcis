@@ -1,10 +1,14 @@
 #summary Useful references and sites to know about
 #labels Featured,Phase-Design
 
-= Prerequisites =
-
-== Tools ==
+= Tools =
 
 If you're rusty on Java (as I am), I can't recommend enough Bruce Eckel's _Thinking in Java_, free on the web at http://www.mindview.net/Books/TIJ/
 
 If you haven't used Subversion before, see http://subversion.tigris.org/
+ 
+
+
+= Libraries =
+
+https://inflector.dev.java.net/ - A Java class for English inflections (converting words between plural and singular forms) which will be useful with unit names.
