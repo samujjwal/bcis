@@ -13,7 +13,7 @@ Superficially, the behavior of BCIS resembles that of the Google Calculator, [ht
   # BCIS programs can define new units and the relationships between them; and
   # BCIS can infer the necessary calculations to obtain a desired result given a set of input variables.
 
-BCIS has some features in common with computer algebra systems such as Maxima, Octave, or Matlab.  As far as the BCIS designers know, none of these systems allow for unit types or inferred calculation (see below).
+BCIS has some features in common with computer algebra systems such as Maxima, Octave, or Matlab, although it is much, much simpler.  As far as the BCIS designers know, none of these systems allow for unit types or inferred calculation (see below).
 
 In some ways BCIS behaves like logic languages such as Prolog, in which the user enters a series of facts and then asks questions.
 
@@ -52,4 +52,5 @@ Queries work by '''inferred calculation'''.  Based on the types of the givens an
 
 BCIS can plot relations and figures in two dimensions.  3-d plotting is not supported.  Plot output goes to graphics files or a window.
 
+ 
  
