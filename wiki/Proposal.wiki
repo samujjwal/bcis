@@ -43,14 +43,15 @@ BCIS syntax is as simple as possible, using mostly English words.  Statements ar
 
 A BCIS program consists of definitions and queries.  '''Definitions''' specify types and relationships between those types.  Relationships may be defined as classic imperative-style functions or as algebraic equations.
 
-'''Queries''' ask questions of the general form "find [something] given [x, y, and z]."  Queries may be used to convert a value of one type to another type, to see an equation solved in terms of a particular variable, or to evaluate a function for a set of inputs.
+*Queries* ask questions of the general form `find [something] given [x, y, and z].`  Queries may be used to convert a value of one type to another type, to see an equation solved in terms of a particular variable, or to evaluate a function for a set of inputs.
 
-Queries work by '''inferred calculation'''.  Based on the types of the givens and the requested type, the interpreter infers the correct sequence of calculations and/or conversions to be performed.  To find this sequence, the interpreter uses any and all relations that have been defined in the current program.
+Queries work by *inferred calculation*.  Based on the types of the givens and the requested type, the interpreter infers the correct sequence of calculations and/or conversions to be performed.  To find this sequence, the interpreter uses any and all relations that have been defined in the current program.
 
 
 == Plotting ==
 
 BCIS can plot relations and figures in two dimensions.  3-d plotting is not supported.  Plot output goes to graphics files or a window.
 
+ 
  
  
