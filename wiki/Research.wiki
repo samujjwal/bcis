@@ -33,13 +33,8 @@ Possibly of use:
 
 *Sympy*: Python computer algebra system designed to be simple - http://code.google.com/p/sympy/
 
+A page on how to do unit calculations in a computer algebra system: http://www.math.montana.edu/frankw/ccp/units/cas/body.htm
 
 == Inferred Calculations ==
 
 We need to know how to figure out how to automatically calculate something given a set of known values and algebraic relationships.  Maybe this is as simple as a shortest-path search through a graph of relationships, or maybe it requires some logic programming.
- 
- 
- 
- 
- 
- 
