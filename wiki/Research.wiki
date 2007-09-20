@@ -19,6 +19,8 @@ We need to know how to do decimal-accurate arithmetic with significant digits.
 
 See http://en.wikipedia.org/wiki/Significant_digits
 
+Possibly of use: Apfloat, an arbitrary-precision arithmetic library for Java: http://www.apfloat.org/apfloat_java/
+
 == Symbolic Algebra ==
 
 We need to know how to do simple symbolic algebra with addition, subtraction, multiplication, division, and exponents.
@@ -33,6 +35,7 @@ Possibly of use:
 == Inferred Calculations ==
 
 We need to know how to figure out how to automatically calculate something given a set of known values and algebraic relationships.  Maybe this is as simple as a shortest-path search through a graph of relationships, or maybe it requires some logic programming.
+ 
  
  
  
