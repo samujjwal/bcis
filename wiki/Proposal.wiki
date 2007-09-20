@@ -3,9 +3,9 @@
 
 = Introduction =
 
-BCIS is an interpreted, imperative, dynamically-typed programming language for simple scientific computation.
+BCIS is a programming language for scientific computation, designed for students studying beginning and intermediate-level physics, chemistry, or other sciences.  It is useful primarily as an educational tool, but may also be useful for exploratory data analysis in scientific fields.
 
-BCIS is like a fancy calculator that understands units like "meters/second."  It will be useful for students learning how to do scientific calculations in which maintaining the correct units is important.
+= Prior Art =
 
 Superficially, the behavior of BCIS resembles that of the Google Calculator, [http://www.google.com/help/calculator.html].  The differences from Google Calculator are: 
 
@@ -13,110 +13,43 @@ Superficially, the behavior of BCIS resembles that of the Google Calculator, [ht
   # BCIS programs can define new units and the relationships between them; and
   # BCIS can infer the necessary calculations to obtain a desired result given a set of input variables.
 
-BCIS will be useful as an educational tool for students studying beginning and intermediate-level physics, chemistry, or other sciences.  It may also be useful for exploratory data analysis in scientific fields.
+BCIS has some features in common with computer algebra systems such as Maxima, Octave, or Matlab.  As far as the BCIS designers know, none of these systems allow for unit types or inferred calculation (see below).
+
+In some ways BCIS behaves like logic languages such as Prolog, in which the user enters a series of facts and then asks questions.
 
 
 = Language Overview =
 
-The interpreter is written in Java and can be run either interactively or with a file containing BCIS source code.
+== Interpreter ==
 
-The defining feature of BCIS is that all numeric types include units (meters, seconds, etc.) and significant digits.  All calculations will be decimal-accurate, where possible, to the correct number of significant digits.  Units are combined algebraically to return the correct result (e.g. 10 meters divided by 2 seconds will return 5 meters/second).
-
-New units and the algebraic relationships between them may be defined by the user.  Given a set of relationships, a set of known values, and a desired units, the interpreter can infer the correct series of mathematical operations and unit conversions to produce the desired result, and display the sequence of operations it used.  (See "Inferred Calculation," below.)
-
-BCIS syntax is as simple as possible, using mostly English words.  Whitespace is significant for identifying blocks as in Python.  Standard imperative-language features such as loops, if/then/else branching, and user-defined functions are provided.  Standard C-like mathematical operators are provided, with the addition of "^" for exponentiation.  I/O is limited to reading data in from a file and
-printing out results.  
+BCIS is an interpreted programming language.  The interpreter is written in Java and can be run either interactively or on a file containing BCIS source code.
 
 
-= Definitions =
+== Types ==
 
-A BCIS program usually begins with a series of definitions.  Four things may be defined:
+The BCIS type system uses physical units like "meters" and "seconds" as types instead of mathematical partitions like "integers" and "floats."  All numbers and arithmetic use arbitrary-precision decimals.  Irrational numbers such as pi may be converted to decimals or retained as symbols.  Unit types can be combined algebraically to form derived types such as "Newton*meters" or "meters/second."  A standard library provides most SI units and common equations from physics and chemistry.  New types may be defined by the user.  Type conversions are performed automatically as needed.
 
-A *measure* defines a type of physical quantity that can be measured, possibly with a variety of different units.  E.g. "length", "time", or "mass".  Examples:
-{{{
-def measure length
-def measure time
-def measure mass
-}}}
+2-d and 3-d vectors are supported.  2-d vectors may be specified either as "x,y" components or as magnitude-direction pairs, e.g. "3 Newtons at 36 degrees."  3-d vectors may only be specified as components.  All mathematical operations allowed on numbers are also supported on vectors.
 
-A *unit* defines a single unit of measurement for a given *measure*.  Examples:
-{{{
-def unit meters for length
-def unit seconds for time
-}}}
-
-A *relation* defines an algebraic relationship between either a) different *measures*, or b) different *units*.  Examples:
-{{{
-def relation speed = distance / time
-def relation force = mass * acceleration
-
-def relation 1 meter = 100 centimeters
-def relation 1 kilogram = 2.2 pounds
-}}}
-
-Relations can be automatically reversed by the interpreter.  So after the definition 1 meter = 100 centimeters in the example above, the interpreter also knows that 1 centimeter = 0.01 meters.
-
-Algebraic relations can be automatically rewritten in terms of any variable by the interpreter.  So, given the definition above that speed = distance / time, the interpreter also known that time = distance / speed.
-
-A *function* is a garden-variety function with any number of inputs and a single output.  The types of function arguments and return values are not specified.
-{{{
-def function gcd(a,b) 
-    while a != b
-        if a > b
-             a = a - b
-        else
-             b = b - a
-    return a
-}}}
-
-Relations may also be defined as functions, but such relations cannot be automatically reversed.  Relations including functions must be defined from both directions, for example:
-{{{
-def relation degrees_farenheit to degrees_celsius (f)
-    return (5/9) * (f - 32)
-
-def relation degrees_celsius to degrees_farenheit (c)
-    return ((9/5) * c) - 32
-}}}
-
-= Inferred Calculation =
-
-An interesting feature of the BCIS interpreter is the ability to infer the necessary steps to obtain a desired result, given nothing more than the relationships between measures.  An example is clearer:
-{{{
-def measure force
-def measure mass
-def measure acceleration
-def measure distance
-def measure time
-def measure speed
-
-def relation speed = distance / time
-def relation acceleration = speed / time
-def relation force = mass * acceleration
-
-def unit kilograms for mass
-def unit Newtons for force
-def unit meters for distance
-def unit seconds for time
-
-find acceleration in meters/seconds^2
-    given force = 10 Newtons
-    and mass = 1 kilograms
-
-# returns "10 meters/second^2"
-}}}
+2-d and 3-d geometry is supported.  Figures may be specified by vertex positions, line lengths, or equations (e.g. circles).  Figures have properties such as area and volume, which are defined by relations (see below).
 
 
-= Types =
+== Syntax ==
 
-Native types are strings, numbers, lists, and vectors.
+BCIS syntax is as simple as possible, using mostly English words.  Statements are separated by newlines.  Some whitespace is significant.  Standard imperative-language features such as loops, if/then/else branching, and user-defined functions are provided.  Standard C-like mathematical operators are provided, with the addition of "^" for exponentiation.
 
-*Strings* are simple character-arrays, dynamically resized.  BCIS is not a string processing language, so string manipulation extremely limited.
 
-*Numbers* are arbitrary-precision decimals.  A number always carries type information that identifies a unit (pounds, meters/second, etc.).  Bare numbers like "2" have an null unit type.  Numbers carry information on their number of significant digits.  All arithmetical operations are decimal-accurate to the correct number of significant digits.  Number literals may entered as decimals or in scientific notation and may be followed by units, e.g. "10.726 meters" or "6.022e23".
+== Semantics ==
 
-Adding or subtracting two numbers with different *measures* (see "Definitions" above) is an error, but multiplying or dividing them is not (e.g. `3 Newtons * 4 meters` is allowed, the result is `12 Newton*meters` or `12 Joules`).
+A BCIS program consists of definitions and queries.  '''Definitions''' specify types and relationships between those types.  Relationships may be defined as classic imperative-style functions or as algebraic equations.
 
-*Lists* are arrays of numbers.  Lists are zero-indexed.  The numbers in a list may have different units.  Literal lists are enclosed in square brackets, with items separated by commas, e.g. `[3, 4, 5, 6]`.
+'''Queries''' ask questions of the general form "find [something] given [x, y, and z]."  Queries may be used to convert a value of one type to another type, to see an equation solved in terms of a particular variable, or to evaluate a function for a set of inputs.
 
-*Vectors* are fixed-length arrays of numbers.  Vectors may have any number of dimensions.  Vectors may be added and subtracted with other vectors.  Vectors may be multiplied and divided by numbers.  The components of a vector must have the same *measure*.  Literal vectors are enclosed in angled brackets, with items separated by commas, and may be optionally followed by units, e.g. `<3, 4> meters/second`.
+Queries work by '''inferred calculation'''.  Based on the types of the givens and the requested type, the interpreter infers the correct sequence of calculations and/or conversions to be performed.  To find this sequence, the interpreter uses any and all relations that have been defined in the current program.
+
+
+== Plotting ==
+
+BCIS can plot relations and figures in two dimensions.  3-d plotting is not supported.  Plot output goes to graphics files or a window.
+
  
