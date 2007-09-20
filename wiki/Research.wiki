@@ -31,10 +31,13 @@ Possibly of use:
 
 *Mathomatic*: written in C, does simple algebra.  Console-based interface.  May be a useful model to follow for the interactive BCIS interpreter.  Not a programming language, but generates code in C and Java.  http://en.wikipedia.org/wiki/Mathomatic
 
+*Sympy*: Python computer algebra system designed to be simple - http://code.google.com/p/sympy/
+
 
 == Inferred Calculations ==
 
 We need to know how to figure out how to automatically calculate something given a set of known values and algebraic relationships.  Maybe this is as simple as a shortest-path search through a graph of relationships, or maybe it requires some logic programming.
+ 
  
  
  
