@@ -17,6 +17,8 @@ BCIS has some features in common with computer algebra systems such as Maxima, O
 
 In some ways BCIS behaves like logic languages such as Prolog, in which the user enters a series of facts and then asks questions.
 
+The JScience library - http://jscience.org/ - is an open-source Java library for calculations involving SI units and arbitrary-precision arithmetic.  JScience's unit classes are of limited usefulness within BCIS because they are designed to be part of a statically-compiled Java program.  Also, JScience does not provided for inferred calculation.  However, the JScience architecture is a useful model for designing BCIS; and some features of JScience, such as its arbitrary-precision arithmetic and algebra classes, may be useful in the implementation.
+
 
 = Language Overview =
 
@@ -52,6 +54,7 @@ Queries work by *inferred calculation*.  Based on the types of the givens and th
 
 BCIS can plot relations and figures in two dimensions.  3-d plotting is not supported.  Plot output goes to graphics files or a window.
 
+ 
  
  
  
