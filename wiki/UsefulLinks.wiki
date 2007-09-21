@@ -11,8 +11,11 @@ http://www.junit.org/ - JUnit, the standard Java Unit-testing library
 
 http://www.antlr2.org/ - ANTLR version 2
 
+http://oursland.net/tutorials/antlr/AntlrEclipse.html - ANTLR integration w/ Eclipse
+
 
 = Libraries =
 
 https://inflector.dev.java.net/ - A Java class for English inflections (converting words between plural and singular forms) which will be useful with unit names.
+ 
  
