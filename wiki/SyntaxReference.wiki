@@ -1,0 +1,37 @@
+#summary Draft reference for the Syntax
+#labels Phase-Design
+
+= Introduction =
+
+This page is a draft for the syntax part of the Physicalc reference manual.
+
+
+= Syntax =
+
+== Top Level ==
+
+The top level of any program file consists of definitions and statements.
+
+{{{
+TOPLEVEL : (DEFINITION | STATEMENT)+;
+}}}
+
+== Definitions == 
+
+There are 5 types of definitions.
+
+{{{
+DEFINITION : "def" 
+    ( DEF_MEASURE 
+    | DEF_UNIT 
+    | DEF_CONSTANT
+    | DEF_FUNCTION
+    | DEF_EQUATION ) ;
+}}}
+
+== Measures ==
+
+DEF_MEASURE : "measure" ID ;
+
+
+}}}
