@@ -1,5 +1,5 @@
 #summary Draft reference for the Syntax
-#labels Phase-Design
+#labels Phase-Design,Featured
 
 = Introduction =
 
