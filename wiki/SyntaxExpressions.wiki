@@ -1,0 +1,14 @@
+#summary Syntax of expressions.
+#labels Phase-Design
+
+= Expressions =
+
+Arithmetic: `+   -   *   /`
+
+Function calls: `my_function(a, b, c)`
+
+Relational: `=   <   >   <=   >=   !=`
+
+Conditional: `or    and    not`
+
+Assignment: not allowed in expressions, must use a `set` statement.
