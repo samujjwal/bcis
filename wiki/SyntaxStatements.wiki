@@ -3,6 +3,12 @@
 
 = Statements =
 
+== Assignment ==
+
+`set $var = expression`
+
+Evaluate expression and assign it to _$var_.  Note that `=` here is not an operator, it's part of the statement.
+
 == I/O ==
 
 === print ===
