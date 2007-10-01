@@ -1,0 +1,58 @@
+#summary Syntax of statements
+#labels Phase-Design
+
+= Statements =
+
+== I/O ==
+
+=== print ===
+`print` _expression_
+
+Evaluate _expression_ and print the result to standard output.
+
+=== read ===
+`read` _variable_
+
+Read a single value from standard input and store it in _variable_.
+
+== if/then/else ==
+
+{{{
+if expression do
+    ... statements ...
+elsif expression do
+    ... statements ...
+else
+    ... statements ...
+done
+}}}
+
+== For Loops ==
+
+{{{
+for $i from 1 to 100 step 5 do
+    ... statements ...
+done
+}}}
+
+== While Loops ==
+
+{{{
+while expression do
+    ... statements ...
+done
+}}}
+
+== Generic Loops ==
+
+Put a loop inside "loop...done".  Use `break` anywhere in the loop to stop, `restart` to start over at the top of the loop.
+
+{{{
+loop
+    ... statements ...
+    if expression do
+        break
+    done
+    ... statements ...
+done
+}}}
