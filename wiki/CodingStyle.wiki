@@ -6,9 +6,7 @@
 In general, follow the Java coding standards published by Sun:
 http://java.sun.com/docs/codeconv/
 
-
-= Quick Reference =
-
+Quick Reference:
 
 == Spacing ==
   * Indents are 4 spaces
@@ -30,3 +28,11 @@ http://java.sun.com/docs/codeconv/
   * Open brace `{` goes on the same line as the declaration
   * Closing brace `}` goes on a line by itself, indented to match the start of the declaration
   * Always use braces for if/else statements
+
+= ANTLR Grammar Files =
+
+For ANTLR source files, use the conventions from class:
+
+  * Token names in the Lexer are ALLCAPS
+  * Nonterminal names in the Parser are lowercase
+  * Separate "|" branches in productions go on separate lines
