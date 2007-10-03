@@ -3,18 +3,10 @@
 
 = Identifiers =
 
-== Variables == 
+There are 2 kinds of identifiers.  Both are case-sensitive.
 
-Variable names begin with '$' followed by a letter.  They may contain letters, numbers, and underscores.  Variable names are case-sensitive.
+*Global* identifiers are used for functions, constants, units, and measures.  Global identifiers must begin with a letter and may contain letters, numbers, and underscores.  Global identifiers may not use the same name as any built-in keywords.
 
-== Constants ==
+*Local* identifiers are used for variable names in functions.  Local identifiers begin with '$' followed by a letter.  They may contain letters, numbers, and underscores.
 
-Constant names begin with '%' followed by a letter.  They may contain letters, numbers, and underscores.  Constant names are case-sensitive.
-
-== Functions ==
-
-Function names, both user-defined and built-in, must begin with a letter and may contain letters, numbers, and underscores.  Function names are case-sensitive.
-
-== Units ==
-
-Unit names must begin with a letter and contain letters, numbers, and underscores.  Unit names are case-*insensitive*.
+A local identifier's name (without the '$') may be the same as a global identifier, so a local variable named "$meter" will not clash with a unit named "meter".
