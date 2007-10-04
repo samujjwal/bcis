@@ -1,5 +1,5 @@
 #summary List of Classes to be implemented
-#labels Featured,Phase-Design
+#labels Phase-Design
 
 = Introduction =
 
