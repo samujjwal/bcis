@@ -3,10 +3,4 @@
 
 = Identifiers =
 
-There are 2 kinds of identifiers.  Both are case-sensitive.
-
-*Global* identifiers are used for functions, constants, units, and measures.  Global identifiers must begin with a letter and may contain letters, numbers, and underscores.  Global identifiers may not use the same name as any built-in keywords.
-
-*Local* identifiers are used for variable names in functions.  Local identifiers begin with '$' followed by a letter.  They may contain letters, numbers, and underscores.
-
-A local identifier's name (without the '$') may be the same as a global identifier, so a local variable named "$meter" will not clash with a unit named "meter".
+Identifiers must begin with a letter or underscore and may contain letters, numbers, and underscores.  Identifiers may not use the same name as any built-in keywords.
