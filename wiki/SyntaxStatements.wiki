@@ -3,6 +3,8 @@
 
 = Statements =
 
+Statements are separated by *either* line breaks or semicolons.
+
 == Assignment ==
 
 `set $var = expression`
