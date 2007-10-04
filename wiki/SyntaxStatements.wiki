@@ -24,9 +24,9 @@ Read a single value from standard input and store it in _variable_.
 == if/then/else ==
 
 {{{
-if expression do
+if expression then
     ... statements ...
-elsif expression do
+elsif expression then
     ... statements ...
 else
     ... statements ...
