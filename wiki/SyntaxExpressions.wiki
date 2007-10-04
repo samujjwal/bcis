@@ -46,6 +46,8 @@ The special `in` operator is a binary operator that converts its left argument t
 
 == Inferred Calculation ==
 
+*This feature will likely be removed as too difficult.*
+
 The special `find...given` operator has 2 arguments.  The first appears after the `find` and is an expression that must evaluate to a unit.  The second argument appears after the `given` and must evaluate to a list of numbers with different units.  Based on the "given" units and the requested "find" units, the interpreter figures out the necessary sequence of conversions and calculations to obtain the correct result.
 
 Examples:
