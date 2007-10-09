@@ -7,9 +7,9 @@ Statements are separated by *either* line breaks or semicolons.
 
 == Assignment ==
 
-`set $var = expression`
+`set var = expression`
 
-Evaluate expression and assign it to _$var_.  Note that `=` here is not an operator, it's part of the statement.
+Evaluate _expression_ and assign it to a local variable named _var_.  Note that `=` here is not an operator, it's part of the statement.
 
 == I/O ==
 
@@ -38,7 +38,7 @@ done
 == For Loops ==
 
 {{{
-for $i from 1 to 100 step 5 do
+for i from 1 to 100 step 5 do
     ... statements ...
 done
 }}}
