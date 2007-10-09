@@ -3,7 +3,9 @@
 
 = Definitions =
 
-Four things can be defined: quantities, units, functions, and constants.
+Four things can be defined: quantities, units, constants, and functions.
+
+Definitions may only appear at the top level of a program; definitions may not be nested.
 
 
 == Quantities ==
@@ -45,3 +47,27 @@ unit meter for length
 unit centimeter = 0.01 meter
 unit millimeter = 0.1 centimeter
 }}}
+
+
+== Constants ==
+
+A constant is like a variable, but it has global scope and cannot be changed with 'set'.
+{{{
+constant IDENTIFIER = EXPRESSION
+}}}
+Where EXPRESSION is a number with (optionally) units.
+
+
+== Functions ==
+
+Functions have any number of input arguments, separated by commas.
+{{{
+function IDENTIFIER( ARG1, ARG2, ARG3 )
+   ... STATEMENTS ...
+   return EXPRESSION
+done
+}}}
+
+Function arguments are not explicitly typed, but types may be checked using "check" statements.
+
+Control returns from a function after the last statement or on evaluating a "return" statement.
