@@ -7,40 +7,10 @@
 
 http://zebu.uoregon.edu/~probs/ - basic to advanced physics problems with solutions
 
-== Whitespace-significant Syntax ==
+== Computer Algebra in Java ==
 
-http://mail.python.org/pipermail/python-list/2003-October/229146.html - mentioning Ruby's technique of using a parser flag if a token is followed by a line break
+[http://jscience.org/ JScience] - a Java library that does units, arbitrary-precision arithmetic, algebra, and more.  Readable code, well documented, but very complicated.
 
-== Significant Digits & Decimal Arithmetic ==
+[http://jscl-meditor.sourceforge.net/ jscl-meditor]  Much simpler than JScience.  Code is fairly clear but not well documented.  Has a GUI for testing/experimenting.
 
-We need to understand significant digits / significant figures.  We need a list of rules for how they work to make sure we implement it correctly.
-
-We need to know how to do decimal-accurate arithmetic with significant digits.
-
-See http://en.wikipedia.org/wiki/Significant_digits
-
-Possibly of use: Apfloat, an arbitrary-precision arithmetic library for Java: http://www.apfloat.org/apfloat_java/
-
-JScience - http://jscience.org/ - a Java library that does units, arbitrary-precision arithmetic, and more.  Readable code.
-
-JAS (Java Algebra System) - http://krum.rz.uni-mannheim.de/jas/
-
-== Symbolic Algebra ==
-
-We need to know how to do simple symbolic algebra with addition, subtraction, multiplication, division, and exponents.
-
-Possibly of use:
-
-*jscl-meditor*: Java computer algebra system.  http://jscl-meditor.sourceforge.net/
-
-*Mathomatic*: written in C, does simple algebra.  Console-based interface.  May be a useful model to follow for the interactive BCIS interpreter.  Not a programming language, but generates code in C and Java.  http://en.wikipedia.org/wiki/Mathomatic
-
-*Sympy*: Python computer algebra system designed to be simple - http://code.google.com/p/sympy/
-
-A page on how to do unit calculations in a computer algebra system: http://www.math.montana.edu/frankw/ccp/units/cas/body.htm
-
-== Inferred Calculations ==
-
-We need to know how to figure out how to automatically calculate something given a set of known values and algebraic relationships.  Maybe this is as simple as a shortest-path search through a graph of relationships, or maybe it requires some logic programming.
- 
- 
+[http://krum.rz.uni-mannheim.de/jas/ JAS (Java Algebra System)] - Quite complicated, oriented more towards mathematicians.
