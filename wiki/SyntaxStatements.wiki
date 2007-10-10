@@ -10,6 +10,7 @@ In these examples, capitalized words are place-holders.
 == Assignment ==
 {{{
 set VAR = EXPRESSION
+}}}
 
 Evaluate EXPRESSION and assign it to a local variable named VAR.  Note that the "=" here is not an operator, it's part of the statement syntax.
 
