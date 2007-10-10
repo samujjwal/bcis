@@ -63,9 +63,9 @@ Put a loop inside "loop...done".  Use `break` anywhere in the loop to stop, `res
 {{{
 loop
     ... statements ...
-    if expression do
-        break
-    done
+    restart
+    ... statements ...
+    break
     ... statements ...
 done
 }}}
