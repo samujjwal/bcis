@@ -13,6 +13,7 @@ do
 done
 else
 elsif
+false
 for
 from
 function
@@ -29,6 +30,7 @@ set
 step
 then
 to
+true
 unit
 while
 }}}
