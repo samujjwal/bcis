@@ -22,7 +22,7 @@ Derived quantities are defined with algebraic expressions:
 {{{
 quantity IDENTIFIER = EXPRESSION
 }}}
-Where EXPRESSION may only contain other quantities and the basic mathematical operators +, -, /, *, and ^.
+Where EXPRESSION may only contain other quantities and the basic mathematical operators +, -, /, `*`, and `^`.
 
 
 == Units ==
