@@ -11,6 +11,8 @@ Statements are separated by *either* line breaks or semicolons.
 
 Evaluate _expression_ and assign it to a local variable named _var_.  Note that `=` here is not an operator, it's part of the statement.
 
+If _var_ is currently undefined, a new local variable is created.
+
 == I/O ==
 
 === print ===
