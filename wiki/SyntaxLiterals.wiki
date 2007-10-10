@@ -1,0 +1,35 @@
+#summary Literal values in code text.
+#labels Phase-Design
+
+= Literals =
+
+== Strings ==
+
+Strings are surrounded by double quotation marks.  A double quotation mark may be placed inside a string by using two double quotation marks in a row.  So the string 
+{{{
+my "friend" Bob
+}}}
+ could be written 
+{{{
+"my ""friend"" Bob"
+}}}
+
+Strings may contain any character, including line breaks.
+
+C-style string escapes -- `\n`, `\t`, etc -- are not supported.
+
+== Numbers ==
+
+All numbers are stored as arbitrary-precision decimals.  Numbers may be written as integers or with C-style floating point syntax.  The following numbers are all identical:
+{{{
+42
+42e1
+42.
+42.0
+42.0e1
+42.00000000000000000000
+}}}
+
+== Identifiers ==
+
+See SyntaxIdentifiers.
