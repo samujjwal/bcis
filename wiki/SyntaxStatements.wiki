@@ -5,6 +5,8 @@
 
 Statements are separated by *either* line breaks or semicolons.
 
+Expressions are *not* allowed at the same level as statements.  Expressions may only be used *inside* statements that allow them, such as "set" or "print".
+
 In these examples, capitalized words are place-holders.
 
 == Assignment ==
