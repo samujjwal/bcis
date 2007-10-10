@@ -9,5 +9,6 @@ It is divided into sections for easier editing.
 
   * SyntaxIdentifiers
   * SyntaxExpressions
+  * SyntaxLiterals
   * SyntaxStatements
   * SyntaxDefinitions
