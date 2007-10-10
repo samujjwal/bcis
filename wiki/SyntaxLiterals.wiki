@@ -30,6 +30,9 @@ All numbers are stored as arbitrary-precision decimals.  Numbers may be written 
 42.00000000000000000000
 }}}
 
+Numbers may be followed by a space and a then a unit identifier.  This is read as an implicit multiplication between the number and the unit.
+
+
 == Identifiers ==
 
 See SyntaxIdentifiers.
