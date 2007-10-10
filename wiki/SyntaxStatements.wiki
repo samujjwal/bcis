@@ -18,12 +18,12 @@ If _var_ is currently undefined, a new local variable is created.
 === print ===
 `print` _expression_
 
-Evaluate _expression_ and print the result to standard output.
+Evaluate _expression_ and print the result, followed by a newline, to the output stream.
 
 === read ===
 `read` _variable_
 
-Read a single value from standard input and store it in _variable_.
+Read a single value from the input stream and store it in _variable_.
 
 == if/then/else ==
 
@@ -32,6 +32,9 @@ if expression then
     ... statements ...
 elsif expression then
     ... statements ...
+elsif expression then
+    ... statements ...
+...more elsif blocks...
 else
     ... statements ...
 done
