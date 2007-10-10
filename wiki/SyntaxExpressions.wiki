@@ -38,10 +38,14 @@ Adapted from C operator precedence: http://www.difranco.net/cop2220/op-prec.htm
 
 The exponent operator (`^`) is a binary operator that raises its left argument to the power of its right argument.  Examples: `2^64`, `10^100`, `m/s^2`
 
+Roots can be obtained by raising a number to a fractional power, like `3^(1/2)`.  This makes it trivial to write functions for square roots, cube roots, etc.
+
 
 == Unit Conversion ==
 
 The special `in` operator is a binary operator that converts its left argument to the units of its right argument.  So `3 meters in feet` returns 9.84251969 feet.  `50 mph in kph` returns 80.4672 kph.
+
+Of course, both arguments must include defined units, and both arguments must have the same _quantity_.
 
 
 == Inferred Calculation ==
