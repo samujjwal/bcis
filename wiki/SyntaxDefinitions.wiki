@@ -68,6 +68,6 @@ function IDENTIFIER( ARG1, ARG2, ARG3 )
 done
 }}}
 
-Function arguments are not explicitly typed, but types may be checked using "check" statements.
+Function arguments are not explicitly typed, but types may be checked using "assert" statements.
 
 Control returns from a function after the last statement or on evaluating a "return" statement.
