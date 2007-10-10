@@ -3,6 +3,10 @@
 
 = Literals =
 
+== True/False ==
+
+Literal boolean values are represented by the tokens `true` and `false`.
+
 == Strings ==
 
 Strings are surrounded by double quotation marks.  A double quotation mark may be placed inside a string by using two double quotation marks in a row.  So the string 
