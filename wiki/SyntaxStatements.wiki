@@ -20,10 +20,6 @@ If _var_ is currently undefined, a new local variable is created.
 
 Evaluate _expression_ and print the result, followed by a newline, to the output stream.
 
-=== read ===
-`read` _variable_
-
-Read a single value from the input stream and store it in _variable_.
 
 == if/then/else ==
 
