@@ -31,7 +31,7 @@ Adapted from C operator precedence: http://www.difranco.net/cop2220/op-prec.htm
 
 `in` Unit conversion operator (see below)
 
-`find ... given ...` inferred calculation
+~~ `find ... given ...` inferred calculation ~~
 
 
 == Exponents and Roots ==
