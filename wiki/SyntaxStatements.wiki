@@ -5,20 +5,23 @@
 
 Statements are separated by *either* line breaks or semicolons.
 
+In these examples, capitalized words are place-holders.
+
 == Assignment ==
+{{{
+set VAR = EXPRESSION
 
-`set var = expression`
+Evaluate EXPRESSION and assign it to a local variable named VAR.  Note that the "=" here is not an operator, it's part of the statement syntax.
 
-Evaluate _expression_ and assign it to a local variable named _var_.  Note that `=` here is not an operator, it's part of the statement.
+If VAR is currently undefined, a new local variable is created.
 
-If _var_ is currently undefined, a new local variable is created.
 
-== I/O ==
+== print ==
+{{{
+print EXPRESSION
+}}}
 
-=== print ===
-`print` _expression_
-
-Evaluate _expression_ and print the result, followed by a newline, to the output stream.
+Evaluate EXPRESSION and print the result, followed by a newline, to the output stream.
 
 
 == if/then/else ==
@@ -39,10 +42,12 @@ done
 == For Loops ==
 
 {{{
-for i from 1 to 100 step 5 do
+for VAR from START to END step STEP_VAL do
     ... statements ...
 done
 }}}
+
+Evaluate statements with the variable named VAR bound to successive values, from START up to (and including) END, adding STEP_VAL each time.  START, END, and STEP_VAL are all expressions.
 
 == While Loops ==
 
