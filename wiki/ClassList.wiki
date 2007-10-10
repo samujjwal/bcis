@@ -21,7 +21,7 @@ Each class name has "Class" before it to make it a wiki link; that is not part o
   * ClassUnit - a unit, like "meters" or "seconds"
   * ClassNumber - abstract number that can be integer, rational, or decimal
   * ClassVector - 2-d vector
-  * ClassList - a generic list
+  * ClassForLists - a generic list data structure
 
   * ClassFunction - user-defined function
   * ClassConstant - user-defined constant
