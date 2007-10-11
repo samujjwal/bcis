@@ -17,3 +17,4 @@ It is divided into sections for easier editing.
 Also, some semantic information is contained on these pages:
 
   * FundamentalTypes
+  * BuiltinFunctions
