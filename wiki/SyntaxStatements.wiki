@@ -5,7 +5,7 @@
 
 Statements are separated by *either* line breaks or semicolons.
 
-Expressions are *not* allowed at the same level as statements.  Expressions may only be used *inside* statements that allow them, such as "set" or "print".
+A statement may consist of an expression by itself.  See SyntaxExpressions.
 
 In these examples, capitalized words are place-holders.
 
@@ -17,14 +17,6 @@ set VAR = EXPRESSION
 Evaluate EXPRESSION and assign it to a local variable named VAR.  Note that the "=" here is not an operator, it's part of the statement syntax.
 
 If VAR is currently undefined, a new local variable is created.
-
-
-== print ==
-{{{
-print EXPRESSION
-}}}
-
-Evaluate EXPRESSION and print the result, followed by a newline, to the output stream.
 
 
 == if/then/else ==
