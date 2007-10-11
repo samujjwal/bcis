@@ -22,7 +22,6 @@ in
 loop
 not
 or
-print
 quantity
 restart
 return
