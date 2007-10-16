@@ -24,7 +24,7 @@ public class TryParser {
 	PhysiLexer lexer = new PhysiLexer(reader);
 	PhysiParser parser = new PhysiParser(lexer);
 	try {
-	    parser.expr();
+	    parser.program();
 	    System.out.println(parser.getAST().toStringList());
 	} catch (Exception err) {
 	    System.out.println(err.toString());
