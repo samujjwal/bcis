@@ -1,12 +1,13 @@
-/* *********************************************************************************
+/* ***********************************************************************
  * grammar.g : the lexer and the parser, in ANTLR grammar for Physicalc
  *
  * ANTLR Parser Generator Version 2.7.7 (2006-11-01) 
  *
- * @author Stuart Sierra - ss2806@colmbia.edu; Changlong Jiang - cj2214@columbia.edu 
+ * @author Changlong Jiang, cj2214@columbia.edu 
+ * @author Stuart Sierra, ss2806@colmbia.edu
  * 
  * @version 1.0
- * *********************************************************************************/
+ * ***********************************************************************/
 
 
 header {
@@ -190,8 +191,10 @@ vector_literal : LBRACE! expr COMMA! expr RBRACE!
     {#vector_literal = #([VECTOR,"VECTOR"], vector_literal); };
 
 /** Array/list subscripts like "a[b]".  Back-end is responsible for
- * checking that the subscript evaluates to an integer. */
-subscript_expr : ID LBRACKET! expr RBRACKET!
+ * checking that the subscript evaluates to an integer.  Chained
+ * subscript expressions like a[b][c] are allowed, but the first token
+ * (the 'a') must be an identifier. */
+subscript_expr : ID (LBRACKET! expr RBRACKET!)+
     {#subscript_expr = #([SUBSCRIPT, "SUBSCRIPT"], subscript_expr); };
 
 /** Function calls */
