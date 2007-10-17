@@ -27,6 +27,7 @@ options {
 protected DIGIT : '0'..'9';
 protected LETTER : 'a'..'z' | 'A'..'Z';
 
+
 /** Identifiers must begin with a letter or underscore, which may be
  * followed by any combination of letters, digits, and underscores. */
 ID  options { testLiterals = true; }
@@ -46,8 +47,9 @@ protected NEWLINE : ('\n' | ('\r' '\n') => '\r' '\n' | '\r')
 COMMENT : '#' ( ~( '\n' | '\r' ) )*
     { $setType(Token.SKIP); } ;
 
-/** Statements are terminated by newlines or semicolons. */
-TERMINATOR : (NEWLINE | ';');
+/** Statements are terminated by (any number of) newlines or
+ * semicolons. */
+TERMINATOR : (NEWLINE | ';')+;
 
 
 /** There is no syntactic distinction among integers, decimal numbers,
@@ -121,7 +123,7 @@ simple_stmt : expr TERMINATOR!;  /* an expression by itself can be a
 /* TODO: add other simple statements like 'return' and 'next'. */
 
 /** A list of expressions, separated by commas.  Used in literal lists
- * and function calls. */
+ * and function calls.  */
 expr_list : expr (COMMA! expr)* ;   
 
 
