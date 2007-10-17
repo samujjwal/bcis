@@ -99,29 +99,98 @@ options {
 }
 
 tokens { /* used in the abstract syntax tree */
+    BLOCK;
     FUNCALL;
+    IF;
     LIST;
+    PARAMS;
     SUBSCRIPT;
     UMINUS;
     VECTOR;
 }
 
-program : (def | stmt);
+program : (load | def | stmt)+;
+
+/** Load statement: load the file at the path given. */
+load : "load"^ STRING TERMINATOR!;
+
+/* **************************************************
+ * Definitions
+ * ************************************************** */
 
 /** Definitions. */
-def : "unit";
-/* TODO: add definitions. */
+def : (quantity_def | unit_def | constant_def | alias_def | function_def)
+      TERMINATOR;
+
+quantity_def : "quantity"^ ID (EQ! expr)?;
+
+unit_def : "unit"^ ID ("for"! ID | EQ! expr);
+
+constant_def : "constant"^ ID EQ! expr;
+
+alias_def : "alias"^ ID "for"! ID;
+
+function_def : "function"^ ID LPAREN! params RPAREN! TERMINATOR!
+    block "done";
+
+/** Parameter list for function definitions. */
+params : (ID)? (COMMA! ID)*
+    {#params = #([PARAMS, "PARAMS"], params); } ;
+
+/* **************************************************
+ * Statements
+ * ************************************************** */
 
 /** Statements. */
-stmt : 
-    simple_stmt;
-/* TODO: add compound statements like 'for', 'loop', and 'if'. */
+stmt : simple_stmt | compound_stmt;
+
+/** A block of one or more statements. */
+block : (stmt)+
+    {#block = #([BLOCK, "BLOCK"], block); } ;
 
 /** Simple statement: A single-line statement that must end with a
- * TERMINATOR. */
-simple_stmt : expr TERMINATOR!;  /* an expression by itself can be a
-				 * statement */
-/* TODO: add other simple statements like 'return' and 'next'. */
+ * TERMINATOR.  An expression by itself can be a statement.*/
+simple_stmt :
+    ( expr 
+    | "return"^ expr
+    | "next"^
+    | "break"^
+    | "set"^ ID EQ! expr
+    )
+    TERMINATOR! ;
+
+/** Compound statement: a multi-part statement like if/then/else or
+ * while.  Compound statements always end with "done". */
+compound_stmt : (if_stmt | while_stmt | for_stmt) "done"! TERMINATOR!;
+
+/** If/then/else.  These rules transfrom an if/elsif/else sequence
+ * into nested IF trees.  Each IF subtree has 3 arguments: (1) a test
+ * expression, (2) a "then" block, and (3) an optional "else"
+ * block. */
+if_stmt :
+    "if"! expr "then"! TERMINATOR! block
+    elsif_stmt
+    {#if_stmt = #([IF,"IF"], if_stmt); } ;
+
+elsif_stmt : "elsif"! expr "then"! TERMINATOR! block (elsif_stmt)
+    {#elsif_stmt = #([IF,"IF"], elsif_stmt); }
+    | else_stmt ;
+
+else_stmt : "else"! TERMINATOR! block
+    | /* nothing */ ;
+
+
+/** "while" loops. */
+while_stmt : "while"^ expr "do"! TERMINATOR! block;
+
+/** "for" loops. */
+for_stmt : "for"^ ID "from"! expr "to"! expr "step"! expr "do"! TERMINATOR!
+           block ;
+
+
+/* **************************************************
+ * Expressions
+ * ************************************************** */
 
 /** A list of expressions, separated by commas.  Used in literal lists
  * and function calls.  */
@@ -158,8 +227,7 @@ add_expr : mul_expr ( (PLUS^ | MINUS^) mul_expr )*;
 
 mul_expr : exp_expr ( (TIMES^ | DIVIDE^) exp_expr )*;
 
-/** Exponentiation: tail-recursion makes it right-associative.
- * See http://wincent.com/knowledge-base/ANTLR_grammar_problems */
+/** Exponentiation: tail-recursion makes it right-associative. */
 exp_expr : uminus_expr (CARET^ exp_expr)?;  
 
 /** Unary negation operator. Unary plus ("+") is not included because
