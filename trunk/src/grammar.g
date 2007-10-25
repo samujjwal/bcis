@@ -94,7 +94,7 @@ RELOP  : '>' | '<' | ">=" | "<=" ;
 class PhysiParser extends Parser;
 
 options {
-    k = 2;
+    k = 2;  // needed for subscripts, function calls, etc.
     buildAST = true;
 }
 
@@ -155,9 +155,13 @@ simple_stmt :
     | "return"^ expr
     | "next"^
     | "break"^
-    | "set"^ ID EQ! expr
+    | "set"^ lvalue EQ! expr
     )
     TERMINATOR! ;
+
+/** An lvalue is anything that can be assigned to with "set".
+ * Variables and subscript expressions can be assigned. */
+lvalue : subscript_expr | ID ;
 
 /** Compound statement: a multi-part statement like if/then/else or
  * while.  Compound statements always end with "done". */
