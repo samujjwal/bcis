@@ -16,7 +16,7 @@
 
 # Java class search path: needs to include the project "class"
 # directory and any .jar files.
-export CLASSPATH=$PWD:$PWD/class:$PWD/lib/antlr.jar:$PWD/lib/junit-4.4.jar
+export CLASSPATH=.:$PWD:$PWD/class:$PWD/lib/antlr.jar:$PWD/lib/junit-4.4.jar
 
 # Convenience alias for ANTLR.
 alias antlr="java antlr.Tool -diagnostic"

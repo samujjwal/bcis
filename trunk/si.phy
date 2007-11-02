@@ -1,19 +1,12 @@
 # SI Base Quantities & Base Units
 # from http://en.wikipedia.org/wiki/SI_base_unit
-quantity length
-quantity mass
-quantity time
-quantity current
-quantity temperature
-quantity amount
-quantity luminosity
-unit meter for length
-unit kilogram for mass
-unit second for time
-unit ampere for current
-unit kelvin for temperature
-unit mole for amount
-unit candela for luminosity
+unit meter
+unit kilogram
+unit second
+unit ampere
+unit kelvin
+unit mole
+unit candela
 
 # SI Derived Units
 # from http://en.wikipedia.org/wiki/SI_derived_unit
