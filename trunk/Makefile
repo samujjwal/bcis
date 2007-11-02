@@ -52,6 +52,7 @@ CLASSES = $(CDIR)/PhysiLexerTokenTypes.class \
     $(CDIR)/Main.class \
     $(CLASS)/TryParser.class \
     $(CLASS)/TryLexer.class \
+    $(CLASS)/ParseFile.class \
     $(CDIR)/Interpreter.class
 
 # List of all test class files.  New tests should be added here and in
@@ -118,6 +119,9 @@ $(CLASS)/TryParser.class: $(SOURCE)/TryParser.java
 
 $(CLASS)/TryLexer.class: $(SOURCE)/TryLexer.java
 	$(JC) $(SOURCE)/TryLexer.java
+
+$(CLASS)/ParseFile.class: $(SOURCE)/ParseFile.java
+	$(JC) $(SOURCE)/ParseFile.java
 
 $(CDIR)/InterpreterTest.class: $(TEST)/InterpreterTest.java
 	$(JC) $(TEST)/InterpreterTest.java
