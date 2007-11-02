@@ -120,7 +120,7 @@ load : "load"^ STRING TERMINATOR!;
 
 /** Definitions. */
 def : (quantity_def | unit_def | constant_def | alias_def | function_def)
-      TERMINATOR;
+      TERMINATOR!;
 
 quantity_def : "quantity"^ ID (EQ! expr)?;
 
@@ -156,6 +156,7 @@ simple_stmt :
     | "next"^
     | "break"^
     | "set"^ lvalue EQ! expr
+    | /* nothing */
     )
     TERMINATOR! ;
 
