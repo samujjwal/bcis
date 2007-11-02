@@ -28,10 +28,10 @@ TEST = $(PROJECT)/test
 CLASSPATH = $(CLASS):$(PROJECT)/lib/antlr.jar:$(PROJECT)/lib/junit-4.4.jar
 
 # Flags for the Java compiler (-g includes debugging info)
-JAVACFLAGS = -g -cp $(CLASSPATH) -d $(CLASS)
+JAVACFLAGS = -g -cp $(CLASSPATH) -sourcepath $(SOURCE) -d $(CLASS)
 
 # Flags for the Java interpreter
-JFLAGS = -cp $(CLASSPATH)
+JFLAGS = -cp $(CLASSPATH) 
 
 # Command line to compile a java class file:
 JC = $(JAVAC) $(JAVACFLAGS)
@@ -46,14 +46,20 @@ ANTLR = $(JAVA) $(JFLAGS) antlr.Tool
 
 # List of all project class files.  New classes should be added here
 # and in the PER-CLASS COMPILATION RULES, below.
-CLASSES = $(CDIR)/PhysiLexerTokenTypes.class \
+CLASSES = \
+    $(CDIR)/PhysiLexerTokenTypes.class \
     $(CDIR)/PhysiLexer.class \
     $(CDIR)/PhysiParser.class \
+    $(CDIR)/InterpreterError.class \
+    $(CDIR)/TypeError.class \
+    $(CDIR)/BoundsError.class \
     $(CDIR)/Main.class \
+    $(CDIR)/Interpreter.class \
+    $(CDIR)/Datum.class \
+    $(CDIR)/PBoolean.class \
     $(CLASS)/TryParser.class \
     $(CLASS)/TryLexer.class \
-    $(CLASS)/ParseFile.class \
-    $(CDIR)/Interpreter.class
+    $(CLASS)/ParseFile.class
 
 # List of all test class files.  New tests should be added here and in
 # the PER-CLASS COMPILATION RULES, below.
@@ -102,8 +108,20 @@ clean:
 # for every class file because the .java sources and the 
 # compiled .class files go in different directories.
 
-$(CDIR)/Main.class: $(SDIR)/Main.java
-	$(JC) $(SDIR)/Main.java
+$(CLASS)/TryParser.class: $(SOURCE)/TryParser.java
+	$(JC) $(SOURCE)/TryParser.java
+
+$(CLASS)/TryLexer.class: $(SOURCE)/TryLexer.java
+	$(JC) $(SOURCE)/TryLexer.java
+
+$(CLASS)/ParseFile.class: $(SOURCE)/ParseFile.java
+	$(JC) $(SOURCE)/ParseFile.java
+
+$(CDIR)/InterpreterError.class: $(SDIR)/InterpreterError.java
+	$(JC) $(SDIR)/InterpreterError.java
+
+$(CDIR)/TypeError.class: $(SDIR)/TypeError.java
+	$(JC) $(SDIR)/TypeError.java
 
 $(CDIR)/PhysiLexerTokenTypes.class: $(SDIR)/PhysiLexerTokenTypes.java
 	$(JC) $(SDIR)/PhysiLexerTokenTypes.java
@@ -114,14 +132,20 @@ $(CDIR)/PhysiLexer.class: $(SDIR)/PhysiLexer.java
 $(CDIR)/PhysiParser.class: $(SDIR)/PhysiParser.java
 	$(JC) $(SDIR)/PhysiParser.java
 
-$(CLASS)/TryParser.class: $(SOURCE)/TryParser.java
-	$(JC) $(SOURCE)/TryParser.java
+$(CDIR)/Interpreter.class: $(SDIR)/Interpreter.java
+	$(JC) $(SDIR)/Interpreter.java
 
-$(CLASS)/TryLexer.class: $(SOURCE)/TryLexer.java
-	$(JC) $(SOURCE)/TryLexer.java
+$(CDIR)/Datum.class: $(SDIR)/Datum.java
+	$(JC) $(SDIR)/Datum.java
 
-$(CLASS)/ParseFile.class: $(SOURCE)/ParseFile.java
-	$(JC) $(SOURCE)/ParseFile.java
+$(CDIR)/PBoolean.class: $(SDIR)/PBoolean.java
+	$(JC) $(SDIR)/PBoolean.java
+
+$(CDIR)/Main.class: $(SDIR)/Main.java
+	$(JC) $(SDIR)/Main.java
+
+$(CDIR)/BoundsError.class: $(SDIR)/BoundsError.java
+	$(JC) $(SDIR)/BoundsError.java
 
 $(CDIR)/InterpreterTest.class: $(TEST)/InterpreterTest.java
 	$(JC) $(TEST)/InterpreterTest.java
@@ -129,5 +153,3 @@ $(CDIR)/InterpreterTest.class: $(TEST)/InterpreterTest.java
 $(CDIR)/PhysicalcSuite.class: $(TEST)/PhysicalcSuite.java
 	$(JC) $(TEST)/PhysicalcSuite.java
 
-$(CDIR)/Interpreter.class: $(SDIR)/Interpreter.java
-	$(JC) $(SDIR)/Interpreter.java

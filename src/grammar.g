@@ -119,12 +119,10 @@ load : "load"^ STRING TERMINATOR!;
  * ************************************************** */
 
 /** Definitions. */
-def : (quantity_def | unit_def | constant_def | alias_def | function_def)
+def : (unit_def | constant_def | alias_def | function_def)
       TERMINATOR!;
 
-quantity_def : "quantity"^ ID (EQ! expr)?;
-
-unit_def : "unit"^ ID ("for"! ID | EQ! expr);
+unit_def : "unit"^ ID (EQ! expr)?;
 
 constant_def : "constant"^ ID EQ! expr;
 
