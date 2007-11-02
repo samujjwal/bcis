@@ -1,0 +1,38 @@
+# SI Base Quantities & Base Units
+# from http://en.wikipedia.org/wiki/SI_base_unit
+quantity length
+quantity mass
+quantity time
+quantity current
+quantity temperature
+quantity amount
+quantity luminosity
+unit meter for length
+unit kilogram for mass
+unit second for time
+unit ampere for current
+unit kelvin for temperature
+unit mole for amount
+unit candela for luminosity
+
+# SI Derived Units
+# from http://en.wikipedia.org/wiki/SI_derived_unit
+unit radian = 1   # Radians are technically a dimensionless unit
+unit hertz = 1 / second
+unit newton = meter * kilogram / second ^ 2
+unit pascal = newton / meter ^ 2
+unit joule = newton * meter
+unit watt = joule / second
+unit coulomb = second * ampere
+unit volt = watt / ampere
+unit farad = coulomb / volt
+unit ohm = volt / ampere
+unit siemens = 1 / ohm
+unit weber = joule / ampere
+unit tesla = volt * second / meter ^ 2
+unit henry = volt * second / ampere
+unit lux = lumen / meter ^ 2
+unit becquerel = 1 / second
+unit gray = joule / kilogram
+unit sievert = joule / kilogram
+unit katal = mole / second
