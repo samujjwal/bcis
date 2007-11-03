@@ -50,6 +50,7 @@ CLASSES = \
     $(CDIR)/PhysiLexerTokenTypes.class \
     $(CDIR)/PhysiLexer.class \
     $(CDIR)/PhysiParser.class \
+    $(CDIR)/PhysiWalker.class \
     $(CDIR)/InterpreterError.class \
     $(CDIR)/TypeError.class \
     $(CDIR)/BoundsError.class \
@@ -83,7 +84,9 @@ ANTLR_OUTPUT = $(SDIR)/PhysiLexer.java \
     $(SDIR)/PhysiLexerTokenTypes.java \
     $(SDIR)/PhysiLexer.smap \
     $(SDIR)/PhysiLexerTokenTypes.txt \
-    $(SDIR)/PhysiParser.smap
+    $(SDIR)/PhysiParser.smap \
+    $(SDIR)/PhysiWalker.java \
+    $(SDIR)/PhysiWalker.smap
 
 # 'doc' target: make the Javadocs
 doc: $(CLASSES) 
@@ -131,6 +134,9 @@ $(CDIR)/PhysiLexer.class: $(SDIR)/PhysiLexer.java
 
 $(CDIR)/PhysiParser.class: $(SDIR)/PhysiParser.java
 	$(JC) $(SDIR)/PhysiParser.java
+
+$(CDIR)/PhysiWalker.class: $(SDIR)/PhysiWalker.java
+	$(JC) $(SDIR)/PhysiWalker.java
 
 $(CDIR)/Interpreter.class: $(SDIR)/Interpreter.java
 	$(JC) $(SDIR)/Interpreter.java
