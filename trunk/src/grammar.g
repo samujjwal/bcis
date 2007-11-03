@@ -271,3 +271,19 @@ subscript_expr : ID (LBRACKET! expr RBRACKET!)+
 /** Function calls */
 funcall_expr : ID LPAREN! expr_list RPAREN!
     {#funcall_expr = #([FUNCALL, "FUNCALL"], funcall_expr); };
+
+
+
+/* ********************************************************************
+ * TREE WALKER *
+ * ******************************************************************** */
+class PhysiWalker extends TreeParser;
+
+program // return type goes here
+{
+    // initialization for this rule goes here
+    System.out.println("Beginning of program.");
+}
+    : #("load" filename:STRING) { System.out.println("Saw load statement."); }
+    // additional patterns for this rule go here
+    ;
