@@ -25,7 +25,7 @@ export SOURCEPATH=.:$PWD:$PWD/src:$PWD/test
 alias antlr="java antlr.Tool -diagnostic"
 
 # Convenience alias for compiling files without changing the Makefile:
-alias compile="javac -g -d $PWD/class"
+alias compile="javac -g -d $PWD/class -sourcepath $SOURCEPATH"
 
 # Convenience alias for running a single test class.  Should be
 # followed by the name of a Test class, like "physicalc.NumberTest":
