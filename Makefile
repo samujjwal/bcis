@@ -54,6 +54,7 @@ CLASSES = \
     $(CDIR)/InterpreterError.class \
     $(CDIR)/TypeError.class \
     $(CDIR)/BoundsError.class \
+    $(CDIR)/UndefinedError.class \
     $(CDIR)/Main.class \
     $(CDIR)/Interpreter.class \
     $(CDIR)/Datum.class \
@@ -63,6 +64,13 @@ CLASSES = \
     $(CDIR)/PVector.class \
     $(CDIR)/PList.class \
     $(CDIR)/PBoolean.class \
+    $(CDIR)/PString.class \
+    $(CDIR)/SymbolTable.class \
+    $(CDIR)/RuntimeObject.class \
+    $(CDIR)/Node.class \
+    $(CDIR)/Stmt.class \
+    $(CDIR)/Expr.class \
+    $(CDIR)/Def.class \
     $(CLASS)/TryParser.class \
     $(CLASS)/TryLexer.class \
     $(CLASS)/TryDatum.class \
@@ -122,7 +130,7 @@ $(CLASS)/TryParser.class: $(SOURCE)/TryParser.java
 
 $(CLASS)/TryLexer.class: $(SOURCE)/TryLexer.java
 	$(JC) $(SOURCE)/TryLexer.java
-	
+
 $(CLASS)/TryDatum.class: $(SOURCE)/TryDatum.java
 	$(JC) $(SOURCE)/TryDatum.java
 
@@ -134,6 +142,9 @@ $(CDIR)/InterpreterError.class: $(SDIR)/InterpreterError.java
 
 $(CDIR)/TypeError.class: $(SDIR)/TypeError.java
 	$(JC) $(SDIR)/TypeError.java
+
+$(CDIR)/UndefinedError.class: $(SDIR)/UndefinedError.java
+	$(JC) $(SDIR)/UndefinedError.java
 
 $(CDIR)/PhysiLexerTokenTypes.class: $(SDIR)/PhysiLexerTokenTypes.java
 	$(JC) $(SDIR)/PhysiLexerTokenTypes.java
@@ -150,29 +161,44 @@ $(CDIR)/PhysiWalker.class: $(SDIR)/PhysiWalker.java
 $(CDIR)/Interpreter.class: $(SDIR)/Interpreter.java
 	$(JC) $(SDIR)/Interpreter.java
 
+$(CDIR)/SymbolTable.class: $(SDIR)/SymbolTable.java
+	$(JC) $(SDIR)/SymbolTable.java
+
 $(CDIR)/Datum.class: $(SDIR)/Datum.java
 	$(JC) $(SDIR)/Datum.java
 
 $(CDIR)/PBoolean.class: $(SDIR)/PBoolean.java
 	$(JC) $(SDIR)/PBoolean.java
-	
+
 $(CDIR)/PNumber.class: $(SDIR)/PNumber.java
 	$(JC) $(SDIR)/PNumber.java
-	
+
 $(CDIR)/PUnit.class: $(SDIR)/PUnit.java
 	$(JC) $(SDIR)/PUnit.java
-	
+
 $(CDIR)/PUnitPair.class: $(SDIR)/PUnitPair.java
 	$(JC) $(SDIR)/PUnitPair.java
-	
+
 $(CDIR)/PVector.class: $(SDIR)/PVector.java
 	$(JC) $(SDIR)/PVector.java
-	
+
 $(CDIR)/PList.class: $(SDIR)/PList.java
 	$(JC) -Xlint:unchecked $(SDIR)/PList.java
-	
-$(CDIR)/PVector.class: $(SDIR)/PVector.java
+
+$(CDIR)/PString.class: $(SDIR)/PString.java
 	$(JC) $(SDIR)/PString.java
+
+$(CDIR)/Node.class: $(SDIR)/Node.java
+	$(JC) $(SDIR)/Node.java
+
+$(CDIR)/Stmt.class: $(SDIR)/Stmt.java
+	$(JC) $(SDIR)/Stmt.java
+
+$(CDIR)/Expr.class: $(SDIR)/Expr.java
+	$(JC) $(SDIR)/Expr.java
+
+$(CDIR)/Def.class: $(SDIR)/Def.java
+	$(JC) $(SDIR)/Def.java
 
 $(CDIR)/Main.class: $(SDIR)/Main.java
 	$(JC) $(SDIR)/Main.java
