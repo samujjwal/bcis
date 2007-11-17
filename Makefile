@@ -70,6 +70,9 @@ CLASSES = \
     $(CDIR)/Node.class \
     $(CDIR)/Stmt.class \
     $(CDIR)/Expr.class \
+    $(CDIR)/Op.class \
+    $(CDIR)/Logical.class \
+    $(CDIR)/And.class \
     $(CDIR)/Def.class \
     $(CLASS)/TryParser.class \
     $(CLASS)/TryLexer.class \
@@ -196,6 +199,15 @@ $(CDIR)/Stmt.class: $(SDIR)/Stmt.java
 
 $(CDIR)/Expr.class: $(SDIR)/Expr.java
 	$(JC) $(SDIR)/Expr.java
+
+$(CDIR)/Op.class: $(SDIR)/Op.java
+	$(JC) $(SDIR)/Op.java
+
+$(CDIR)/Logical.class: $(SDIR)/Logical.java
+	$(JC) $(SDIR)/Logical.java
+
+$(CDIR)/And.class: $(SDIR)/And.java
+	$(JC) $(SDIR)/And.java
 
 $(CDIR)/Def.class: $(SDIR)/Def.java
 	$(JC) $(SDIR)/Def.java
