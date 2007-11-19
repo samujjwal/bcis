@@ -216,9 +216,7 @@ in_expr : or_expr ( "in"^ or_expr )*;
 
 or_expr : and_expr ( "or"^ and_expr )*;
 
-and_expr : not_expr ( "and"^ not_expr )*;
-
-not_expr : ("not"^)? eq_expr;  /* 'not' expressions cannot be chained */
+and_expr : eq_expr ( "and"^ eq_expr )*;
 
 eq_expr : neq_expr (EQ^ neq_expr)*;
 
@@ -231,7 +229,9 @@ add_expr : mul_expr ( (PLUS^ | MINUS^) mul_expr )*;
 mul_expr : exp_expr ( (TIMES^ | DIVIDE^) exp_expr )*;
 
 /** Exponentiation: tail-recursion makes it right-associative. */
-exp_expr : uminus_expr (CARET^ exp_expr)?;  
+exp_expr : not_expr (CARET^ exp_expr)?;  
+
+not_expr : ("not"^)? uminus_expr;  /* 'not' expressions cannot be chained */
 
 /** Unary negation operator. Unary plus ("+") is not included because
  * it's meaningless. */
