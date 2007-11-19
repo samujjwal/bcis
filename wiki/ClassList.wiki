@@ -23,6 +23,7 @@ These are objects created and returned by the Tree Walker.  Each node represents
       * While
       * For
       * Block (a collection of statements in the body of another statement)
+    * ExprList (a collection of expressions, separated by commas)
     * Expr
       * Literal (a constant literal number, string, etc.)
       * Id
