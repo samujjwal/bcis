@@ -4,7 +4,7 @@ package physicalc;
  *
  * @see Node
  */
-public abstract class And extends Logical  {
+public class And extends Logical  {
     private Expr left;
     private Expr right;
 
