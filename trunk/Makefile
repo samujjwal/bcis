@@ -71,6 +71,7 @@ CLASSES = \
     $(CDIR)/Stmt.class \
     $(CDIR)/Expr.class \
     $(CDIR)/Op.class \
+    $(CDIR)/Rel.class \
     $(CDIR)/Logical.class \
     $(CDIR)/And.class \
     $(CDIR)/Def.class \
@@ -205,6 +206,9 @@ $(CDIR)/Op.class: $(SDIR)/Op.java
 
 $(CDIR)/Logical.class: $(SDIR)/Logical.java
 	$(JC) $(SDIR)/Logical.java
+
+$(CDIR)/Rel.class: $(SDIR)/Rel.java
+	$(JC) $(SDIR)/Rel.java
 
 $(CDIR)/And.class: $(SDIR)/And.java
 	$(JC) $(SDIR)/And.java
