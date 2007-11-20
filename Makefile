@@ -70,6 +70,7 @@ CLASSES = \
     $(CDIR)/Node.class \
     $(CDIR)/Stmt.class \
     $(CDIR)/Expr.class \
+    $(CDIR)/Literal.class \
     $(CDIR)/Op.class \
     $(CDIR)/Rel.class \
     $(CDIR)/Logical.class \
@@ -200,6 +201,9 @@ $(CDIR)/Stmt.class: $(SDIR)/Stmt.java
 
 $(CDIR)/Expr.class: $(SDIR)/Expr.java
 	$(JC) $(SDIR)/Expr.java
+
+$(CDIR)/Literal.class: $(SDIR)/Literal.java
+	$(JC) $(SDIR)/Literal.java
 
 $(CDIR)/Op.class: $(SDIR)/Op.java
 	$(JC) $(SDIR)/Op.java
