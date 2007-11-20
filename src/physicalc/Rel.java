@@ -23,20 +23,20 @@ public class Rel extends Logical {
 	Datum rightValue = right.eval(globals, locals);
 
 	/* Datum classes take care of type checking. */
-	if (op == "=") {
+	if (op.equals("=")) {
 	    /* equals() returns a Java boolean; we must create a
 	     * PBoolean to match our return type. */
 	    return new PBoolean(leftValue.equals(rightValue));
-	} else if (op == "!=") {
+	} else if (op.equals("!=")) {
 	    /* Same thing, but take the logical opposite. */
 	    return new PBoolean(!(leftValue.equals(rightValue)));
-	} else if (op == "<") {
+	} else if (op.equals("<")) {
 	    return leftValue.lessThan(rightValue);
-	} else if (op == "<=") {
+	} else if (op.equals("<=")) {
 	    return leftValue.lessEqual(rightValue);
-	} else if (op == ">") {
+	} else if (op.equals(">")) {
 	    return leftValue.greaterThan(rightValue);
-	} else if (op == ">=") {
+	} else if (op.equals(">=")) {
 	    return leftValue.greaterEqual(rightValue);
 	} else {
 	    /* This will only happen if the tree walker is wrong. */
