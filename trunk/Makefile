@@ -72,6 +72,7 @@ CLASSES = \
     $(CDIR)/Expr.class \
     $(CDIR)/Literal.class \
     $(CDIR)/Op.class \
+    $(CDIR)/Arith.class \
     $(CDIR)/Rel.class \
     $(CDIR)/Logical.class \
     $(CDIR)/And.class \
@@ -207,6 +208,9 @@ $(CDIR)/Literal.class: $(SDIR)/Literal.java
 
 $(CDIR)/Op.class: $(SDIR)/Op.java
 	$(JC) $(SDIR)/Op.java
+
+$(CDIR)/Arith.class: $(SDIR)/Arith.java
+	$(JC) $(SDIR)/Arith.java
 
 $(CDIR)/Logical.class: $(SDIR)/Logical.java
 	$(JC) $(SDIR)/Logical.java
