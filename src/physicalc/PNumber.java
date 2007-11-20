@@ -74,8 +74,12 @@ public class PNumber extends Datum  {
 	}
 
     /** Returns the result of this + that.  Does not modify this. */
-    public PNumber add(PNumber that) throws TypeError {
-		return new PNumber(numValue.add(that.numValue));
+    public PNumber add(Datum that) throws TypeError {
+	if (that instanceof PNumber) {
+	    return new PNumber(numValue.add(((PNumber)that).numValue));
+	} else {
+	    throw new TypeError("+", this, that);
+	}
     }
 
     /** Returns the result of this - that.  Does not modify this. */
