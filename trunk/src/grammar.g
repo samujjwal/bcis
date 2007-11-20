@@ -197,7 +197,7 @@ for_stmt : "for"^ ID "from"! expr "to"! expr "step"! expr "do"! TERMINATOR!
 
 /** A list of expressions, separated by commas.  Used in literal lists
  * and function calls.  */
-expr_list : expr (COMMA! expr)* ;   
+expr_list : expr (COMMA! expr)* ;
 
 
 /** Expressions */
@@ -279,11 +279,77 @@ funcall_expr : ID LPAREN! expr_list RPAREN!
  * ******************************************************************** */
 class PhysiWalker extends TreeParser;
 
-program // return type goes here
+program returns [ Node n ] // return type goes here
 {
-    // initialization for this rule goes here
-    System.out.println("Beginning of program.");
+    n = null;
+    Expr e;
 }
-    : #("load" filename:STRING) { System.out.println("Saw load statement."); }
-    // additional patterns for this rule go here
+    : e=expr { n = e; } ;
+// load | def | statement ;
+
+// load : ;
+
+// def : ;
+
+// statement : expr | stmt ;
+
+expr returns [ Expr e ]
+{
+    Expr a, b;
+    e = null;
+}
+    /* Logical operators */
+    : #("and" a=expr b=expr) { e = new And(a, b); }
+    // | #("not" a=expr) { e = new Not(a); }
+    // | #("in" a=expr b=expr) { e = new In(a, b); }
+    // | #("or" a=expr b=expr) { e = new Or(a, b); }
+    
+    /* Relational operators */
+    | #(EQ a=expr b=expr) { e = new Rel("=", a, b); }
+    | #(NEQ a=expr b=expr) { e = new Rel("!=", a, b); }
+    | #(op:RELOP a=expr b=expr) { e = new Rel(op.getText(), a, b); }
+
+    /* Arithmetic operators */
+    | #(PLUS a=expr b=expr) { e = new Arith("+", a, b); }
+    | #(MINUS a=expr b=expr) { e = new Arith("-", a, b); }
+    | #(TIMES a=expr b=expr) { e = new Arith("*", a, b); }
+    | #(DIVIDE a=expr b=expr) { e = new Arith("/", a, b); }
+    | #(CARET a=expr b=expr) { e = new Arith("^", a, b); }
+    // | #(UMINUS a=expr) { e = new Unary(a); }
+
+    /* Other expressions */
+    // | a=funcall { e = a; }
+    // | a=subscript { e = a; }
+    | a=literal { e = a; }
     ;
+
+// expr_list returns [ ExprList e ]
+// {
+//     Expr a;
+//     e = new ExprList();
+// }
+//     : (a=expr)+ { e.add(a); }
+//     ;
+
+// funcall returns [ FunCall f ]
+// {
+//     ExprList e;
+//     f = null;
+// }
+//     : #(FUNCALL i:ID e=expr_list)
+//     ;
+
+literal returns [ Literal lit ]
+{
+    lit = null;
+}
+    : n:NUMBER { lit = new Literal(new PNumber(n.getText())); }
+    | s:STRING { lit = new Literal(new PString(s.getText())); }
+    // | i:ID { lit = new Id(i.getText()); }
+    ;
+
+// stmt : ;
+
+
+//    : #("load" filename:STRING) { System.out.println("Saw load statement."); }
+//    ;

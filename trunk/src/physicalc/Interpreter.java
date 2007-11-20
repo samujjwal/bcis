@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.io.Reader;
+import antlr.CommonAST;
+import antlr.collections.AST;
 
 /** An Interpreter object is responsible for running Physicalc code.
  * It has input, output, and error streams, which default to STDIN,
@@ -55,6 +57,24 @@ public class Interpreter {
      * string reader for testing.  It could even be standard input.
      */
     public void eval(Reader code) {
-	// TODO: write me
+	try {
+	    PhysiLexer lexer = new PhysiLexer(code);
+	    PhysiParser parser = new PhysiParser(lexer);
+
+	    parser.program();
+
+	    CommonAST parseTree = (CommonAST)parser.getAST();
+
+	    PhysiWalker walker = new PhysiWalker();
+	    Node e = walker.program(parseTree);
+
+	    SymbolTable globals = new SymbolTable();
+	    SymbolTable topLevel = new SymbolTable();
+	    Datum result = e.eval(globals, topLevel);
+	
+	    System.out.println(result.toString());
+	} catch(Exception e) {
+	    System.err.println(e.toString());
+	}
     }
 }
