@@ -75,6 +75,7 @@ CLASSES = \
     $(CDIR)/Rel.class \
     $(CDIR)/Logical.class \
     $(CDIR)/And.class \
+    $(CDIR)/Or.class \
     $(CDIR)/Def.class \
     $(CLASS)/TryParser.class \
     $(CLASS)/TryLexer.class \
@@ -216,6 +217,9 @@ $(CDIR)/Rel.class: $(SDIR)/Rel.java
 
 $(CDIR)/And.class: $(SDIR)/And.java
 	$(JC) $(SDIR)/And.java
+
+$(CDIR)/Or.class: $(SDIR)/Or.java
+	$(JC) $(SDIR)/Or.java
 
 $(CDIR)/Def.class: $(SDIR)/Def.java
 	$(JC) $(SDIR)/Def.java
