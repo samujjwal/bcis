@@ -20,7 +20,8 @@ public class PList extends Datum  {
 	public Datum add(Datum that) {
 		if (that instanceof PList) {
 			PList returnList = this;
-			for (Iterator it = that.list.iterator (); it.hasNext (); ) {
+			PList thatList = (PList)that;
+			for (Iterator it = thatList.list.iterator (); it.hasNext (); ) {
 				returnList.push( (Datum) it.next() );
   			}
   			return returnList;
