@@ -12,6 +12,7 @@
 
 header {
     package physicalc;
+    import java.util.ArrayList;
 }
 
 /* ********************************************************************
@@ -100,6 +101,7 @@ options {
 
 tokens { /* used in the abstract syntax tree */
     BLOCK;
+    EXPR_LIST;
     FUNCALL;
     IF;
     LIST;
@@ -197,7 +199,12 @@ for_stmt : "for"^ ID "from"! expr "to"! expr "step"! expr "do"! TERMINATOR!
 
 /** A list of expressions, separated by commas.  Used in literal lists
  * and function calls.  */
-expr_list : expr (COMMA! expr)* ;
+expr_list 
+    : expr (COMMA! expr)*
+        {#expr_list = #([EXPR_LIST, "EXPR_LIST"], expr_list); }
+    | /* nothing */
+        {#expr_list = #([EXPR_LIST, "EXPR_LIST"], expr_list); }
+    ;
 
 
 /** Expressions */
@@ -251,6 +258,8 @@ atom
     | subscript_expr
     | funcall_expr
     | LPAREN! expr RPAREN!
+    | "true"
+    | "false"
     ;
 
 /** Literal list (in square brackets) */
@@ -300,9 +309,9 @@ expr returns [ Expr e ]
 }
     /* Logical operators */
     : #("and" a=expr b=expr) { e = new And(a, b); }
-    // | #("not" a=expr) { e = new Not(a); }
+    | #("or" a=expr b=expr)  { e = new Or(a, b); }
+    | #("not" a=expr) { e = new Not(a); }
     // | #("in" a=expr b=expr) { e = new In(a, b); }
-    // | #("or" a=expr b=expr) { e = new Or(a, b); }
     
     /* Relational operators */
     | #(EQ a=expr b=expr) { e = new Rel("=", a, b); }
@@ -318,26 +327,31 @@ expr returns [ Expr e ]
     // | #(UMINUS a=expr) { e = new Unary(a); }
 
     /* Other expressions */
-    // | a=funcall { e = a; }
+    | a=funcall { e = a; }
     // | a=subscript { e = a; }
     | a=literal { e = a; }
+    | a=literal_list { e = a; }
+    | i:ID { e = new Id(i.getText()); }
     ;
 
-// expr_list returns [ ExprList e ]
-// {
-//     Expr a;
-//     e = new ExprList();
-// }
-//     : (a=expr)+ { e.add(a); }
-//     ;
+expr_list returns [ ExprList elist ]
+{
+    Expr a;
+    elist = null;
+}
+    : #(EXPR_LIST  { elist = new ExprList(); }
+          (a=expr  { elist.insert(a); }
+	  )*
+      )
+    ;
 
-// funcall returns [ FunCall f ]
-// {
-//     ExprList e;
-//     f = null;
-// }
-//     : #(FUNCALL i:ID e=expr_list)
-//     ;
+funcall returns [ FunCall f ]
+{
+    ExprList e;
+    f = null;
+}
+    : #(FUNCALL i:ID e=expr_list) { f = new FunCall(i.getText(), e); }
+    ;
 
 literal returns [ Literal lit ]
 {
@@ -345,8 +359,23 @@ literal returns [ Literal lit ]
 }
     : n:NUMBER { lit = new Literal(new PNumber(n.getText())); }
     | s:STRING { lit = new Literal(new PString(s.getText())); }
-    // | i:ID { lit = new Id(i.getText()); }
+    | "true" { lit = new Literal(new PBoolean(true)); }
+    | "false" { lit = new Literal(new PBoolean(false)); }
     ;
+
+literal_list returns [ ExprList elist ]
+{
+    Expr e;
+    elist = null;
+}
+    : #(LIST  { elist = new ExprList(); }
+              #(EXPR_LIST 
+                (e=expr  { elist.insert(e); }
+		)*
+              )
+       )
+    ;
+
 
 // stmt : ;
 

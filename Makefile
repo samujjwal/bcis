@@ -47,36 +47,44 @@ ANTLR = $(JAVA) $(JFLAGS) antlr.Tool
 # List of all project class files.  New classes should be added here
 # and in the PER-CLASS COMPILATION RULES, below.
 CLASSES = \
-    $(CDIR)/PhysiLexerTokenTypes.class \
     $(CDIR)/PhysiLexer.class \
+    $(CDIR)/PhysiLexerTokenTypes.class \
     $(CDIR)/PhysiParser.class \
     $(CDIR)/PhysiWalker.class \
-    $(CDIR)/InterpreterError.class \
-    $(CDIR)/TypeError.class \
+    $(CDIR)/And.class \
+    $(CDIR)/Arith.class \
+    $(CDIR)/Block.class \
     $(CDIR)/BoundsError.class \
-    $(CDIR)/UndefinedError.class \
-    $(CDIR)/Main.class \
-    $(CDIR)/Interpreter.class \
     $(CDIR)/Datum.class \
+    $(CDIR)/Def.class \
+    $(CDIR)/Expr.class \
+    $(CDIR)/ExprList.class \
+    $(CDIR)/FunCall.class \
+    $(CDIR)/Function.class \
+    $(CDIR)/Id.class \
+    $(CDIR)/InterpreterError.class \
+    $(CDIR)/Interpreter.class \
+    $(CDIR)/Literal.class \
+    $(CDIR)/Logical.class \
+    $(CDIR)/Main.class \
+    $(CDIR)/Node.class \
+    $(CDIR)/Not.class \
+    $(CDIR)/Op.class \
+    $(CDIR)/Or.class \
+    $(CDIR)/ParamList.class \
+    $(CDIR)/PBoolean.class \
+    $(CDIR)/PList.class \
     $(CDIR)/PNumber.class \
+    $(CDIR)/PString.class \
     $(CDIR)/PUnit.class \
     $(CDIR)/PUnitPair.class \
-    $(CDIR)/PList.class \
-    $(CDIR)/PBoolean.class \
-    $(CDIR)/PString.class \
-    $(CDIR)/SymbolTable.class \
-    $(CDIR)/RuntimeObject.class \
-    $(CDIR)/Node.class \
-    $(CDIR)/Stmt.class \
-    $(CDIR)/Expr.class \
-    $(CDIR)/Literal.class \
-    $(CDIR)/Op.class \
-    $(CDIR)/Arith.class \
     $(CDIR)/Rel.class \
-    $(CDIR)/Logical.class \
-    $(CDIR)/And.class \
-    $(CDIR)/Or.class \
-    $(CDIR)/Def.class \
+    $(CDIR)/RuntimeObject.class \
+    $(CDIR)/Stmt.class \
+    $(CDIR)/SymbolTable.class \
+    $(CDIR)/TypeError.class \
+    $(CDIR)/UndefinedError.class \
+    $(CDIR)/Variable.class \
     $(CLASS)/TryParser.class \
     $(CLASS)/TryLexer.class \
     $(CLASS)/TryDatum.class \
@@ -197,8 +205,14 @@ $(CDIR)/Node.class: $(SDIR)/Node.java
 $(CDIR)/Stmt.class: $(SDIR)/Stmt.java
 	$(JC) $(SDIR)/Stmt.java
 
+$(CDIR)/Block.class: $(SDIR)/Block.java
+	$(JC) $(SDIR)/Block.java
+
 $(CDIR)/Expr.class: $(SDIR)/Expr.java
 	$(JC) $(SDIR)/Expr.java
+
+$(CDIR)/ExprList.class: $(SDIR)/ExprList.java
+	$(JC) $(SDIR)/ExprList.java
 
 $(CDIR)/Literal.class: $(SDIR)/Literal.java
 	$(JC) $(SDIR)/Literal.java
@@ -220,6 +234,18 @@ $(CDIR)/And.class: $(SDIR)/And.java
 
 $(CDIR)/Or.class: $(SDIR)/Or.java
 	$(JC) $(SDIR)/Or.java
+
+$(CDIR)/Not.class: $(SDIR)/Not.java
+	$(JC) $(SDIR)/Not.java
+
+$(CDIR)/Function.class: $(SDIR)/Function.java
+	$(JC) $(SDIR)/Function.java
+
+$(CDIR)/Variable.class: $(SDIR)/Variable.java
+	$(JC) $(SDIR)/Variable.java
+
+$(CDIR)/FunCall.class: $(SDIR)/FunCall.java
+	$(JC) $(SDIR)/FunCall.java
 
 $(CDIR)/Def.class: $(SDIR)/Def.java
 	$(JC) $(SDIR)/Def.java
