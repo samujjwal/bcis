@@ -19,10 +19,10 @@ public class Variable implements RuntimeObject {
     }
 
     public Datum getValue() {
-	;
+	return null; // remove
     }
 
     public Datum setValue(Datum newValue) {
-	;
+	return null; // remove
     }
 }

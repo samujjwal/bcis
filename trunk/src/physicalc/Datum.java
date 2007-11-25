@@ -11,7 +11,7 @@ public abstract class Datum {
 
     /** Returns the result of this + that.  Does not modify this. */
     public Datum add(Datum that) throws TypeError {
-	System.out.println("called Datum#add");
+	System.err.println("called Datum#add");
 	throw new TypeError("+", this, that);
     }
 

@@ -19,7 +19,7 @@ public class Id extends Expr {
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
 	
-	return null; // remove
+	return new PString("Value of identifier '" + name + "'"); // remove
 
 	/* look up "name" in "locals", return value if present */
 
