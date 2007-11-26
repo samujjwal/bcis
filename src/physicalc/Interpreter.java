@@ -66,11 +66,11 @@ public class Interpreter {
 	    CommonAST parseTree = (CommonAST)parser.getAST();
 
 	    PhysiWalker walker = new PhysiWalker();
-	    Node e = walker.program(parseTree);
+	    Program p = walker.program(parseTree);
 
 	    SymbolTable globals = new SymbolTable();
 	    SymbolTable topLevel = new SymbolTable();
-	    Datum result = e.eval(globals, topLevel);
+	    Datum result = p.eval(globals, topLevel);
 	
 	    System.out.println(result.toString());
 	} catch(Exception e) {

@@ -72,6 +72,7 @@ CLASSES = \
     $(CDIR)/Op.class \
     $(CDIR)/Or.class \
     $(CDIR)/ParamList.class \
+    $(CDIR)/Program.class \
     $(CDIR)/PBoolean.class \
     $(CDIR)/PList.class \
     $(CDIR)/PNumber.class \
@@ -201,6 +202,9 @@ $(CDIR)/PString.class: $(SDIR)/PString.java
 
 $(CDIR)/Node.class: $(SDIR)/Node.java
 	$(JC) $(SDIR)/Node.java
+
+$(CDIR)/Program.class: $(SDIR)/Program.java
+	$(JC) $(SDIR)/Program.java
 
 $(CDIR)/Stmt.class: $(SDIR)/Stmt.java
 	$(JC) $(SDIR)/Stmt.java
