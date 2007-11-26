@@ -55,42 +55,49 @@ CLASSES = \
     $(CDIR)/Arith.class \
     $(CDIR)/Block.class \
     $(CDIR)/BoundsError.class \
+    $(CDIR)/Break.class \
+    $(CDIR)/BreakSignal.class \
+    $(CDIR)/ControlSignal.class \
     $(CDIR)/Datum.class \
     $(CDIR)/Def.class \
     $(CDIR)/Expr.class \
     $(CDIR)/ExprList.class \
+    $(CDIR)/For.class \
     $(CDIR)/FunCall.class \
     $(CDIR)/Function.class \
     $(CDIR)/Id.class \
+    $(CDIR)/If.class \
     $(CDIR)/InterpreterError.class \
     $(CDIR)/Interpreter.class \
     $(CDIR)/Literal.class \
     $(CDIR)/Load.class \
     $(CDIR)/Logical.class \
     $(CDIR)/Main.class \
+    $(CDIR)/Next.class \
+    $(CDIR)/NextSignal.class \
     $(CDIR)/Node.class \
     $(CDIR)/Not.class \
     $(CDIR)/Op.class \
     $(CDIR)/Or.class \
     $(CDIR)/ParamList.class \
-    $(CDIR)/Program.class \
     $(CDIR)/PBoolean.class \
     $(CDIR)/PList.class \
     $(CDIR)/PNumber.class \
+    $(CDIR)/Program.class \
     $(CDIR)/PString.class \
     $(CDIR)/PUnit.class \
     $(CDIR)/PUnitPair.class \
     $(CDIR)/Rel.class \
+    $(CDIR)/Return.class \
+    $(CDIR)/ReturnSignal.class \
     $(CDIR)/RuntimeObject.class \
+    $(CDIR)/Set.class \
     $(CDIR)/Stmt.class \
     $(CDIR)/SymbolTable.class \
     $(CDIR)/TypeError.class \
     $(CDIR)/UndefinedError.class \
     $(CDIR)/Variable.class \
-    $(CLASS)/TryParser.class \
-    $(CLASS)/TryLexer.class \
-    $(CLASS)/TryDatum.class \
-    $(CLASS)/ParseFile.class
+    $(CDIR)/While.class
 
 # List of all test class files.  New tests should be added here and in
 # the PER-CLASS COMPILATION RULES, below.
@@ -153,20 +160,13 @@ $(CLASS)/TryDatum.class: $(SOURCE)/TryDatum.java
 $(CLASS)/ParseFile.class: $(SOURCE)/ParseFile.java
 	$(JC) $(SOURCE)/ParseFile.java
 
-$(CDIR)/InterpreterError.class: $(SDIR)/InterpreterError.java
-	$(JC) $(SDIR)/InterpreterError.java
 
-$(CDIR)/TypeError.class: $(SDIR)/TypeError.java
-	$(JC) $(SDIR)/TypeError.java
-
-$(CDIR)/UndefinedError.class: $(SDIR)/UndefinedError.java
-	$(JC) $(SDIR)/UndefinedError.java
-
-$(CDIR)/PhysiLexerTokenTypes.class: $(SDIR)/PhysiLexerTokenTypes.java
-	$(JC) $(SDIR)/PhysiLexerTokenTypes.java
 
 $(CDIR)/PhysiLexer.class: $(SDIR)/PhysiLexer.java
 	$(JC) $(SDIR)/PhysiLexer.java
+
+$(CDIR)/PhysiLexerTokenTypes.class: $(SDIR)/PhysiLexerTokenTypes.java
+	$(JC) $(SDIR)/PhysiLexerTokenTypes.java
 
 $(CDIR)/PhysiParser.class: $(SDIR)/PhysiParser.java
 	$(JC) $(SDIR)/PhysiParser.java
@@ -174,44 +174,34 @@ $(CDIR)/PhysiParser.class: $(SDIR)/PhysiParser.java
 $(CDIR)/PhysiWalker.class: $(SDIR)/PhysiWalker.java
 	$(JC) $(SDIR)/PhysiWalker.java
 
-$(CDIR)/Interpreter.class: $(SDIR)/Interpreter.java
-	$(JC) $(SDIR)/Interpreter.java
 
-$(CDIR)/SymbolTable.class: $(SDIR)/SymbolTable.java
-	$(JC) $(SDIR)/SymbolTable.java
+
+$(CDIR)/And.class: $(SDIR)/And.java
+	$(JC) $(SDIR)/And.java
+
+$(CDIR)/Arith.class: $(SDIR)/Arith.java
+	$(JC) $(SDIR)/Arith.java
+
+$(CDIR)/Block.class: $(SDIR)/Block.java
+	$(JC) $(SDIR)/Block.java
+
+$(CDIR)/BoundsError.class: $(SDIR)/BoundsError.java
+	$(JC) $(SDIR)/BoundsError.java
+
+$(CDIR)/Break.class: $(SDIR)/Break.java
+	$(JC) $(SDIR)/Break.java
+
+$(CDIR)/BreakSignal.class: $(SDIR)/BreakSignal.java
+	$(JC) $(SDIR)/BreakSignal.java
+
+$(CDIR)/ControlSignal.class: $(SDIR)/ControlSignal.java
+	$(JC) $(SDIR)/ControlSignal.java
 
 $(CDIR)/Datum.class: $(SDIR)/Datum.java
 	$(JC) $(SDIR)/Datum.java
 
-$(CDIR)/PBoolean.class: $(SDIR)/PBoolean.java
-	$(JC) $(SDIR)/PBoolean.java
-
-$(CDIR)/PNumber.class: $(SDIR)/PNumber.java
-	$(JC) $(SDIR)/PNumber.java
-
-$(CDIR)/PUnit.class: $(SDIR)/PUnit.java
-	$(JC) $(SDIR)/PUnit.java
-
-$(CDIR)/PUnitPair.class: $(SDIR)/PUnitPair.java
-	$(JC) $(SDIR)/PUnitPair.java
-
-$(CDIR)/PList.class: $(SDIR)/PList.java
-	$(JC) -Xlint:unchecked $(SDIR)/PList.java
-
-$(CDIR)/PString.class: $(SDIR)/PString.java
-	$(JC) $(SDIR)/PString.java
-
-$(CDIR)/Node.class: $(SDIR)/Node.java
-	$(JC) $(SDIR)/Node.java
-
-$(CDIR)/Program.class: $(SDIR)/Program.java
-	$(JC) $(SDIR)/Program.java
-
-$(CDIR)/Stmt.class: $(SDIR)/Stmt.java
-	$(JC) $(SDIR)/Stmt.java
-
-$(CDIR)/Block.class: $(SDIR)/Block.java
-	$(JC) $(SDIR)/Block.java
+$(CDIR)/Def.class: $(SDIR)/Def.java
+	$(JC) $(SDIR)/Def.java
 
 $(CDIR)/Expr.class: $(SDIR)/Expr.java
 	$(JC) $(SDIR)/Expr.java
@@ -219,53 +209,111 @@ $(CDIR)/Expr.class: $(SDIR)/Expr.java
 $(CDIR)/ExprList.class: $(SDIR)/ExprList.java
 	$(JC) $(SDIR)/ExprList.java
 
-$(CDIR)/Literal.class: $(SDIR)/Literal.java
-	$(JC) $(SDIR)/Literal.java
-
-$(CDIR)/Op.class: $(SDIR)/Op.java
-	$(JC) $(SDIR)/Op.java
-
-$(CDIR)/Arith.class: $(SDIR)/Arith.java
-	$(JC) $(SDIR)/Arith.java
-
-$(CDIR)/Logical.class: $(SDIR)/Logical.java
-	$(JC) $(SDIR)/Logical.java
-
-$(CDIR)/Load.class: $(SDIR)/Load.java
-	$(JC) $(SDIR)/Load.java
-
-$(CDIR)/Rel.class: $(SDIR)/Rel.java
-	$(JC) $(SDIR)/Rel.java
-
-$(CDIR)/And.class: $(SDIR)/And.java
-	$(JC) $(SDIR)/And.java
-
-$(CDIR)/Or.class: $(SDIR)/Or.java
-	$(JC) $(SDIR)/Or.java
-
-$(CDIR)/Not.class: $(SDIR)/Not.java
-	$(JC) $(SDIR)/Not.java
-
-$(CDIR)/Function.class: $(SDIR)/Function.java
-	$(JC) $(SDIR)/Function.java
-
-$(CDIR)/Variable.class: $(SDIR)/Variable.java
-	$(JC) $(SDIR)/Variable.java
+$(CDIR)/For.class: $(SDIR)/For.java
+	$(JC) $(SDIR)/For.java
 
 $(CDIR)/FunCall.class: $(SDIR)/FunCall.java
 	$(JC) $(SDIR)/FunCall.java
 
-$(CDIR)/Def.class: $(SDIR)/Def.java
-	$(JC) $(SDIR)/Def.java
+$(CDIR)/Function.class: $(SDIR)/Function.java
+	$(JC) $(SDIR)/Function.java
+
+$(CDIR)/Id.class: $(SDIR)/Id.java
+	$(JC) $(SDIR)/Id.java
+
+$(CDIR)/If.class: $(SDIR)/If.java
+	$(JC) $(SDIR)/If.java
+
+$(CDIR)/InterpreterError.class: $(SDIR)/InterpreterError.java
+	$(JC) $(SDIR)/InterpreterError.java
+
+$(CDIR)/Interpreter.class: $(SDIR)/Interpreter.java
+	$(JC) $(SDIR)/Interpreter.java
+
+$(CDIR)/Literal.class: $(SDIR)/Literal.java
+	$(JC) $(SDIR)/Literal.java
+
+$(CDIR)/Load.class: $(SDIR)/Load.java
+	$(JC) $(SDIR)/Load.java
+
+$(CDIR)/Logical.class: $(SDIR)/Logical.java
+	$(JC) $(SDIR)/Logical.java
 
 $(CDIR)/Main.class: $(SDIR)/Main.java
 	$(JC) $(SDIR)/Main.java
 
-$(CDIR)/BoundsError.class: $(SDIR)/BoundsError.java
-	$(JC) $(SDIR)/BoundsError.java
+$(CDIR)/Next.class: $(SDIR)/Next.java
+	$(JC) $(SDIR)/Next.java
 
-$(CDIR)/InterpreterTest.class: $(TEST)/InterpreterTest.java
-	$(JC) $(TEST)/InterpreterTest.java
+$(CDIR)/NextSignal.class: $(SDIR)/NextSignal.java
+	$(JC) $(SDIR)/NextSignal.java
 
-$(CDIR)/PhysicalcSuite.class: $(TEST)/PhysicalcSuite.java
-	$(JC) $(TEST)/PhysicalcSuite.java
+$(CDIR)/Node.class: $(SDIR)/Node.java
+	$(JC) $(SDIR)/Node.java
+
+$(CDIR)/Not.class: $(SDIR)/Not.java
+	$(JC) $(SDIR)/Not.java
+
+$(CDIR)/Op.class: $(SDIR)/Op.java
+	$(JC) $(SDIR)/Op.java
+
+$(CDIR)/Or.class: $(SDIR)/Or.java
+	$(JC) $(SDIR)/Or.java
+
+$(CDIR)/ParamList.class: $(SDIR)/ParamList.java
+	$(JC) $(SDIR)/ParamList.java
+
+$(CDIR)/PBoolean.class: $(SDIR)/PBoolean.java
+	$(JC) $(SDIR)/PBoolean.java
+
+$(CDIR)/PList.class: $(SDIR)/PList.java
+	$(JC) $(SDIR)/PList.java
+
+$(CDIR)/PNumber.class: $(SDIR)/PNumber.java
+	$(JC) $(SDIR)/PNumber.java
+
+$(CDIR)/Program.class: $(SDIR)/Program.java
+	$(JC) $(SDIR)/Program.java
+
+$(CDIR)/PString.class: $(SDIR)/PString.java
+	$(JC) $(SDIR)/PString.java
+
+$(CDIR)/PUnit.class: $(SDIR)/PUnit.java
+	$(JC) $(SDIR)/PUnit.java
+
+$(CDIR)/PUnitPair.class: $(SDIR)/PUnitPair.java
+	$(JC) $(SDIR)/PUnitPair.java
+
+$(CDIR)/Rel.class: $(SDIR)/Rel.java
+	$(JC) $(SDIR)/Rel.java
+
+$(CDIR)/Return.class: $(SDIR)/Return.java
+	$(JC) $(SDIR)/Return.java
+
+$(CDIR)/ReturnSignal.class: $(SDIR)/ReturnSignal.java
+	$(JC) $(SDIR)/ReturnSignal.java
+
+$(CDIR)/RuntimeObject.class: $(SDIR)/RuntimeObject.java
+	$(JC) $(SDIR)/RuntimeObject.java
+
+$(CDIR)/Set.class: $(SDIR)/Set.java
+	$(JC) $(SDIR)/Set.java
+
+$(CDIR)/Stmt.class: $(SDIR)/Stmt.java
+	$(JC) $(SDIR)/Stmt.java
+
+$(CDIR)/SymbolTable.class: $(SDIR)/SymbolTable.java
+	$(JC) $(SDIR)/SymbolTable.java
+
+$(CDIR)/TypeError.class: $(SDIR)/TypeError.java
+	$(JC) $(SDIR)/TypeError.java
+
+$(CDIR)/UndefinedError.class: $(SDIR)/UndefinedError.java
+	$(JC) $(SDIR)/UndefinedError.java
+
+$(CDIR)/Variable.class: $(SDIR)/Variable.java
+	$(JC) $(SDIR)/Variable.java
+
+$(CDIR)/While.class: $(SDIR)/While.java
+	$(JC) $(SDIR)/While.java
+
