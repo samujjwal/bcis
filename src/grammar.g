@@ -288,7 +288,7 @@ funcall_expr : ID LPAREN! expr_list RPAREN!
  * ******************************************************************** */
 class PhysiWalker extends TreeParser;
 
-program returns [ Program p ] // return type goes here
+program returns [ Program p ]
 {
     p = new Program();
     Node n;
@@ -300,14 +300,15 @@ node returns [ Node n ]
 {
     n = null;
     Expr e;
+    Load l;
+    Def d;
+    Stmt s;
 }
-    : e=expr { n = e; };
-
-// load : ;
-
-// def : ;
-
-// statement : expr | stmt ;
+    : e=expr { n = e; }
+    | l=load { n = l; }
+    | s=stmt { n = s; }
+    // | d=def  { n = d; }
+    ;
 
 expr returns [ Expr e ]
 {
@@ -384,8 +385,39 @@ literal_list returns [ ExprList elist ]
     ;
 
 
-// stmt : ;
+load returns [ Load ld ]
+{
+    ld = null;
+}
+    : #("load" file:STRING) { ld = new Load(file.getText()); }
+    ;
 
 
-//    : #("load" filename:STRING) { System.out.println("Saw load statement."); }
-//    ;
+stmt returns [ Stmt s ]
+{
+    s = null;
+    Expr e,a,from,to,step;
+    Block b,c;
+}
+    : #("set" id1:ID e=expr) { s = new Set(id1.getText(), e); }
+    | "break" { s = new Break(); }
+    | "next" { s = new Next(); }
+    | #("return" e=expr) { s = new Return(e); }
+    | #(IF a=expr b=block c=block) { s = new If(a,b,c); }
+    | #("while" a=expr b=block) { s = new While(a,b); }
+    | #("for" id2:ID from=expr to=expr step=expr b=block) { s = new For(id2.getText(), from, to, step, b); }
+    ;
+
+
+block returns [ Block b ]
+{
+    b = null;
+    Stmt s;
+}
+    : #(BLOCK  { b = new Block(); }
+          ( s=stmt { b.insert(s); } )* 
+       )
+    ;
+
+
+// def : ;
