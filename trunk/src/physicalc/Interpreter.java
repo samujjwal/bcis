@@ -72,7 +72,12 @@ public class Interpreter {
 	    SymbolTable topLevel = new SymbolTable();
 	    Datum result = p.eval(globals, topLevel);
 	
-	    System.out.println(result.toString());
+	    if (result == null) {
+		System.out.println("null");
+	    } else {
+		System.out.println(result.toString());
+	    }
+	    
 	} catch(Exception e) {
 	    System.err.println(e.toString());
 	}

@@ -65,6 +65,7 @@ CLASSES = \
     $(CDIR)/InterpreterError.class \
     $(CDIR)/Interpreter.class \
     $(CDIR)/Literal.class \
+    $(CDIR)/Load.class \
     $(CDIR)/Logical.class \
     $(CDIR)/Main.class \
     $(CDIR)/Node.class \
@@ -229,6 +230,9 @@ $(CDIR)/Arith.class: $(SDIR)/Arith.java
 
 $(CDIR)/Logical.class: $(SDIR)/Logical.java
 	$(JC) $(SDIR)/Logical.java
+
+$(CDIR)/Load.class: $(SDIR)/Load.java
+	$(JC) $(SDIR)/Load.java
 
 $(CDIR)/Rel.class: $(SDIR)/Rel.java
 	$(JC) $(SDIR)/Rel.java
