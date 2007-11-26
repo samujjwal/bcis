@@ -288,13 +288,20 @@ funcall_expr : ID LPAREN! expr_list RPAREN!
  * ******************************************************************** */
 class PhysiWalker extends TreeParser;
 
-program returns [ Node n ] // return type goes here
+program returns [ Program p ] // return type goes here
+{
+    p = new Program();
+    Node n;
+}
+    : ( n=node { p.insert(n); } )+
+    ;
+
+node returns [ Node n ] 
 {
     n = null;
     Expr e;
 }
-    : e=expr { n = e; } ;
-// load | def | statement ;
+    : e=expr { n = e; };
 
 // load : ;
 
