@@ -131,7 +131,7 @@ constant_def : "constant"^ ID EQ! expr;
 alias_def : "alias"^ ID "for"! ID;
 
 function_def : "function"^ ID LPAREN! params RPAREN! TERMINATOR!
-    block "done";
+    block "done"!;
 
 /** Parameter list for function definitions. */
 params : (ID)? (COMMA! ID)*
@@ -311,7 +311,7 @@ node returns [ Node n ]
     : e=expr { n = e; }
     | l=load { n = l; }
     | s=stmt { n = s; }
-    // | d=def  { n = d; }
+    | d=def  { n = d; }
     ;
 
 expr returns [ Expr e ]
@@ -425,13 +425,27 @@ block returns [ Block b ]
     ;
 
 
-// def returns [ Def d ]
-// {
-//     d = null;
-//     Block b;
-//     Expr e;
-// }
-//     : #("constant" id:ID e=expr) { d = new ConstantDef(id.getText(), e); }
-//     | #("unit" id:ID e=expr) { d = new UnitDef(id.getText(), e); }
-//     | #(
-//     ;
+param_list returns [ ParamList plist ]
+{
+    plist = null;
+}
+    : #(PARAMS  { plist = new ParamList(); }
+          (id:ID  { plist.insert(id.getText()); }
+	  )*
+      )
+    ;
+
+def returns [ Def d ]
+{
+    d = null;
+    Block b;
+    Expr e;
+    ParamList p;
+}
+    : #("constant" id1:ID e=expr) { d = new ConstantDef(id1.getText(), e); }
+    | #("unit" id2:ID e=expr) { d = new UnitDef(id2.getText(), e); }
+    | #("function" id3:ID p=param_list b=block)
+          { d = new FunctionDef(id3.getText(), p, b); }
+    | #("alias" id4:ID id5:ID)
+          { d = new AliasDef(id4.getText(), id5.getText()); }
+    ;
