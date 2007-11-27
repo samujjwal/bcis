@@ -101,8 +101,12 @@ CLASSES = \
     $(CDIR)/TypeError.class \
     $(CDIR)/UndefinedError.class \
     $(CDIR)/Variable.class \
-    $(CDIR)/While.class
- 
+    $(CDIR)/While.class \
+    $(CDIR)/ConstantDef.class \
+    $(CDIR)/UnitDef.class \
+    $(CDIR)/FunctionDef.class \
+    $(CDIR)/AliasDef.class
+
 # List of all test class files.  New tests should be added here and in
 # the PER-CLASS COMPILATION RULES, below.
 TESTCLASSES = $(CDIR)/InterpreterTest.class \
@@ -321,3 +325,14 @@ $(CDIR)/Variable.class: $(SDIR)/Variable.java
 $(CDIR)/While.class: $(SDIR)/While.java
 	$(JC) $(SDIR)/While.java
 
+$(CDIR)/ConstantDef.class: $(SDIR)/ConstantDef.java
+	$(JC) $(SDIR)/ConstantDef.java
+
+$(CDIR)/UnitDef.class: $(SDIR)/UnitDef.java
+	$(JC) $(SDIR)/UnitDef.java
+
+$(CDIR)/FunctionDef.class: $(SDIR)/FunctionDef.java
+	$(JC) $(SDIR)/FunctionDef.java
+
+$(CDIR)/AliasDef.class: $(SDIR)/AliasDef.java
+	$(JC) $(SDIR)/AliasDef.java

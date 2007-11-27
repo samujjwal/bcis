@@ -1,5 +1,6 @@
 package physicalc;
 
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,24 +10,24 @@ import java.util.List;
  */
 public class ParamList extends Expr {
 
-    private ArrayList<Id> contents;
+    private ArrayList<String> contents;
 
     public ParamList() {
 	System.err.println("Constructing a ParamList");
-	contents = new ArrayList<Id>();
+	contents = new ArrayList<String>();
     }
 
-    public void insert(Id i) {
+    public void insert(String i) {
 	System.err.println("Adding to a ParamList");
 	contents.add(i);
     }
 
-    public List<Id> getContents() {
+    public List<String> getContents() {
 	return contents;
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
 	/* This shouldn't be called. */
-	throw new InterpreterError("GHASTLY ERROR: Called 'eval' method on a xParamList.");
+	throw new InterpreterError("GHASTLY ERROR: Called 'eval' method on a ParamList.");
     }
 }
