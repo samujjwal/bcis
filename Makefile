@@ -51,6 +51,10 @@ CLASSES = \
     $(CDIR)/PhysiLexerTokenTypes.class \
     $(CDIR)/PhysiParser.class \
     $(CDIR)/PhysiWalker.class \
+    $(CLASS)/TryDatum.class \
+    $(CLASS)/TryLexer.class \
+    $(CLASS)/TryParser.class \
+    $(CLASS)/ParseFile.class \
     $(CDIR)/And.class \
     $(CDIR)/Arith.class \
     $(CDIR)/Block.class \
@@ -98,7 +102,7 @@ CLASSES = \
     $(CDIR)/UndefinedError.class \
     $(CDIR)/Variable.class \
     $(CDIR)/While.class
-
+ 
 # List of all test class files.  New tests should be added here and in
 # the PER-CLASS COMPILATION RULES, below.
 TESTCLASSES = $(CDIR)/InterpreterTest.class \

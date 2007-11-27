@@ -177,12 +177,16 @@ if_stmt :
     elsif_stmt
     {#if_stmt = #([IF,"IF"], if_stmt); } ;
 
-elsif_stmt : "elsif"! expr "then"! TERMINATOR! block (elsif_stmt)
-    {#elsif_stmt = #([IF,"IF"], elsif_stmt); }
+elsif_stmt
+    : "elsif"! expr "then"! TERMINATOR! block (elsif_stmt)
+        /* need to enclose next IF in a BLOCK for tree walker */
+        { #elsif_stmt = #([BLOCK,"BLOCK"], #([IF,"IF"], elsif_stmt)); }
     | else_stmt ;
 
 else_stmt : "else"! TERMINATOR! block
-    | /* nothing */ ;
+    | /* nothing, but still have to include a block for the tree walker */
+        { #else_stmt = #([BLOCK,"BLOCK"], else_stmt); }
+    ;
 
 
 /** "while" loops. */
@@ -202,7 +206,7 @@ for_stmt : "for"^ ID "from"! expr "to"! expr "step"! expr "do"! TERMINATOR!
 expr_list 
     : expr (COMMA! expr)*
         {#expr_list = #([EXPR_LIST, "EXPR_LIST"], expr_list); }
-    | /* nothing */
+    | /* nothing, still need a node for the tree walker */
         {#expr_list = #([EXPR_LIST, "EXPR_LIST"], expr_list); }
     ;
 
@@ -405,7 +409,8 @@ stmt returns [ Stmt s ]
     | #("return" e=expr) { s = new Return(e); }
     | #(IF a=expr b=block c=block) { s = new If(a,b,c); }
     | #("while" a=expr b=block) { s = new While(a,b); }
-    | #("for" id2:ID from=expr to=expr step=expr b=block) { s = new For(id2.getText(), from, to, step, b); }
+    | #("for" id2:ID from=expr to=expr step=expr b=block)
+        { s = new For(id2.getText(), from, to, step, b); }
     ;
 
 
@@ -420,4 +425,13 @@ block returns [ Block b ]
     ;
 
 
-// def : ;
+// def returns [ Def d ]
+// {
+//     d = null;
+//     Block b;
+//     Expr e;
+// }
+//     : #("constant" id:ID e=expr) { d = new ConstantDef(id.getText(), e); }
+//     | #("unit" id:ID e=expr) { d = new UnitDef(id.getText(), e); }
+//     | #(
+//     ;
