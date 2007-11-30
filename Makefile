@@ -340,3 +340,9 @@ $(CDIR)/FunctionDef.class: $(SDIR)/FunctionDef.java
 
 $(CDIR)/AliasDef.class: $(SDIR)/AliasDef.java
 	$(JC) $(SDIR)/AliasDef.java
+
+$(CDIR)/InterpreterTest.class: $(TEST)/InterpreterTest.java
+	$(JC) $(TEST)/InterpreterTest.java
+
+$(CDIR)/PhysicalcSuite.class: $(TEST)/PhysicalcSuite.java
+	$(JC) $(TEST)/PhysicalcSuite.java

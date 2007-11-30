@@ -1,8 +1,7 @@
 package physicalc;
 
 import java.lang.String;
-import java.io.StringWriter;
-import java.io.StringReader;
+import java.io.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -27,10 +26,13 @@ public class InterpreterTest {
 	assertPrints("Should do nothing.", "", "");
     }
 
+    @Test public void arithmetic() {
+	assertPrints("print(2 + 3)\n", "5\n");
+    }
+
     @Ignore // remove when this test should pass
     @Test public void helloWorld() {
-	assertPrints("Should print 'Hello, world!'",
-		     "print(\"Hello, world!\")\n",
+	assertPrints("print(\"Hello, world!\")\n",
 		     "Hello, world!\n");
     }
 
@@ -54,7 +56,18 @@ public class InterpreterTest {
 			      String program,
 			      String expected) {
 	StringReader code = new StringReader(program);
-	StringWriter output = new StringWriter();
+	OutputStream output = new ByteArrayOutputStream();
+	interpreter.setOutputStream(output);
+	interpreter.eval(code);
+	assertEquals(message, expected, output.toString());
+    }
+
+
+    private void assertPrints(String program,
+			      String expected) {
+	String message = "Should execute: " + program;
+	StringReader code = new StringReader(program);
+	OutputStream output = new ByteArrayOutputStream();
 	interpreter.setOutputStream(output);
 	interpreter.eval(code);
 	assertEquals(message, expected, output.toString());
