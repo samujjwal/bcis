@@ -323,7 +323,7 @@ expr returns [ Expr e ]
     : #("and" a=expr b=expr) { e = new And(a, b); }
     | #("or" a=expr b=expr)  { e = new Or(a, b); }
     | #("not" a=expr) { e = new Not(a); }
-    // | #("in" a=expr b=expr) { e = new In(a, b); }
+    | #("in" a=expr b=expr) { e = new In(a, b); }
     
     /* Relational operators */
     | #(EQ a=expr b=expr) { e = new Rel("=", a, b); }
