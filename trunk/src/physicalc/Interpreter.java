@@ -1,9 +1,6 @@
 package physicalc;
 
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.Writer;
-import java.io.Reader;
+import java.io.*;
 import antlr.CommonAST;
 import antlr.collections.AST;
 
@@ -26,28 +23,24 @@ public class Interpreter {
     /** Constructor.  Creates a new interpreter instance.  Input,
      * output, and error streams default to system STDIN, STDOUT, and
      * STDERR, respectively. */
-    public Interpreter() {
-	in = new InputStreamReader(System.in);
-	out = new PrintWriter(System.out);
-	err = new PrintWriter(System.err);
-    }
+    public Interpreter() { ; }
 
     /** Changes the stream that this Interpreter uses as its standard
      * input. */
-    public void setInputStream(Reader inputStream) {
-	in = inputStream;
+    public void setInputStream(InputStream inputStream) {
+	System.setIn(inputStream);
     }
 
     /** Changes the stream that this Interpreter uses as its standard
      * output. */
-    public void setOutputStream(Writer outputStream) {
-	out = new PrintWriter(outputStream);
+    public void setOutputStream(OutputStream outputStream) {
+	System.setOut(new PrintStream(outputStream));
     }
 
     /** Changes the stream that this Interpreter uses as its standard
      * error. */
-    public void setErrorStream(Writer errorStream) {
-	err = new PrintWriter(errorStream);
+    public void setErrorStream(OutputStream errorStream) {
+	System.setErr(new PrintStream(errorStream));
     }
 
     /** eval() executes Physicalc source code.
@@ -72,10 +65,11 @@ public class Interpreter {
 	    SymbolTable topLevel = new SymbolTable();
 	    Datum result = p.eval(globals, topLevel);
 	
+	    // Print the result of the last expression, for testing only.
 	    if (result == null) {
-		System.out.println("null");
+		System.err.println("null");
 	    } else {
-		System.out.println(result.toString());
+		System.err.println(result.toString());
 	    }
 	    
 	} catch(Exception e) {
