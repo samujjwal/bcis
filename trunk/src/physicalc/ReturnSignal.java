@@ -1,5 +1,9 @@
 package physicalc;
 
+/** ReturnSignal is used to signal to a function call that a "return"
+ * statement has been executed.  It carries the value to be returned
+ * from the function.
+ */
 public class ReturnSignal extends ControlSignal {
 
     private Datum value;
