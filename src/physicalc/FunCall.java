@@ -35,7 +35,7 @@ public class FunCall extends Expr {
 
 	/* Call the function's "call" method, passing in the global
 	 * symbol table and the argument list. */
-	 return func.call(globals,argumentList);
+	 return func.call(globals,locals,argumentList);
 
     }
 }
