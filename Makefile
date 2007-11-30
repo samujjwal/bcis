@@ -85,6 +85,7 @@ CLASSES = \
     $(CDIR)/Op.class \
     $(CDIR)/Or.class \
     $(CDIR)/ParamList.class \
+    $(CDIR)/PrintFunction.class \
     $(CDIR)/PBoolean.class \
     $(CDIR)/PList.class \
     $(CDIR)/PNumber.class \
@@ -283,6 +284,9 @@ $(CDIR)/PList.class: $(SDIR)/PList.java
 
 $(CDIR)/PNumber.class: $(SDIR)/PNumber.java
 	$(JC) $(SDIR)/PNumber.java
+
+$(CDIR)/PrintFunction.class: $(SDIR)/PrintFunction.java
+	$(JC) $(SDIR)/PrintFunction.java
 
 $(CDIR)/Program.class: $(SDIR)/Program.java
 	$(JC) $(SDIR)/Program.java

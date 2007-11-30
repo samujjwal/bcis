@@ -14,6 +14,10 @@ public class Function implements RuntimeObject {
 	private ParamList parameterList;
 	private Block bodyStatements;
 
+    /** Protected default constructor; only built-in function may be
+     * created without a parameter list or block. */
+    protected Function() { ; }
+
     public Function(ParamList pl, Block bs) {
 		parameterList = pl;
 		bodyStatements = bs;
