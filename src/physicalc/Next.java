@@ -7,7 +7,7 @@ public class Next extends Stmt {
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-        return null; // remove
+	throw new NextSignal();
     }
 }
 

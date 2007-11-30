@@ -7,7 +7,7 @@ public class Break extends Stmt {
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-        return null; // remove
+	throw new BreakSignal();
     }
 }
 
