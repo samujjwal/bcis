@@ -21,7 +21,11 @@ public class If extends Stmt {
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
+	System.err.println("Calling eval() in If");
+
         if (expr1.eval(globals, locals).isTrue()) {
+	    System.err.println("'If' condition was true; executing 'then' block.");
+	    
 	    return block1.eval(globals,locals);
 	}
 	else { 

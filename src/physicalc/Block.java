@@ -29,9 +29,11 @@ public class Block extends Stmt {
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
 	System.err.println("Calling eval() in Block");
+	System.err.println("   the block has " + ((Integer)contents.size()).toString() + " nodes");
 	
 	Datum result = null;
 	for (Node n : contents) {
+	    System.err.println("Executing a Node inside a Block");
 	    result = n.eval(globals, locals);
 	}
 	return result;
