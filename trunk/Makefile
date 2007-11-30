@@ -71,6 +71,7 @@ CLASSES = \
     $(CDIR)/Function.class \
     $(CDIR)/Id.class \
     $(CDIR)/If.class \
+    $(CDIR)/In.class \
     $(CDIR)/InterpreterError.class \
     $(CDIR)/Interpreter.class \
     $(CDIR)/Literal.class \
@@ -231,6 +232,9 @@ $(CDIR)/Id.class: $(SDIR)/Id.java
 
 $(CDIR)/If.class: $(SDIR)/If.java
 	$(JC) $(SDIR)/If.java
+
+$(CDIR)/In.class: $(SDIR)/In.java
+	$(JC) $(SDIR)/In.java
 
 $(CDIR)/InterpreterError.class: $(SDIR)/InterpreterError.java
 	$(JC) $(SDIR)/InterpreterError.java
