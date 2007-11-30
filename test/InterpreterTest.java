@@ -30,7 +30,6 @@ public class InterpreterTest {
 	assertPrints("print(2 + 3)\n", "5\n");
     }
 
-    @Ignore // remove when this test should pass
     @Test public void helloWorld() {
 	assertPrints("print(\"Hello, world!\")\n",
 		     "Hello, world!\n");
