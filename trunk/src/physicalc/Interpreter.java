@@ -61,7 +61,7 @@ public class Interpreter {
 	    PhysiWalker walker = new PhysiWalker();
 	    Program p = walker.program(parseTree);
 
-	    SymbolTable globals = new SymbolTable();
+	    SymbolTable globals = setupGlobalSymbols();
 	    SymbolTable topLevel = new SymbolTable();
 	    Datum result = p.eval(globals, topLevel);
 	
@@ -75,5 +75,11 @@ public class Interpreter {
 	} catch(Exception e) {
 	    System.err.println(e.toString());
 	}
+    }
+
+    private SymbolTable setupGlobalSymbols() {
+	SymbolTable globals = new SymbolTable();
+	globals.put("print", ((RuntimeObject)(new PrintFunction())));
+	return globals;
     }
 }
