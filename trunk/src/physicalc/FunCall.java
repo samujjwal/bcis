@@ -21,6 +21,8 @@ public class FunCall extends Expr {
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
 
+	System.err.println("Calling eval() in FunCall");
+
 	/* Look up functionName in the global symbol table,
 	 * throw UndefinedError if it's not there. */
 	 if ( globals.get(functionName).equals(null) ) {

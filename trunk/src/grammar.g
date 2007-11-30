@@ -417,10 +417,10 @@ stmt returns [ Stmt s ]
 block returns [ Block b ]
 {
     b = null;
-    Stmt s;
+    Node n;
 }
     : #(BLOCK  { b = new Block(); }
-          ( s=stmt { b.insert(s); } )* 
+          ( n=node { b.insert(n); } )* 
        )
     ;
 
