@@ -179,4 +179,9 @@ public class PNumber extends Datum  {
 		return numValue.toString();
     }
 
+    /** Returns this number as an int. */
+    public int toInt() {
+	return numValue.intValue();
+    }
+
 }
