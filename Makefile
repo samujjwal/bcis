@@ -55,6 +55,7 @@ CLASSES = \
     $(CLASS)/TryLexer.class \
     $(CLASS)/TryParser.class \
     $(CLASS)/ParseFile.class \
+    $(CDIR)/Access.class \
     $(CDIR)/And.class \
     $(CDIR)/Arith.class \
     $(CDIR)/Block.class \
@@ -77,6 +78,7 @@ CLASSES = \
     $(CDIR)/Literal.class \
     $(CDIR)/Load.class \
     $(CDIR)/Logical.class \
+    $(CDIR)/LValue.class \
     $(CDIR)/Main.class \
     $(CDIR)/Next.class \
     $(CDIR)/NextSignal.class \
@@ -101,6 +103,7 @@ CLASSES = \
     $(CDIR)/Stmt.class \
     $(CDIR)/SymbolTable.class \
     $(CDIR)/TypeError.class \
+    $(CDIR)/Unary.class \
     $(CDIR)/UndefinedError.class \
     $(CDIR)/Variable.class \
     $(CDIR)/While.class \
@@ -186,6 +189,9 @@ $(CDIR)/PhysiWalker.class: $(SDIR)/PhysiWalker.java
 
 
 
+$(CDIR)/Access.class: $(SDIR)/Access.java
+	$(JC) $(SDIR)/Access.java
+
 $(CDIR)/And.class: $(SDIR)/And.java
 	$(JC) $(SDIR)/And.java
 
@@ -251,6 +257,9 @@ $(CDIR)/Load.class: $(SDIR)/Load.java
 
 $(CDIR)/Logical.class: $(SDIR)/Logical.java
 	$(JC) $(SDIR)/Logical.java
+
+$(CDIR)/LValue.class: $(SDIR)/LValue.java
+	$(JC) $(SDIR)/LValue.java
 
 $(CDIR)/Main.class: $(SDIR)/Main.java
 	$(JC) $(SDIR)/Main.java
@@ -326,6 +335,9 @@ $(CDIR)/TypeError.class: $(SDIR)/TypeError.java
 
 $(CDIR)/UndefinedError.class: $(SDIR)/UndefinedError.java
 	$(JC) $(SDIR)/UndefinedError.java
+
+$(CDIR)/Unary.class: $(SDIR)/Unary.java
+	$(JC) $(SDIR)/Unary.java
 
 $(CDIR)/Variable.class: $(SDIR)/Variable.java
 	$(JC) $(SDIR)/Variable.java

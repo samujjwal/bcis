@@ -336,11 +336,11 @@ expr returns [ Expr e ]
     | #(TIMES a=expr b=expr) { e = new Arith("*", a, b); }
     | #(DIVIDE a=expr b=expr) { e = new Arith("/", a, b); }
     | #(CARET a=expr b=expr) { e = new Arith("^", a, b); }
-    // | #(UMINUS a=expr) { e = new Unary(a); }
+    | #(UMINUS a=expr) { e = new Unary(a); }
 
     /* Other expressions */
     | a=funcall { e = a; }
-    // | a=subscript { e = a; }
+    | a=subscript { e = a; }
     | a=literal { e = a; }
     | a=literal_list { e = a; }
     | i:ID { e = new Id(i.getText()); }
@@ -403,7 +403,7 @@ stmt returns [ Stmt s ]
     Expr e,a,from,to,step;
     Block b,c;
 }
-    : #("set" id1:ID e=expr) { s = new Set(id1.getText(), e); }
+    : #("set" a=expr e=expr) { s = new Set((LValue)a, e); }
     | "break" { s = new Break(); }
     | "next" { s = new Next(); }
     | #("return" e=expr) { s = new Return(e); }
@@ -449,3 +449,18 @@ def returns [ Def d ]
     | #("alias" id4:ID id5:ID)
           { d = new AliasDef(id4.getText(), id5.getText()); }
     ;
+
+
+subscript returns [ Access a ]
+{
+    a = null;
+    ExprList elist;
+    Expr e;
+}
+    : #(SUBSCRIPT id:ID  { elist = new ExprList();
+                             a = new Access(id.getText(), elist); }
+           (e=expr { elist.insert(e); }
+           )*
+       )
+    ;
+
