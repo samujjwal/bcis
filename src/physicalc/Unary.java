@@ -6,12 +6,15 @@ package physicalc;
  * @see Node
  */
 public class Unary extends Op {
+    private Expr op;
     
     public Unary(Expr operand) {
-	// TODO
+	op = operand;
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-	return null; // TODO: replace
+	Datum oper = op.eval(globals, locals);
+	
+	return oper.neg();
     }
 }
