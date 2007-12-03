@@ -34,8 +34,8 @@ public class InterpreterTest {
 	assertPrints("print(2 ^ 8)\n", "256\n");
 
 	/* Need Unary class for the following: */
-	// assertPrints("print(-3)\n", "-3\n");
-	// assertPrints("print(4 ^ -2)\n", "0.0625\n");
+	assertPrints("print(-3)\n", "-3\n");
+	assertPrints("print(4 ^ -2)\n", "0.0625\n");
     }
 
     @Test public void strings() {
