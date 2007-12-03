@@ -21,12 +21,12 @@ public class While extends Stmt {
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-        if (expr1.eval(globals,locals).isTrue())
-         	return block1.eval(globals,locals);
+        while (expr1.eval(globals,locals).isTrue())
+         	   block1.eval(globals,locals);
 	/* this is for test purpose */
 	//	else
 	//		System.err.println("Calling eval() in Block");
-    return null;
+    return ReturnSignal(expr1.eval(globals,locals));
     }
 
 	
