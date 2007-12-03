@@ -5,6 +5,11 @@ public class UnitDef extends Def {
 	String id;
 	Expr valueExpr;
 
+    public UnitDef(String i) {
+	id = i;
+	valueExpr = null;
+    }
+
     public UnitDef(String i, Expr val) {
         id = i;
         valueExpr = val;

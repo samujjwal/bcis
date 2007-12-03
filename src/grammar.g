@@ -109,6 +109,8 @@ tokens { /* used in the abstract syntax tree */
     SUBSCRIPT;
     UMINUS;
     VECTOR;
+    BASEUNIT;
+    DERIVEDUNIT;
 }
 
 program : (load | def | stmt)+;
@@ -124,7 +126,14 @@ load : "load"^ STRING TERMINATOR!;
 def : (unit_def | constant_def | alias_def | function_def)
       TERMINATOR!;
 
-unit_def : "unit"^ ID (EQ! expr)?;
+unit_def
+    : "unit"! ID
+        ( /* nothing - it's a base unit */
+            {#unit_def = #([BASEUNIT, "BASEUNIT"], unit_def); }
+        | EQ! expr
+            {#unit_def = #([DERIVEDUNIT, "DERIVEDUNIT"], unit_def); }
+        )
+    ;
 
 constant_def : "constant"^ ID EQ! expr;
 
@@ -443,7 +452,8 @@ def returns [ Def d ]
     ParamList p;
 }
     : #("constant" id1:ID e=expr) { d = new ConstantDef(id1.getText(), e); }
-    | #("unit" id2:ID e=expr) { d = new UnitDef(id2.getText(), e); }
+    | #(BASEUNIT id6:ID) { d = new UnitDef(id6.getText()); }
+    | #(DERIVEDUNIT id2:ID e=expr) { d = new UnitDef(id2.getText(), e); }
     | #("function" id3:ID p=param_list b=block)
           { d = new FunctionDef(id3.getText(), p, b); }
     | #("alias" id4:ID id5:ID)
