@@ -26,7 +26,7 @@ public class While extends Stmt {
 	/* this is for test purpose */
 	//	else
 	//		System.err.println("Calling eval() in Block");
-    return ReturnSignal(expr1.eval(globals,locals));
+    throw new ReturnSignal(expr1.eval(globals,locals));
     }
 
 	
