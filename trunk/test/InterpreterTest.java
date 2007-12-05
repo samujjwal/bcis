@@ -76,6 +76,13 @@ public class InterpreterTest {
 		     "Hello, world!\n");
     }
 
+    @Test public void testWhile() {
+	assertPrints("while true do \n print(\"a\") \n break \n print(\"b\") \n done \n",
+		     "a\n");
+	assertPrints("while false do \n print(\"a\") \n break \n print(\"b\") \n done \n",
+		     "");
+    }
+
     
 
     /** The suite() method is required for compatibility with older
