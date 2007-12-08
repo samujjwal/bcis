@@ -1,0 +1,6 @@
+set a = 4.1
+print(toInt(a))
+set a = 4.9
+print(toInt(a))
+set a = 4.5
+print(toInt(a))
