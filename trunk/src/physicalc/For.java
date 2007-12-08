@@ -26,15 +26,15 @@ public class For extends Stmt {
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
 	
-        Datum from = fromExpr.eval(globals,locals);
-	Datum to = toExpr.eval(globals,locals);
-	Datum step = stepExpr.eval(globals,locals);
+        Datum from = expr1.eval(globals,locals);
+	Datum to = expr2.eval(globals,locals);
+	Datum step = expr3.eval(globals,locals);
 
         Id id = new Id(idname);
 	
 	id.setValue(globals, locals, from);
 
-	while( id.eval(globals,locals).lessEqual(to)){
+	while( id.eval(globals,locals).lessEqual(to).isTrue() ){
 
 
 	  try {
