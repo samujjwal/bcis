@@ -10,19 +10,22 @@ package physicalc;
  */
 public class Variable implements RuntimeObject {
 
+    Datum var;
+
     public Variable() {
-	;
+	var = null;
     }
 
     public Variable(Datum initialValue) {
-	;
+	var = initialValue;
     }
 
     public Datum getValue() {
-	return null; // remove
+	return var;
     }
 
     public Datum setValue(Datum newValue) {
-	return null; // remove
+	var = newValue;
+	return var;
     }
 }

@@ -7,16 +7,18 @@ package physicalc;
  * @see ConstantDef
  */
 public class Constant implements RuntimeObject {
+    
+    Datum constant1;
 
     public Constant() {
-	// TODO
+	constant1 = null;
     }
 
     public Constant(Datum initialValue) {
-	// TODO
+	constant1 = initialValue;
     }
 
     public Datum getValue() {
-	return null; // remove
+	return constant1; // remove
     }
 }
