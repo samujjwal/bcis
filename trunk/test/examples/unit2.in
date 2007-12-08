@@ -1,0 +1,3 @@
+unit inch
+unit foot = 12*inch
+print(3*foot)
