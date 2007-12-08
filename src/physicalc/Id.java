@@ -29,7 +29,10 @@ public class Id extends Expr implements LValue {
 	RuntimeObject R = locals.get(name);
 
 	if(R == null) {
-		throw new UndefinedError(name);
+	    R = globals.get(name);
+	}
+	if(R == null) {
+	    throw new UndefinedError(name);
 	}
 
 	if(R instanceof Variable) {
