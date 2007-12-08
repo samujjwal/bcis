@@ -1,0 +1,15 @@
+#distance units
+unit inch = meter * 2.52 * 10 ^ -2
+unit foot = meter * 3.048 * 10 ^ -1
+unit yard = meter * 0.9144
+unit fathom = meter * 1.8288
+unit chain = meter * 2.01168 * 10
+unit furlong = meter * 2.01168 * 10 ^ -2
+unit cable = foot * 608
+unit mile = yard * 1.609344 * 10 ^ 3
+
+#weight units
+unit dram = kilogram * 1.77185 * 10 ^ -3
+unit ounce = kilogram * 2.83495 * 10 ^ -2
+unit pound = kilogram * 0.45359237
+
