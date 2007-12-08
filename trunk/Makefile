@@ -158,6 +158,7 @@ $(ANTLR_OUTPUT): $(SOURCE)/grammar.g
 clean:
 	rm -f $(ANTLR_OUTPUT) $(CLASSES) $(TESTCLASSES)
 	rm -rf $(APIDOC)
+	rm -f $(TEST)/examples/*.actual
 
 
 ### PER-CLASS COMPILATION RULES
