@@ -6,9 +6,16 @@ public class ToStringFunction extends Function {
 
     public Datum call(SymbolTable globals, SymbolTable locals, ExprList arguments) {
 
-		Datum string1 = arguments.eval(globals,locals);
+	if (arguments.getContents().size() != 1) {
+	    throw new InterpreterError("Cannot call toInt on more than one argument");
+	}
+	
 
-		return string1.toString();
+	Expr expr = arguments.getContents().get(0);
+	
+		Datum string1 = expr.eval(globals,locals);
+
+		return new PString(string1.toString());
     }
 
 }

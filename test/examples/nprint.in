@@ -1,0 +1,3 @@
+nprint("foo")
+nprint("bar")
+print("123")

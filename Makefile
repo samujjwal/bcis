@@ -105,6 +105,8 @@ CLASSES = \
     $(CDIR)/Stmt.class \
     $(CDIR)/SymbolTable.class \
     $(CDIR)/ToIntFunction.class \
+    $(CDIR)/ToStringFunction.class \
+    $(CDIR)/NPrintFunction.class \
     $(CDIR)/TypeError.class \
     $(CDIR)/Unary.class \
     $(CDIR)/UndefinedError.class \
@@ -239,10 +241,10 @@ $(CDIR)/FunCall.class: $(SDIR)/FunCall.java
 
 $(CDIR)/Function.class: $(SDIR)/Function.java
 	$(JC) $(SDIR)/Function.java
-	
+
 $(CDIR)/GetNumberFunction.class: $(SDIR)/GetNumberFunction.java
 	$(JC) $(SDIR)/GetNumberFunction.java
-	
+
 $(CDIR)/GetUnitFunction.class: $(SDIR)/GetUnitFunction.java
 	$(JC) $(SDIR)/GetUnitFunction.java
 
@@ -341,9 +343,15 @@ $(CDIR)/Stmt.class: $(SDIR)/Stmt.java
 
 $(CDIR)/SymbolTable.class: $(SDIR)/SymbolTable.java
 	$(JC) $(SDIR)/SymbolTable.java
-	
+
 $(CDIR)/ToIntFunction.class: $(SDIR)/ToIntFunction.java
 	$(JC) $(SDIR)/ToIntFunction.java
+
+$(CDIR)/ToStringFunction.class: $(SDIR)/ToStringFunction.java
+	$(JC) $(SDIR)/ToStringFunction.java
+
+$(CDIR)/NPrintFunction.class: $(SDIR)/NPrintFunction.java
+	$(JC) $(SDIR)/NPrintFunction.java
 
 $(CDIR)/TypeError.class: $(SDIR)/TypeError.java
 	$(JC) $(SDIR)/TypeError.java
