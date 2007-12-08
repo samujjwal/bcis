@@ -24,6 +24,8 @@ public class AliasDef extends Def {
 	else {
 		globals.put(newSymb, R);
 	}
+
+	return null;
     }
 }
 
