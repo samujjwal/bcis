@@ -80,6 +80,7 @@ public class Interpreter {
     private SymbolTable setupGlobalSymbols() {
 	SymbolTable globals = new SymbolTable();
 	globals.put("print", ((RuntimeObject)(new PrintFunction())));
+	globals.put("toInt", ((RuntimeObject)(new ToIntFunction())));
 	return globals;
     }
 }

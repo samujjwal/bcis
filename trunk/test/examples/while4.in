@@ -1,0 +1,10 @@
+set x = 0
+while x < 6 do
+    print(x)
+    if x = 3 then
+        set x = 5
+        next
+    done
+    print(x)
+    set x = x + 1
+done
