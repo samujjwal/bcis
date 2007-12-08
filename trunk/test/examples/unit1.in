@@ -1,0 +1,2 @@
+unit meter
+print(3*meter)
