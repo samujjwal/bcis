@@ -26,21 +26,22 @@ public class Id extends Expr implements LValue {
 	 * If it's a Unit, return the Unit.  Anything else, throw an
 	 * InterpreterError. */
 	
-	RuntimeObject R = locals.get(idName);
+	RuntimeObject R = locals.get(name);
 
 	if(R == null) {
-		throw new UndefinedError();
+		throw new UndefinedError(name);
 	}
 
-	if(R instanceof Variable || R instanceof Constant) {
-		return R.getValue();
+	if(R instanceof Variable) {
+	    return ((Variable)R).getValue();
+	} else if (R instanceof Constant) {
+	    return ((Constant)R).getValue();
 	}
 	else if(R instanceof Unit) {
-		return R.getValue();
+	    return ((Unit)R).getValue();
 	}
 	else {
-		throw new InterpreterError();
-		return null;
+		throw new InterpreterError("Tried to get value of a non-Variable/Constant/Unit");
 	}
     }
 
