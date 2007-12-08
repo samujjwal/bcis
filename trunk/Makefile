@@ -110,6 +110,7 @@ CLASSES = \
     $(CDIR)/UndefinedError.class \
     $(CDIR)/Variable.class \
     $(CDIR)/While.class \
+    $(CDIR)/Constant.class \
     $(CDIR)/ConstantDef.class \
     $(CDIR)/Unit.class \
     $(CDIR)/UnitDef.class \
@@ -360,7 +361,10 @@ $(CDIR)/While.class: $(SDIR)/While.java
 
 $(CDIR)/ConstantDef.class: $(SDIR)/ConstantDef.java
 	$(JC) $(SDIR)/ConstantDef.java
-	
+
+$(CDIR)/Constant.class: $(SDIR)/Constant.java
+	$(JC) $(SDIR)/Constant.java
+
 $(CDIR)/Unit.class: $(SDIR)/Unit.java
 	$(JC) $(SDIR)/Unit.java
 
