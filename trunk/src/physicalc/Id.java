@@ -12,7 +12,8 @@ public class Id extends Expr implements LValue {
     private String name;
 
     public Id(String idName) {
-	// TODO
+
+	name = idName;	
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
@@ -22,10 +23,25 @@ public class Id extends Expr implements LValue {
 
 	/* Check the type of the object you got with instanceof.  If
 	 * it's a Variable or Constant, get the value and return it.
-	 * If it's a PUnit, return the PUnit.  Anything else, throw an
+	 * If it's a Unit, return the Unit.  Anything else, throw an
 	 * InterpreterError. */
+	
+	RuntimeObject R = locals.get(idName);
 
-	return null; // TODO: remove
+	if(R == null) {
+		throw new UndefinedError();
+	}
+
+	if(R instanceof Variable || R instanceof Constant) {
+		return R.getValue();
+	}
+	else if(R instanceof Unit) {
+		return R.getValue();
+	}
+	else {
+		throw new InterpreterError();
+		return null;
+	}
     }
 
     public void setValue(SymbolTable globals, SymbolTable locals,
