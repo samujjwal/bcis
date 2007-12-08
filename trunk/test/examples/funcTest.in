@@ -1,0 +1,8 @@
+
+
+
+function foo(a, b)
+	print(a + b)
+done
+
+foo(2, 4)
