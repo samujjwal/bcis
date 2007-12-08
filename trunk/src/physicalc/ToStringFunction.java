@@ -6,13 +6,9 @@ public class ToStringFunction extends Function {
 
     public Datum call(SymbolTable globals, SymbolTable locals, ExprList arguments) {
 
-		Datum number = arguments.eval(globals,locals);
+		Datum string1 = arguments.eval(globals,locals);
 
-		if (number instanceof PNumber) {
-			return new PNumber( ((PNumber)number).toString() );
-		} else {
-			throw new InterpreterError("Cannot call ToString function on non-number");
-		}
+		return string1.toString();
     }
 
 }
