@@ -1,0 +1,9 @@
+set a = 1;
+set b = 10;
+set c = 2;
+for i from a to b step c do
+print(i)
+  if (i >= 5) then
+     exit()
+  done
+done 
