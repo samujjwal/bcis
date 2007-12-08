@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# runexample
+
+# This is a Bash shell script.  Run it like this:
+#    bash runexamples [testname]
+#
+# This script runs a single example test program in test/examples/
+#
+# See "runexamples" for documentation on the example file format.
+#
+
+source ./profile.sh
+make
+
+infile=test/examples/$1.in
+outfile=test/examples/$1.out
+
+if [ ! -r $infile ]
+then
+    echo "Missing $infile"
+    exit
+fi
+
+if [ ! -r $outfile ]
+then
+    echo "Missing $outfile"
+    exit
+fi
+
+
+actual="$outfile.actual"
+echo "Testing $infile"
+java physicalc.Main $infile > $actual
+if diff -bu $outfile $actual
+then
+    echo "OK"
+    rm $actual
+fi
