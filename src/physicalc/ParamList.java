@@ -13,12 +13,12 @@ public class ParamList extends Expr {
     private ArrayList<String> contents;
 
     public ParamList() {
-	System.err.println("Constructing a ParamList");
+	//System.out.println("Constructing a ParamList");
 	contents = new ArrayList<String>();
     }
 
     public void insert(String i) {
-	System.err.println("Adding to a ParamList");
+	//System.out.println("Adding to a ParamList");
 	contents.add(i);
     }
 

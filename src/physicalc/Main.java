@@ -12,7 +12,7 @@ class Main {
 	try {
 	    input = new FileReader(args[0]);
 	} catch (FileNotFoundException e) {
-	    System.err.println("File '" + args[0] + "' not found.");
+	    //System.out.println("File '" + args[0] + "' not found.");
 	    return;
 	}
 	

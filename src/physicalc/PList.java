@@ -49,9 +49,9 @@ public class PList extends Datum  {
 	}
 
 	public Datum set(int index,Datum d) {
-	    System.err.println("Calling set() in List");
+	    //System.out.println("Calling set() in List");
 	    while (index >= list.size()) {
-		System.err.println("Enlarging a List");
+		//System.out.println("Enlarging a List");
 		list.add(new PBoolean(false));
 	    }
 	    list.set(index,d);

@@ -18,12 +18,12 @@ public class ExprList extends Expr {
     private ArrayList<Expr> contents;
 
     public ExprList() {
-	System.err.println("Constructing an ExprList");
+	//System.out.println("Constructing an ExprList");
 	contents = new ArrayList<Expr>();
     }
 
     public void insert(Expr e) {
-	System.err.println("Adding to an ExprList");
+	//System.out.println("Adding to an ExprList");
 	contents.add(e);
     }
 
@@ -32,7 +32,7 @@ public class ExprList extends Expr {
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-	System.err.println("Calling eval() in ExprList");
+	//System.out.println("Calling eval() in ExprList");
 	
 	PList result = new PList();
 	for (Expr e : contents) {

@@ -6,7 +6,7 @@ public class GetUnitFunction extends Function {
 
     public Datum call(SymbolTable globals, SymbolTable locals, ExprList arguments) {
 
-		System.err.println("Calling call() in GetUnitFunction");
+		//System.out.println("Calling call() in GetUnitFunction");
 
 		if (arguments.getContents().size() != 1) {
 			throw new InterpreterError("Cannot call getUnit on more than one argument");

@@ -14,12 +14,12 @@ public class Block extends Stmt {
     private ArrayList<Node> contents;
 
     public Block() {
-	System.err.println("Constructing a Block");
+	//System.out.println("Constructing a Block");
 	contents = new ArrayList<Node>();
     }
 
     public void insert(Node n) {
-	System.err.println("Adding to a Block");
+	//System.out.println("Adding to a Block");
 	contents.add(n);
     }
 
@@ -28,12 +28,12 @@ public class Block extends Stmt {
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-	System.err.println("Calling eval() in Block");
-	System.err.println("   the block has " + ((Integer)contents.size()).toString() + " nodes");
+	//System.out.println("Calling eval() in Block");
+	//System.out.println("   the block has " + ((Integer)contents.size()).toString() + " nodes");
 	
 	Datum result = null;
 	for (Node n : contents) {
-	    System.err.println("Executing a Node inside a Block");
+	    //System.out.println("Executing a Node inside a Block");
 	    result = n.eval(globals, locals);
 	}
 	return result;

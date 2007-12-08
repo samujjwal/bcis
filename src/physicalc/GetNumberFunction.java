@@ -6,7 +6,7 @@ public class GetNumberFunction extends Function {
 
     public Datum call(SymbolTable globals, SymbolTable locals, ExprList arguments) {
 
-		System.err.println("Calling call() in GetNumberFunction");
+		//System.out.println("Calling call() in GetNumberFunction");
 
 		if (arguments.getContents().size() != 1) {
 			throw new InterpreterError("Cannot call getNumber on more than one argument");
