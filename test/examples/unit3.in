@@ -1,0 +1,4 @@
+unit mile
+unit hour
+unit mph = mile / hour
+print(55*mph)
