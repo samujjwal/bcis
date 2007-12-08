@@ -17,12 +17,12 @@ public class Unit implements RuntimeObject {
     }
 
     public Unit(String id) {
-		System.err.println("Creating Base Unit");
+		//System.out.println("Creating Base Unit");
 		unit = new PUnitPair(new PNumber("1"),new PUnit(id));
 	}
 
     public Unit(Datum initialValue) {
-		System.err.println("Creating Derived Unit");
+		//System.out.println("Creating Derived Unit");
 		if ( initialValue instanceof PUnit ) {
 			unit = new PUnitPair(new PNumber("1"),(PUnit) initialValue);
 		} else if (initialValue instanceof PUnitPair ) {

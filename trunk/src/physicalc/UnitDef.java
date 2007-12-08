@@ -16,12 +16,12 @@ public class UnitDef extends Def {
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-		System.err.println("Calling eval() in UnitDef");
+		//System.out.println("Calling eval() in UnitDef");
 		if (valueExpr == null) {
-			System.err.println("Found Unit definition with null expression");
+			//System.out.println("Found Unit definition with null expression");
 			globals.put(id,new Unit(id));
 		} else {
-			System.err.println("Found Unit definition with expression");
+			//System.out.println("Found Unit definition with expression");
 			Datum val = valueExpr.eval(globals,locals);
 			globals.put(id,new Unit(val));
 		}

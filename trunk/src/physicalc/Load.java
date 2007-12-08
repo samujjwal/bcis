@@ -22,7 +22,7 @@ public class Load extends Node {
 	try {
 	    input = new FileReader(file);
 	} catch (FileNotFoundException e) {
-	    System.err.println("File '" + file + "' not found.");
+	    //System.out.println("File '" + file + "' not found.");
 	    System.exit(1);
 	    return null; // to keep the compiler happy
 	}
@@ -41,7 +41,7 @@ public class Load extends Node {
 	    p.eval(globals, locals);
 	
 	} catch(Exception e) {
-	    System.err.println(e.toString());
+	    //System.out.println(e.toString());
 	}
 
 	return null;

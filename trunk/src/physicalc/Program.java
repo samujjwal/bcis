@@ -17,12 +17,12 @@ public class Program extends Node {
     private ArrayList<Node> contents;
 
     public Program() {
-	System.err.println("Constructing a Program");
+	//System.out.println("Constructing a Program");
 	contents = new ArrayList<Node>();
     }
 
     public void insert(Node n) {
-	System.err.println("Adding to a Program");
+	//System.out.println("Adding to a Program");
 	contents.add(n);
     }
 
@@ -31,7 +31,7 @@ public class Program extends Node {
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-	System.err.println("Calling eval() in Program");
+	//System.out.println("Calling eval() in Program");
 	
 	locals = new SymbolTable();
 	

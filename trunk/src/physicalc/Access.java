@@ -15,13 +15,13 @@ public class Access extends Expr implements LValue {
     private ExprList subscripts;
 
     public Access(String identifier, ExprList subExprs) {
-	System.err.println("Constructing an Access");
+	//System.out.println("Constructing an Access");
 	id = identifier;
 	subscripts = subExprs;
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-	System.err.println("Calling eval() in Access");
+	//System.out.println("Calling eval() in Access");
 
 	/* Look up id in the symbol tables -- global first, then local
 	 * -- or throw UndefinedError it it's not in either. */
@@ -69,7 +69,7 @@ public class Access extends Expr implements LValue {
 
     public void setValue(SymbolTable globals, SymbolTable locals,
 			 Datum newValue) {
-	System.err.println("Calling setValue() in Access");
+	//System.out.println("Calling setValue() in Access");
 
 	/* Look up id in the local symbol table, or throw
 	 * UndefinedError it it's not there. */

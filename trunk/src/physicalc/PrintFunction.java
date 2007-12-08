@@ -5,7 +5,7 @@ public class PrintFunction extends Function {
     public PrintFunction() { ; }
 
     public Datum call(SymbolTable globals, SymbolTable locals, ExprList arguments) {
-	System.err.println("Calling call() in PrintFunction");
+	//System.out.println("Calling call() in PrintFunction");
 	
 	for ( Expr expr : arguments.getContents() ) {
 	    System.out.print( expr.eval(globals, locals).toString() );

@@ -50,7 +50,7 @@ public class Id extends Expr implements LValue {
 
     public void setValue(SymbolTable globals, SymbolTable locals,
 			 Datum newValue) {
-	System.err.println("Calling setValue() in Name");
+	//System.out.println("Calling setValue() in Name");
 
 	RuntimeObject r;
 	r = locals.get(name);

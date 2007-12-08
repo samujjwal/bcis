@@ -13,7 +13,7 @@ public class Literal extends Expr {
     }
 
     public Datum eval(SymbolTable globals, SymbolTable locals) {
-	System.err.println("Calling eval() in Literal");
+	//System.out.println("Calling eval() in Literal");
 	return value;
     }
 }

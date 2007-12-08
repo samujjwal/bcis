@@ -67,13 +67,13 @@ public class Interpreter {
 	
 	    // Print the result of the last expression, for testing only.
 	    if (result == null) {
-		System.err.println("null");
+		//System.out.println("null");
 	    } else {
-		System.err.println(result.toString());
+		//System.out.println(result.toString());
 	    }
 	    
 	} catch(Exception e) {
-	    System.err.println(e.toString());
+	    //System.out.println(e.toString());
 	}
     }
 
