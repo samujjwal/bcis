@@ -83,6 +83,8 @@ public class Interpreter {
 	globals.put("nprint", ((RuntimeObject)(new NPrintFunction())));
 	globals.put("toInt", ((RuntimeObject)(new ToIntFunction())));
 	globals.put("toString", ((RuntimeObject)(new ToStringFunction())));
+	globals.put("getUnit", ((RuntimeObject)(new GetUnitFunction())));
+	globals.put("getNumber", ((RuntimeObject)(new GetNumberFunction())));
 	return globals;
     }
 }
