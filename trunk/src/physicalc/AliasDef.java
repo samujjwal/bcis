@@ -2,8 +2,8 @@ package physicalc;
 
 public class AliasDef extends Def {
 
-    String newSymb;
-    String oldSymb;
+    private String newSymb;
+    private String oldSymb;
 
     public AliasDef(String newSymbol, String oldSymbol) {
         newSymb = newSymbol;
@@ -19,10 +19,10 @@ public class AliasDef extends Def {
 	RuntimeObject R = globals.get(oldSymb);
 	
 	if(R == null) {
-		throw new UndefinedError(oldSymb);
+	    throw new UndefinedError(oldSymb);
 	}
 	else {
-		globals.put(newSymb, R);
+	    globals.put(newSymb, R);
 	}
 
 	return null;

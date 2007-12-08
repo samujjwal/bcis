@@ -19,11 +19,11 @@ public class UnitDef extends Def {
 		System.err.println("Calling eval() in UnitDef");
 		if (valueExpr == null) {
 			System.err.println("Found Unit definition with null expression");
-			locals.put(id,new Unit(id));
+			globals.put(id,new Unit(id));
 		} else {
 			System.err.println("Found Unit definition with expression");
 			Datum val = valueExpr.eval(globals,locals);
-			locals.put(id,new Unit(val));
+			globals.put(id,new Unit(val));
 		}
 
         return null; // definitions always return null

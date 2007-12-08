@@ -1,0 +1,4 @@
+unit meter
+alias m for meter
+set x = 3*m
+print(x)
