@@ -1,0 +1,8 @@
+unit feet
+unit mile = 5280 * feet
+unit second
+unit hour = 3600 * second
+unit mph = mile / hour
+
+set x = 55*mph
+print(x)
