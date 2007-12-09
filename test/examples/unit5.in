@@ -1,0 +1,4 @@
+unit meter
+unit second
+unit mpss = meter / second ^ 2
+print(9.8*mpss)
