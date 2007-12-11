@@ -1,0 +1,846 @@
+\chapter{Language Reference}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conventions in This Chapter}
+
+In this chapter, text in \texttt{monospace type} indicates a keyword
+or literal syntax.  Text in \textit{italic type} indicates a
+placeholder for some other piece of source code.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Program Sources}
+\label{structure}
+
+\subsection{Encoding}
+
+Physicalc accepts source files encoded in plain 7-bit \acro{ascii}.
+High bit characters are not allowed.  Line breaks may be encoded in
+\acro{dos} \verb+\r\n+, \acro{unix} \verb+\n+, or Macintosh \verb+\r+
+style.  \acro{Ascii} characters with decimal value less than 9,
+i.e.\ the control characters, are not allowed.
+
+
+\subsection{Comments}
+
+Comments begin with a hash character (\verb+#+) and continue to the
+end of the line.  Comments may be placed on the same line as source
+code.  The line break is not considered part of the comment text.
+
+
+\subsection{Whitespace}
+
+Whitespace characters---spaces, tabs, and form feed characters---may
+used to separate tokens in the input but are discarded during parsing.
+
+\subsection{Line Breaks and Semicolons}
+
+Line breaks are significant in Physicalc syntax.  Line breaks serve as
+statement terminators.  In the syntax rules that follow, all line
+breaks shown are mandatory.
+
+To put multiple statements on a single line of source code, semicolons
+may be used in place of line breaks.  Semicolons may be used anywhere
+a line break would normally be used, including between the parts of
+compound statements such as \key{if}/\key{elsif}/\key{else}.
+
+Any number of consecutive line breaks and/or semicolons is read as a
+single terminator.
+
+
+\subsection{Identifiers}
+
+All identifiers begin with a letter or underscore, followed by zero or
+more letters, digits, and underscores.  Identifiers are case-sensitive.
+
+
+\subsection{Reserved Words}
+
+The following words are reserved as keywords and may not be used as
+identifiers:
+{\tt
+alias
+and
+break
+constant
+do
+done
+else
+elsif
+false
+for
+from
+function
+if
+in
+loop
+next
+not
+or
+quantity
+return
+set
+step
+then
+to
+true
+unit
+while
+}
+
+Additionally, Physicalc defines several built-in functions
+(Section~\ref{builtins}) which may not be redefined.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fundamental Types}
+\label{types}
+
+\subsection{Numbers}
+\label{numbers}
+
+All numbers in Physicalc are treated as arbitrary-precision decimals.
+There is no distinction among integers, rationals, and reals.  All
+arithmetical calculations are decimal-accurate to a reasonable
+degree of precision.  Floating-point arithmetic is never used.
+
+Literal numbers may be written in source code as integers or as
+decimals using C-style floating point number syntax.  A number has
+three parts:
+\begin{enumerate}
+\item An integer part composed of digits;
+\item A decimal part composed of a \verb+.+ (period) character
+  followed by digits;
+\item An exponent beginning with the letter \verb+e+ (or \verb+E+),
+  followed by an optional \verb|+| or \verb|-| sign, followed by
+  digits.
+\end{enumerate}
+
+All parts are optional, but either the integer or decimal part must be
+present.
+
+
+\subsection{Strings}
+\label{strings}
+
+Strings are sequences of \acro{ascii} characters.  Literal strings may
+be written in source code by placing them between double-quotation
+(\verb+"+) characters.  A literal \verb+"+ character is written in a
+string as two consecutive \verb+"+ characters, so the string
+
+\begin{example}
+The ``big'' bus
+\end{example}
+
+\noindent
+could be written as 
+
+\begin{example}
+\verb+"The ""big"" bus"+
+\end{example}
+
+\noindent
+C-style character escapes (\verb+\n+, \verb+\t+, etc.)\ are not
+supported.  Line breaks are permitted inside strings.
+
+
+\subsection{Lists}
+\label{lists}
+
+Lists are one-dimensional, variable-length, zero-indexed arrays of
+objects.  Lists are heterogeneous---they may contain any combination
+of different object types.  Lists are automatically resized.
+
+A list literal may be written in source code by enclosing the entire
+list in square brackets (\verb+[+~and~\verb+]+) and separating
+individual elements with commas.  Whitespace, but not line breaks, is
+permitted between list elements; it is ignored.  Nested lists are
+allowed.  The elements in a list literal may be expressions; those
+expressions are evaluated and their results are stored in the list.
+
+
+\subsection{Vectors}
+\label{vectors}
+
+Vectors are two-dimensional $x,y$ component pairs.  The components of
+a vector must be numbers, optionally including units (see
+Section~\ref{units}).  If the components of a vector include units,
+both components must have units of the same quantity (see
+Section~\ref{quantities}).
+
+Literal vectors may be written in source code by enclosing the entire
+vector in curly brackets (\verb+{+ and \verb+}+) and separating the
+components with commas.  Whitespace is permitted between vector
+components.  The components in a vector literal may be expressions;
+those expressions are evaluated and their results are stored in the
+vector.
+
+
+Nested vectors, vectors with more than two dimensions, and matrices
+are not supported.
+
+
+
+
+\subsection{Booleans}
+\label{booleans}
+
+Boolean values are the literal identifiers \key{true} and \key{false}.
+These are global built-in constants and may not be redefined.  In
+statements that use boolean expressions, any value that is not exactly
+equal to \key{false} is considered true.  For example, the empty list
+and the number zero are both ``true'' in a boolean context.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Definitions}
+\label{definitions}
+
+A typical Physicalc program consists primarily of definitions.  There
+are five types of definitions: quantities, units, constants,
+functions, and aliases.  
+
+A definition permanently associates some identifier with an object.
+All definitions must occur at the top level of program scope; they may
+not be nested.  Defintions are present in the running program from the
+point at which they are defined until the program terminates.  Defined
+identifiers have global scope, and may not be overridden by local
+variables with the same name.  An identifier, once defined, may be
+redefined, but this will cause the interpreter to print a warning
+message.
+
+\subsection{Note on Definitions Using Expressions}
+
+Some of the definition types below take the form \id{}\verb|=|\expr{}.
+In these cases, the \verb|=| is not an operator; it is part of the
+syntax.  The \expr{} that follows the \verb|=| symbol is evaluated
+once, at the time the definition is read, and its result is stored in
+the \id{}.
+
+
+\subsection{Quantities}
+\label{quantities}
+
+Quantities are part of the Physicalc system for handling calculations
+involving scientific units.  A quantity represents a physical property
+which can be measured or calculated, independent of the system of
+units used to measure it.  Examples of quantities are mass, length,
+time, velocity, and force.
+
+\subsubsection{Base Quantities}
+
+Base quantities are fundamental quantities that are not mathematically
+derived from other quantities.  The SI unit system has seven base
+quantities: length, time, mass, electric current, temperature, amount
+of substance, and luminous intensity.\cite{si} Other unit systems
+might have different base quantities.
+
+Base quantities are defined with the keyword \verb+quantity+, followed
+by an identifier for the quantity.  
+
+\begin{syntax}
+\key{quantity} \id{}
+\end{syntax}
+
+
+\subsubsection{Derived Quantities}
+
+Derived quantities are defined by mathematical relationships to
+existing quantities.  An example of a derived quantity in the SI
+system is velocity, defined as distance divided by time.
+
+\begin{syntax}
+\key{quantity} \id{} \key{=} \expr{}
+\end{syntax}
+where \expr{} is a restricted expression on previously defined
+quantities.  See Section~\ref{restricted-expressions} for the meaning
+of ``restricted expression.''
+
+An identifier that has been defined as a base quantity may not be
+subsequently redefined as a derived quantity; to do so is an error.
+
+
+\subsection{Units}
+\label{units}
+
+A unit is a concrete standard of measurement for some physical
+quantity.
+
+
+\subsubsection{Base Units}
+
+Base units are units for base quantities.  Examples of base units in
+the SI system are meters for length, seconds for time, and kilograms
+for mass.\cite{base-unit} Base units are defined by associating them
+with a quantity.
+
+\begin{syntax}
+\key{unit} \id{1} \key{for} \id{2}
+\end{syntax}
+where \id{2} is a previously-defined quantity and \id{1} is the name
+of the new unit.
+
+
+\subsubsection{Derived Units}
+
+Derived units are defined in terms of mathematical relationships to
+other units.  An example of a derived unit in the SI system is the
+Coulomb, defined as seconds multiplied by Amperes.\cite{derived-unit}
+Derived units are defined in Physicalc with expressions involving
+other units.
+
+\begin{syntax}
+\key{unit} \id{} \key{=} \expr{} 
+\end{syntax}
+where \expr{} is a restricted expression on previously defined units.
+See Section~\ref{restricted-expressions} for the meaning of
+``restricted expression.''
+
+A derived unit may also be defined as a conversion factor from
+another unit for the same quantity.  Typically, this type of derived
+unit will have a definition \expr{} consisting of a base unit
+multipied by some constant number.  In this way, conversion factors
+between different systems of measurement may be defined.  Those
+conversion factors may be used for automatic unit conversion with the
+\key{in} operator (Section~\ref{in-op}).
+
+An identifier that has been defined as a base unit may not be
+subsequently redefined as a derived unit; to do so is an error.
+
+
+
+\subsection{Constants}
+\label{constants}
+
+Constants are static identifiers that hold any type of value.  They
+have global scope and may not be changed by assignment.  Constants may
+be changed by redefining them, but this produces a warning.
+
+\begin{syntax}
+\key{constant} \id{} \key{=} \expr{}
+\end{syntax}
+where \expr{} is any expression.
+
+
+\subsection{Functions}
+\label{functions}
+
+Functions are named subroutines which receive input and return output.
+All function parameters are passed by value; i.e.\ a copy of the
+parameter is made and the function operates on the copy.  Functions
+cannot modify any objects in their calling environment, nor can they
+define new global objects.
+
+The first line of a function definition consists of the keyword
+\key{function}, an identifier, and a parameter list enclosed in
+parentheses.  The body of the function, a sequence of statements,
+follows.  The function definition ends with the keyword \key{done}.
+
+\begin{syntax}
+\key{function} \id{}\key{(} \textit{parameter list} \key{)}\\
+\codeindent\statements{} \\
+\key{done}
+\end{syntax}
+
+The indentation of \statements{} is for easier reading and has no
+significance in the syntax.  The parameter list consists of zero or
+more identifiers, separated by commas.  The parentheses around the
+parameter list are mandatory, even if the parameter list is empty.
+Whitespace, but not line breaks, is allowed in the parameter list.
+Functions taking a variable number of parameters are not supported,
+but this can be achieved in practice by passing a list as one of the
+parameters.
+
+Within the body of a function, a \key{return} statement
+(Section~\ref{return-stmt}) terminates the function and returns its
+argument as the value of the function.  The body of a function may
+refer to identifiers not yet defined, but those identifiers must be
+defined before the function is called or an error will result.  See
+Section~\ref{function-call} for the syntax of function calls.
+
+
+\subsection{Aliases}
+
+To allow for multiple names for the same object, aliases may be
+defined.  An alias is an identifier that may be used in place of
+another identifier.  Aliases are alternate names for an object rather
+than true references.  Aliases are subject to the same redefinition
+constraints as other definitions.
+
+\begin{syntax}
+\key{alias} \id{1} \key{for} \id{2}
+\end{syntax}
+defines \id{1} as a new alias for \id{2}, a previously-defined
+identifier.  Subsequent uses of \id{1} will be read as if they were
+\id{2}.  It is an error if \id{2} is not already defined.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Expressions}
+\label{expressions}
+
+Expressions consist of operators, function calls, literals, and
+identifiers.  An expression, when evaluated, returns a value.
+Operator precedence is summarized in Figure~\ref{precedence}.  The
+types of expressions are described below.  Expressions may contain
+whitespace, which is ignored, but they may not contain line breaks.
+
+\begin{figure}
+\begin{tabular}{|c|l|c|} \hline
+\bf Operator   & \bf Description     & \bf Associativity \\ \hline
+\verb|( )| & Grouping        & N/A  \\ \hline
+\id{}\verb|[ ]| & List subscript & left  \\ \hline
+\id{}\verb|( )| & Function call & left \\ \hline
+\verb|{ }| & Vector Literal & N/A \\ \hline
+\verb|[ ]| & List Literal   & N/A \\ \hline
+\verb|-|   & Unary minus     & right \\ \hline
+\verb|^|   & Exponentiation  & right \\ \hline
+\verb|* /| & Multiplication/Division & left \\ \hline
+\verb|+ -| & Addition/Subtraction & left \\ \hline
+\verb|> < >= <=| & Relational Comparison & left \\ \hline
+\verb|= !=| & Equality Comparison & left \\ \hline
+\verb|not| & Logical NOT & right \\ \hline
+\verb|and| & Logical AND & left \\ \hline
+\verb|or|  & Logical OR  & left \\ \hline
+\verb|in|  & Unit Conversion & left \\ \hline
+\verb|,|   & Comma separating expressions & left \\ \hline
+\end{tabular}
+
+Highest precedence is on the top line of the table.
+\caption{Operator Precedence}
+\label{precedence}
+\end{figure}
+
+
+\subsection{Arithmetical Expressions}
+
+Arithmetical expressions consist of the unary negation operator
+(\verb|-|), parentheses \verb|()|, and binary operators for addition
+(\verb|+|), subtraction (\verb|-|), multiplication (\verb|*|),
+division (\verb|/|), and exponentiation (\verb|^|)
+
+The unary negation operator takes one argument on the right, and
+returns its opposite.  There is no unary plus operator, because it
+serves no purpose that the authors can imagine.
+
+Binary operators take one argument on the left and one argument on the
+right. The caret operator (\verb|^|) performs exponentiation, raising
+its left argument to the value of its right argument. The operator
+\verb|^| has highest precedence, followed by unary \verb|-|, followed
+by binary \verb|*| and \verb|/|, followed by binary \verb|+| and
+\verb|-|.
+
+Parentheses are used for grouping expressions and specifying
+precedence explicitly.  An expression inside parentheses is always
+evaluated before other expressions.  Parentheses may be nested to any
+level (within the bounds of computer memory) and the inner-most
+parenthetical expression will be evaluated first.
+
+Arithmetic may be performed on numbers, vectors, and units.  All
+arithmetical operators are supported when the operands are both
+numbers.  All operations except exponentiation are supported between
+two vectors.  A vector may be multiplied or divided by a number, and a
+number may be multiplied by a vector, but a number may not be divided
+by a vector.  Units may be multiplied and divided with other units,
+numbers, and vectors, but may not be added or subtracted (see
+Section~\ref{combining-units}).  Units may be raised to a numerical
+exponent.  Finally, concatenation is supported for strings and lists
+using the binary \verb|+| operator.  Figure~\ref{binops} summarizes
+the supported binary operations.
+
+\begin{figure}
+\begin{tabular}{|cl|l|l|l|l|l|} \hline
+        &         & \multicolumn{5}{c|}{Right Operand} \\
+        &         & Number           & Vector           & Unit             & String           & List \\
+\hline
+        & Number  & \verb|+ - * / ^| & \verb|*|         & \verb|* /|       &                  &                  \\
+Left    & Vector  & \verb|* /|       & \verb|+ - * /|   & \verb|* /|       &                  &                  \\
+Operand & Unit    & \verb|* / ^|     &                  & \verb|* /|       &                  &                  \\
+        & String  &                  &                  &                  & \verb|+|         &                  \\
+        & List    &                  &                  &                  &                  & \verb|+|         \\
+\hline
+\end{tabular}
+\caption{Permitted Binary Operations by Operand Type}
+\label{binops}
+\end{figure}
+
+\subsection{Combining Numbers and Units}
+\label{combining-units}
+
+Mathematically, numbers with units are said to be ``multiplied'' by a
+symbol representing the unit.  In Physicalc, this is taken literally.
+Units are identifiers, and a number with units is simply an expression
+of the form ``\textit{number}\verb|*|\id{}'' where \id{} has been
+defined as a unit.  Units are preserved in calculations and results.
+Limited handling of units as algebraic expressions is supported, so an
+expression such as ``three meters per second multiplied by ten
+seconds'' could be written
+
+\begin{example}
+\verb|3 * meter / second * 10 * second|
+\end{example}
+
+\noindent 
+and would return the correct result of thirty meters as
+\verb|30*meter|.  Calculations requiring unit conversions might not
+always return the desired units in the result; the \key{in} operator
+(Section~\ref{in-op}) forces conversion to the correct units.
+
+\subsection{List Member Access}
+
+Once a list has been stored in a variable, its elements may be
+accessed using bracketed indexes.
+
+\begin{syntax}
+\id{}\key{[} \expr{} \key{]}
+\end{syntax}
+where \expr{} must evaluate to an integer, which is used as an index
+into the list stored in \id{}.  An attempt to access an index beyond
+the end of the list produces an error.
+
+Bracketed indexes are only permitted on identifiers, not on literal
+lists nor on expressions that return a list.  Items in nested lists
+may be accessed with multiple consecutive bracket expressions, so
+if the variable \verb|x| contained the list
+\begin{example}
+\verb+[ a, b, [ c, d ], e ]+
+\end{example}
+the element \verb|d| could be referenced as \verb|x[2][1]|.
+
+
+\subsection{Function Calls}
+\label{function-call}
+
+Built-in or user-defined functions are called with the name of the
+function, an opening parenthesis, an argument list, and a closing
+parenthesis.  No space is permitted between the function name and the
+opening parenthesis.  The parentheses are mandatory even if the
+argument list is empty.
+
+
+\begin{syntax}
+\id{}\key{(} \textit{argument list} \key{)}
+\end{syntax}
+
+The argument list is a sequence of expressions, separated by commas.
+The number of arguments in the argument list of the function call must
+match the number of arguments in the function definition.
+
+When a function is called, the expressions in the argument list are
+evaluated.  A new local scope is created, and the values of the
+arguments are bound to the named parameters from the function
+definition.
+
+
+
+\subsection{Relational Operators}
+
+Numbers, and only numbers, may be compared with the standard
+relational operators \verb|>|, \verb|<|, \verb|>=|, and \verb|<=|.
+These operators all return a boolean value.
+
+Any two objects may be compared with the equality operator, \verb|=|,
+which returns true if its left operand is of the same type and has the
+same value as its right operand, and false otherwise.  Two vectors are
+equal if both of their components are equal.  Two units are equal if
+they are the same unit.
+
+The not-equals operator, \verb|!=|, returns true if its operands are
+not equal under the definition of equality used for \verb|=|, and
+false otherwise.
+
+
+
+\subsection{Logical Operators}
+
+Logical operators work on boolean values and expresions.
+
+\begin{syntax}
+\key{not} \expr{}
+\end{syntax}
+returns true if \expr{} is false and returns false if \expr{} is true.
+
+\begin{syntax}
+\expr{1} \key{and} \expr{2}
+\end{syntax}
+returns true if both \expr{1} and \expr{2} are true.  This operator
+``short-circuits''---if \expr{1} is false, it returns false without
+evaluating \expr{2}.
+
+\begin{syntax}
+\expr{1} \key{or} \expr{2}
+\end{syntax}
+returns true if \expr{1} is true, \expr{2} is true, or both are true.
+This operator ``short-circuits''---if \expr{1} is true, it returns
+true without evaluating \expr{2}.
+
+
+
+\subsection{Unit Conversion}
+\label{in-op}
+
+The special binary \verb|in| operator is used to convert values from
+one set of units to another.  
+
+\begin{syntax}
+\expr{1} \key{in} \expr{2}
+\end{syntax}
+where \expr{1} is an expression that evaluates to a number or vector
+with units, and \expr{2} evaluates to units.  The \key{in} operator
+searches through the set of defined relationships among units and
+quantities to find the correct conversion factor, applies that
+conversion, and returns the result number or vector in the requested
+units.  It is an error if \expr{1} and \expr{2} do not have the same
+quantity, or if a valid conversion factor between the units of
+\expr{1} and the units of \expr{2} cannot be found.
+
+
+
+
+\subsection{Restricted Expressions}
+\label{restricted-expressions}
+
+Some definitions (Section~\ref{definitions}) refer to ``restricted
+expressions.''  These are expressions involving only numbers,
+identifiers, parentheses, and the arithmetical operators \verb|+|,
+\verb|-|, \verb|*|, \verb|/|, and \verb|^|.  Some restricted
+expressions are described as ``on'' a type, such as units or
+quantities.  In those cases, the restricted expression is futher
+limited to using identifiers only of that type.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Statements}
+\label{statements}
+
+Statements are source code constructs which do not return a value.  An
+expression may be used as a statement by itself; its return value is
+discarded.
+
+
+\subsection{Loading Source Files}
+
+The special \key{load} statement reads in additional source files.
+\begin{syntax}
+\key{load} \textit{string}
+\end{syntax}
+The \textit{string} is interpreted as a path on the local filesystem,
+relative to the current working directory, to a file containing
+Physicalc source code.  That file is read and its contents are
+executed as if they had been included in the current program at the
+point of the \key{load} statement.  Any definitions in the loaded file
+will become part of the running program.
+
+If the file cannot be found or cannot be read, an error results.
+\key{load} is only allowed at the top-level of a program source file;
+it may not appear inside functions or other statements.
+
+
+\subsection{Assignment}
+
+\begin{syntax}
+\key{set} \id{} \key{=} \expr{}
+\end{syntax}
+
+An assignment statement evaluates \expr{}, then binds its value to the
+local variable named \id{}.  If \id{} is currently undefined, a new
+local variable is created with scope corresponding to the current
+function body.  It is an error if \id{} is already defined as a global
+object, i.e.\ a measure, unit, function, or constant.
+
+Assignment statements may be used outside of a function body, but
+doing so does not create a global variable.  Global variables are not
+supported, only global constants.
+
+
+\subsection{Return}
+\label{return-stmt}
+
+\begin{syntax}
+\key{return} \expr{}
+\end{syntax}
+
+A \key{return} statement may only appear inside the body of a
+function; a \key{return} statement found outside of a function body is
+an error.  When a \key{return} statement is executed, \expr{} is
+evaluated and its value is returned as the value of the function.
+
+
+
+\subsection{If/Then/Else}
+
+An if/then/else block begins with the keyword \key{if}, followed by an
+boolean expression, followed by the keyword \key{then} and a
+terminator (line break or semicolon).  After \key{then} comes a
+sequence of one or more statements, then any number of \key{elsif}
+blocks, then an optional \key{else} block, then finally the keyword
+\key{done}.
+
+\begin{syntax}
+\key{if} \expr{1} \key{then} \\
+\codeindent\statements{1} \\
+\key{elsif} \expr{2} \key{then} \\
+\codeindent\statements{2} \\
+\textit{\dots\ additional elsif blocks \dots} \\
+\key{else} \\
+\codeindent\statements{3} \\
+\key{done}
+\end{syntax}
+
+The indentation of the statement blocks is for easier reading and is
+not significant in the syntax.  First, \expr{1} is evaluated.  If it
+returns true, \statements{1} are executed.  After completing
+\statements{1}, control passes to the statement following the
+\key{done} keyword.  
+
+If \expr{1} returns false, \expr{2} is evaluated.  If \expr{2} returns
+true, \statements{2} are executed, then control passes to the
+statement following the \key{done} keyword.  Additional \key{elsif}
+blocks may specify additional test expressions and statements to
+execute.  If all of the test expressions return false, and if the
+optional final \key{else} block is present, \statements{3} are
+executed.
+
+An if/then/else block might not execute any statements at all if there
+is no \key{else} block.  An if/then/else block never executes more
+than one group of statements. Once the first test expression returns
+true, its associated statement block is executed and all other test
+expressions and statement blocks are skipped.
+
+
+
+\subsection{While Loops}
+
+\begin{syntax}
+\key{while} \expr{} \key{do} \\
+\codeindent\statements{} \\
+\key{done}
+\end{syntax}
+
+While loops evaluate a group of statements as long as a given
+conditional expression remains true.  The conditional expression is
+evaluated before the statement body on every iteration of the loop.
+If it returns true, the statements are executed.  The first time it
+returns false, control passes to the statement following the
+\key{done} keyword.
+
+
+\subsection{For Loops}
+
+\begin{syntax}
+\key{for} \id{} \key{from} \expr{1} \key{to} \expr{2} \key{step} \expr{3} \key{do} \\
+\codeindent \statements{} \\
+\key{done}
+\end{syntax}
+
+At the beginning of a for loop, \expr{1}, \expr{2}, and \expr{3} are
+all evaluated immediately.  All three must evaluate to positive
+numbers, optionally including units; it is an error if they do not.
+The result of \expr{1} is assigned to the local variable \id{}.  If
+\id{} is undefined, a new local variable is created with scope
+corresponding to the current function body.  It is an error if \id{}
+is already defined as a global.  The \statements{} are executed, after
+which the value of \expr{3} is added to the value in \id{}, and that
+new value is stored in \id{}.  Then the value of \id{} is compared to
+the value of \expr{2}.  If \id{} is greater than the value of
+\expr{2}, control passes to the statement following the \key{done}
+keyword.  If \id{} is less than or equal to the value of \expr{2},
+\statements{} are executed again.  This process repeats until \id{} is
+greater than the value of \expr{2} or a \key{break} or \key{return}
+statement is executed.
+
+
+\subsection{Control Statements Within Loops}
+
+Within any loop structure there are two special statements which
+affect the execution of the loop.  The \key{break} statement will
+immediately terminate the execution of the loop and transfer control
+to the statement following the loop's \key{done} keyword.  
+
+The \key{next} statement will immediately return control to the top of
+the loop.  In the case of \key{while} loops, the loop test is applied
+as if the loop had reached the end of its statement block.  In the
+case of \key{for} loops, the counter variable is incremented and the test
+is applied as if the loop had reached the end of its statement block.
+
+Additionally, a loop used inside of a function body may contain a
+\key{return} statement, which will immediately break out of the loop
+and return from the function.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Built-In Functions}
+\label{builtins}
+
+Physicalc provides a some built-in functions, which have the same
+syntax as normal function calls but carry out operations which could
+not be implemented with normal Physicalc code.
+
+\subsection{print()}
+
+The \key{print()} function takes a single argument, which may be any
+object, and prints it to the output stream, followed by a line break.
+Printing a string prints its contents without the enclosing \verb|"|
+characters.  Lists, vectors, units, and numbers are automatically
+converted to strings with the \verb|toString()| function before being
+printed.  Printing multiple objects with a single call to
+\verb|print()| requires converting them to strings and concatenating
+those strings.
+
+\subsection{nprint()}
+
+The \key{nprint()} function acts like \key{print()} but does not print
+a line break.
+
+\subsection{toString()}
+
+The \key{toString()} function converts its argument, which may be any
+object, to a string.  If the argument is already a string, it is
+simply returned.  Other types of arguments are converted to a string
+that matches their literal syntax.
+
+\subsection{stripUnits()}
+
+The \key{stripUnits()} function takes an argument of a number with
+units and removes all units, leaving just the bare number.  If a bare
+unit without any numbers is passed to the function, it returns the
+number one.
+
+\subsection{toPrecision()}
+
+The \key{toPrecision()} function takes two arguments, a number
+\textit{n} and an integer \textit{i}, and rounds \textit{n} to have
+\textit{i} significant digits.  Rounding is performed using the
+unbiased ``round-to-even'' method.\cite{rounding} If the number
+includes units, those units are preserved in the result.
+
+\subsection{toInt()}
+
+The \key{toInt()} rounds its argument to the nearest integer, using
+the same ``round-to-even'' method as \key{toPrecision()}.  If the
+number includes units, those units are preserved in the result.
+
+\subsection{read()}
+
+The \key{read()} function takes no arguments.  It reads a single value
+from the input stream, ignoring all preceeding whitespace and
+continuing up to the first whitespace character.  The value is parsed
+as an expression of numbers and units and returned to the caller.
+
+\subsection{readline()}
+
+The \key{readline()} function, which takes no arguments, reads a line
+from the input stream up to the first linebreak character and returns
+it as a string.
+
+\subsection{exit()}
+
+The \key{exit()} function, which takes no arguments, immediately
+terminates the Physicalc program.

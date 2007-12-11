@@ -1,0 +1,46 @@
+\newcommand{\email}[1]{\texttt{#1}}
+
+% acronyms, printed in small caps
+\newcommand{\acro}[1]{\textsc{#1}}
+
+% keywords, printed in monospace type
+\newcommand{\key}[1]{\texttt{#1}}
+
+% placeholder for an identifier in syntax definitions
+\newcommand{\id}[1]{\textit{identifier}$_{#1}$}
+
+% placeholder for an expression in syntax definitions
+\newcommand{\expr}[1]{\textit{expression}$_{#1}$}
+
+% placeholder for a sequence of statements in syntax definitions
+\newcommand{\statements}[1]{\textit{statements}$_{#1}$}
+
+% space at the beginning of an indented line of syntax
+\newcommand{\codeindent}{\hspace*{3em}}
+
+% syntax definition
+\newenvironment{syntax}%
+{%
+\begin{list}{\textbf{Syntax:}}%
+{%
+\setlength{\leftmargin}{6.8em}%
+\setlength{\labelsep}{3em}%
+\setlength{\labelwidth}{4em}%
+}%
+\item{}%
+}%
+{\end{list}}% end newenvironment{syntax}
+
+% example block
+\newenvironment{example}%
+{%
+\begin{list}{}%
+{%
+\setlength{\leftmargin}{6.8em}%
+\setlength{\labelsep}{3em}%
+\setlength{\labelwidth}{4em}%
+}%
+\item{}%
+}%
+{\end{list}}% end newenvironment{example}
+
