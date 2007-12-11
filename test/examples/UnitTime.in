@@ -1,0 +1,6 @@
+unit second
+unit minute = 60 * second
+unit hour = 60 * minute
+
+set x = 1 hour
+print(x)
