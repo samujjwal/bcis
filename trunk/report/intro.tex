@@ -1,0 +1,56 @@
+\chapter{Introduction}
+
+Physicalc is a programming language for scientific computation,
+designed for students studying beginning and intermediate-level
+physics, chemistry, or other sciences.  
+
+Computer algebra systems are typically oriented towards higher
+mathematics, making them ill-suited to the sorts of calculations done
+by high-school and undergraduate science students.  At the same time,
+some basic computer algebra features, such as symbolic computation,
+could be helpful to students.  Physicalc presents itself initially as
+an intelligent calculator that understands physical units like
+``meters/second.''  For more advanced users, it supports real
+programming in an imperative style.
+
+Physicalc is intended primarily as an educational tool, but may also
+be useful for exploratory data analysis in scientific fields.
+
+\section{Language Overview}
+
+\subsection{Interpreter}
+
+Physicalc is an interpreted programming language. The interpreter is
+written in Java and can be run either interactively or on a file
+containing Physicalc source code.  The interface is text-mode,
+although a GUI could be layered on top of it.
+
+\subsection{Syntax}
+
+Physicalc syntax is as simple as possible, using mostly English words,
+more reminiscent of BASIC than C\@.  Statements are separated by
+newlines.  Statement blocks are enclosed in ``do\dots done'' pairs.
+Standard imperative-language features such as loops, if/then/else
+branching, and user-defined functions are provided. Standard
+mathematical operators are provided, with the addition of `\verb+^+'
+for exponentiation.
+
+\section{Prior Art}
+
+\begin{itemize}
+
+\item Units\cite{units}, a command-line program included in early
+\acro{unix} systems and \acro{gnu}/Linux, provides conversion factors
+between various units.
+
+\item Calchemy\cite{calchemy} is software for the Palm OS that combines a
+scientific calculator with unit conversion and dimensional analysis.
+It is based on an earlier Windows program called \acro{unicalc}.
+
+\item The Google Calculator\cite{gcalc} performs arithmetic on numbers
+including unit conversions.
+
+\item JScience\cite{jscience} is a Java library for scientific computation
+including units.
+
+\end{itemize}
