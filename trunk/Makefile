@@ -23,6 +23,9 @@ APIDOC = $(PROJECT)/doc/api
 # Directory for .java source files for unit tests.
 TEST = $(PROJECT)/test
 
+# Directory for the .tex files for the final report.
+REPORT = $(PROJECT)/report
+
 # Paths and .jar files to search for Java .class files
 # (colon separated)
 CLASSPATH = $(CLASS):$(PROJECT)/lib/antlr.jar:$(PROJECT)/lib/junit-4.4.jar
@@ -151,6 +154,15 @@ doc: $(CLASSES)
 	$(JAVADOC) -sourcepath $(SOURCE) \
 		-private -d $(APIDOC) physicalc
 
+report: $(REPORT)/finalreport.pdf
+
+$(REPORT)/finalreport.pdf: $(REPORT)/finalreport.tex \
+    $(REPORT)/bibliography.tex \
+    $(REPORT)/functions.tex \
+    $(REPORT)/intro.tex \
+    $(REPORT)/refman.tex
+	(cd $(REPORT); pdflatex finalreport; pdflatex finalreport)
+
 # Rules for generating the lexer & parser sources from the 
 # ANTLR grammar.
 $(ANTLR_OUTPUT): $(SOURCE)/grammar.g
@@ -161,7 +173,7 @@ clean:
 	rm -f $(ANTLR_OUTPUT) $(CLASSES) $(TESTCLASSES)
 	rm -rf $(APIDOC)
 	rm -f $(TEST)/examples/*.actual
-
+	rm -f $(REPORT)/*.toc $(REPORT)/*.aux $(REPORT)/*.log $(REPORT)/*.pdf
 
 ### PER-CLASS COMPILATION RULES
 
