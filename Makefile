@@ -70,6 +70,7 @@ CLASSES = \
     $(CDIR)/Def.class \
     $(CDIR)/Expr.class \
     $(CDIR)/ExprList.class \
+    $(CDIR)/ExitFunction.class \
     $(CDIR)/For.class \
     $(CDIR)/FunCall.class \
     $(CDIR)/Function.class \
@@ -238,6 +239,9 @@ $(CDIR)/Datum.class: $(SDIR)/Datum.java
 
 $(CDIR)/Def.class: $(SDIR)/Def.java
 	$(JC) $(SDIR)/Def.java
+
+$(CDIR)/ExitFunction.class: $(SDIR)/ExitFunction.java
+	$(JC) $(SDIR)/ExitFunction.java
 
 $(CDIR)/Expr.class: $(SDIR)/Expr.java
 	$(JC) $(SDIR)/Expr.java
