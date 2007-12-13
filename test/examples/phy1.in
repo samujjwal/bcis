@@ -1,0 +1,24 @@
+unit second
+unit minute = 60 * second
+unit hour = 60 * minute
+unit day = 24 * hour
+unit year = 365 * day
+
+set x = 1 * year
+
+unit meter
+unit kilogram
+unit newton = meter * kilogram / second ^ 2
+
+set Pi = 3.1415926
+set omiga = 2 * Pi /(1*x)
+print(omiga)
+
+set G = 6.67*10 *newton * (1*meter ^ 2)/(1*kilogram^2)
+print(G)
+
+set r = 1.50 * 10^11 * meter
+
+set m = (1*r^3) * (1*omiga^2) /(1*G)
+print(m)
+
