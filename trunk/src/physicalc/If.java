@@ -8,7 +8,13 @@ package physicalc;
  *			else
  *			   statements3
  *			done
+ *
+ * 
+ * @see Node
+ * @author Changlong Jiang cj2214@columbia.edu
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
+
 public class If extends Stmt {
 
     private Expr expr1;

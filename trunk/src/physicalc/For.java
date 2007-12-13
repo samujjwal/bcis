@@ -1,12 +1,16 @@
 package physicalc;
 
 import java.lang.String;
-/* this is for class 
-   for identifier from expressions1 to experssion2 step expression3 do
-         statements
-   done
+/**this is for class 
+ *  for identifier from expressions1 to experssion2 step expression3 do
+ *        statements
+ *  done
+ * 
+ * @see Node
+ * @author Changlong Jiang cj2214@columbia.edu
+ * @author Stuart Sierra, ss2806@columbia.edu
+ */
 
-*/
 
 public class For extends Stmt {
     String idname;
