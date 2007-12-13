@@ -5,6 +5,8 @@ import java.lang.String;
 /** Arith is a node implementing "+","-","*","/", and "^" 
  * 
  * @see Node
+ * @author Changlong Jiang cj2214@columbia.edu
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class Arith extends Op {
     private Expr left;

@@ -6,6 +6,9 @@ import java.lang.*;
  *  While expr1 do
  *        block1
  *  done
+ *
+ * @author Changlong Jiang cj2214@columbia.edu
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 
 public class While extends Stmt {
