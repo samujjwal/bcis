@@ -1,0 +1,5 @@
+unit meter
+unit second
+unit kilogram
+unit newton = kilogram * meter / second ^ 2
+print(100*newton)
