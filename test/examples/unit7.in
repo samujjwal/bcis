@@ -1,0 +1,6 @@
+unit meter
+unit second
+unit kilogram
+unit newton = meter * kilogram / second ^ 2
+set y = 2 * newton * second ^2
+print(y)
