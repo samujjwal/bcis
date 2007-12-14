@@ -155,14 +155,33 @@ doc: $(CLASSES)
 	$(JAVADOC) -sourcepath $(SOURCE) \
 		-private -d $(APIDOC) physicalc
 
-report: $(REPORT)/finalreport.pdf
+report: $(REPORT)/physicalc-report.pdf
+
+$(REPORT)/physicalc-report.pdf: $(REPORT)/finalreport.pdf $(REPORT)/sources.pdf
+	(cd $(REPORT); pdftk finalreport.pdf sources.pdf \
+    cat output physicalc-report.pdf )
 
 $(REPORT)/finalreport.pdf: $(REPORT)/finalreport.tex \
     $(REPORT)/bibliography.tex \
     $(REPORT)/functions.tex \
     $(REPORT)/intro.tex \
     $(REPORT)/refman.tex
-	(cd $(REPORT); pdflatex finalreport; pdflatex finalreport)
+	(cd $(REPORT); pdflatex finalreport; pdflatex finalreport;)
+
+$(REPORT)/sources.pdf: $(REPORT)/sources.ps
+	ps2pdf $(REPORT)/sources.ps $(REPORT)/sources.pdf
+
+$(REPORT)/sources.ps:
+	a2ps -A fill -o $(REPORT)/sources.ps \
+    Makefile \
+    profile.sh si.phy otherunits.phy \
+    runexamples runexample \
+    src/grammar.g \
+    src/*.java \
+    src/physicalc/*.java \
+    test/*.java \
+    test/examples/*
+
 
 # Rules for generating the lexer & parser sources from the 
 # ANTLR grammar.
@@ -174,7 +193,10 @@ clean:
 	rm -f $(ANTLR_OUTPUT) $(CLASSES) $(TESTCLASSES)
 	rm -rf $(APIDOC)
 	rm -f $(TEST)/examples/*.actual
-	rm -f $(REPORT)/*.toc $(REPORT)/*.aux $(REPORT)/*.log $(REPORT)/*.pdf
+	rm -f $(REPORT)/*.toc $(REPORT)/*.aux $(REPORT)/*.log
+	rm -f $(REPORT)/*.pdf $(REPORT)/*.ps
+	find $(PROJECT) -name '*~' -exec rm '{}' \;
+
 
 ### PER-CLASS COMPILATION RULES
 
