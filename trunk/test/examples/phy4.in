@@ -1,20 +1,18 @@
-unit second
-unit minute = 60 * second
-unit hour = 60 * minute
-unit day = 24 * hour
-unit meter
-unit kilogram
-unit newton = meter * kilogram / second ^ 2
+#This is for Calculate the radius of orbit of the Moon 
+#Universal Gravitational consatant G=6.67*10^(-11)*Newton*meter^2/kilogram^2
+#Earth Mass is 5.98E24 * kilogram
+#Source from http://zebu.uoregon.edu/~probs/mech/grav/distmoon
+#Test Program written by Changlong Jiang : cj2214@columbia.edu
+#Date 12/15/2007
 
+#load the pre-defined unit
+load "si.phy"
+
+#set variable
 set x = 29.53 * day
-print(x)
-
 set Pi = 3.1415926
+set G = 6.67E-11 * newton * (1*meter ^ 2) /(1*kilogram^2)
 
-set G = 6.67E-11 * newton * (1*meter ^ 2) *(1*kilogram^-2)
-#set G = 6.67E-11 * newton * (1*meter ^ 2) /(1*kilogram^2)
-
-set masse = 5.98 *10^24 * kilogram
-set r = (1*G*(1*masse))
+set masse = 5.98E24 * kilogram
+set r = ((x*(1*G*(1*masse))^(1/2))/(2*Pi))^(2/3)
 print(r)
-print(r^(0.5))
