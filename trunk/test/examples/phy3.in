@@ -1,0 +1,30 @@
+# This is for Sun Mass Calculation
+# Estimate the mass of the sun given the Earth's distance from the sun 
+# r=1.50*10^11 meter
+# Assume the Earch follows a circular orbit
+# Universal Gravitational consatant G=6.67*10^(-11)*Newton*meter^2/kilogram^2
+# source from http://zebu.uoregon.edu/~probs/mech/grav
+# test program written by Changlong Jiang : cj2214@columbia.edu
+# Date 12/15/2007
+
+# define the unit
+unit second
+unit minute = 60 * second
+unit hour = 60 * minute
+unit day = 24 * hour
+unit year = 365 * day
+
+unit meter
+unit kilogram
+unit newton = meter * kilogram / second ^ 2
+
+# define the variable and calculate
+set x = 1 * year
+set Pi = 3.1415926
+set omiga = 2 * Pi/x
+set G = 6.67E-11 * newton * (1*meter ^2) / (1 *kilogram ^ 2)
+set r = 1.50E11 * meter
+set m = (1*r^3) * (1*omiga^2)/G
+
+#print result
+print(m)
