@@ -1,0 +1,13 @@
+unit meter
+unit second
+unit velocity = meter/second
+unit testunit = meter*second
+set x = 1* velocity *(1* velocity)
+set y = 1* velocity ^ 2
+set z = 1*second^2
+set w = 1*testunit^3
+
+print(x)
+print(y)
+print(z)
+print(w)
