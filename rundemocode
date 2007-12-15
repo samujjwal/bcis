@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# runexamples
+
+# This is a Bash shell script.  Run it like this:
+#    bash runexamples
+#
+# This script runs the example test programs in test/examples/
+#
+# Each *.in file contains Physicalc source code.  Each *.in file has a
+# corresponding *.out file, which is what that program should print
+# out when it is run.
+#
+# This will run the Physicalc interpreter on each *.in file and
+# compares the printed output of that program with the corresponding
+# *.out file.  If they match, it prints "OK".  If not, it prints the
+# "diff" between the expected output and the actual output.  The
+# actual output is saved as *.out.actual
+
+
+source ./profile.sh
+make
+
+for infile in test/examples/phy*.in
+do
+    outfile=`echo "$infile" | sed -e 's/\.in/.out/'`
+    actual="$outfile.actual"
+    echo "Testing $infile"
+    java physicalc.Main $infile > $actual
+    if diff -bu $outfile $actual
+    then
+	echo "OK"
+	rm $actual
+    fi
+done
