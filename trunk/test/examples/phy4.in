@@ -1,0 +1,17 @@
+unit second
+unit minute = 60 * second
+unit hour = 60 * minute
+unit day = 24 * hour
+unit meter
+unit kilogram
+unit newton = meter * kilogram / second ^ 2
+
+set x = 29.53 * day
+print(x)
+
+set Pi = 3.1415926
+set G = 6.67*newton * (1*meter ^ 2)/(1*kilogram^2)*(10^(-11))
+set masse = 5.98 *10^24 * kilogram
+set r = (1*G*(1*masse))
+print(r)
+print(r^(1/2))
