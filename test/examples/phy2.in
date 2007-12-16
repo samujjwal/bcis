@@ -1,13 +1,34 @@
-unit meter
-unit second
-unit velocity = meter/second
-unit testunit = meter*second
-set x = 1* velocity *(1* velocity)
-set y = 1* velocity ^ 2
-set z = 1*second^2
-set w = 1*testunit^3
+# Calculate Factorial
+# This program is testing fucntion and logical operation
+# Test Program written by Changlong Jiang cj2214@columbia.edu
+# Date 12/15/2007
 
-print(x)
-print(y)
-print(z)
-print(w)
+#this is function for factorial number
+function factorial(x)
+  print("x=",x)
+  set y=1
+  set z=1
+  while y <= x do
+    set z = z * y
+    set y = y+1
+  done
+  nprint(x,"!=")
+  print(z)
+done
+
+print("use function to calculate factorial")
+factorial(6)
+
+# this is function to find the biggest number
+function findbiggest(x,y,z)
+   print("x=",x," ","y=",y," ","z=",z)
+   if x>=y and y>=z then
+     print("x is biggest")
+   done
+   if x>=y or y>=z then
+     print("x is not smallest")
+   done
+   if not(y>=x) then
+     print("y is smaller than x")
+   done
+done
