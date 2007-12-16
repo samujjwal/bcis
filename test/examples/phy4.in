@@ -16,6 +16,8 @@ nprint("seconds:",x)
 print()
 #print(x in hour)
 set y = 29.53 * 24 * 3600*second
+print("Number is:", getNumber(y))
+print("Unit is:",getUnit(y))
 print("hours:",y in hour)
 
 set Pi = 3.1415926
