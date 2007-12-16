@@ -166,13 +166,14 @@ $(REPORT)/finalreport.pdf: $(REPORT)/finalreport.tex \
     $(REPORT)/functions.tex \
     $(REPORT)/intro.tex \
     $(REPORT)/refman.tex
-	(cd $(REPORT); pdflatex finalreport; pdflatex finalreport;)
+	(cd $(REPORT); pdflatex finalreport; pdflatex finalreport; pdflatex finalreport)
 
 $(REPORT)/sources.pdf: $(REPORT)/sources.ps
 	ps2pdf $(REPORT)/sources.ps $(REPORT)/sources.pdf
 
-$(REPORT)/sources.ps:
+$(REPORT)/sources.ps: Changelog
 	a2ps -A fill -o $(REPORT)/sources.ps \
+    Changelog \
     Makefile \
     profile.sh si.phy otherunits.phy \
     runexamples runexample \
@@ -181,6 +182,9 @@ $(REPORT)/sources.ps:
     src/physicalc/*.java \
     test/*.java \
     test/examples/*
+
+Changelog:
+	svn log -v http://bcis.googlecode.com/svn/ > Changelog
 
 
 # Rules for generating the lexer & parser sources from the 

@@ -1,0 +1,114 @@
+\chapter{Project Plan}
+
+\section{Process}
+
+Physicalc was developed on a wiki hosted by Google Code, available at \\
+\url{http://code.google.com/p/bcis/}.
+
+\section{Programming Style}
+
+In general, Physicalc follows the Java coding standards published by
+Sun\cite{javastyle}.  Details below.
+
+\subsection{Spacing}
+
+\begin{itemize}
+\item Indents are 4 spaces
+\item Put a space between keywords (while, for) and parentheses
+\item No space between method names and parentheses
+\item Put a blank line between method definitions 
+\end{itemize}
+
+\subsection{Names}
+
+\begin{itemize}
+\item Interface and class name are \verb|MixedCase| and start with a capital letter
+\item Methods and variables are \verb|mixedCase| and start with a lower-case letter
+\item Constants are \verb|UPPER_CASE_WITH_UNDERSCORES|
+\end{itemize}
+
+\subsection{Comments}
+
+\begin{itemize}
+\item Use \verb|/* C-style block comments */| for comments longer than one line
+\item Use \verb|// single-line comments| to comment-out sections of code
+\item Use Javadoc\cite{javadoc}
+\end{itemize}
+
+\subsection{Braces}
+
+\begin{itemize}
+\item Open brace \verb|{| goes on the same line as the declaration
+\item Closing brace \verb|}| goes on a line by itself, indented to match the start of the declaration
+\item Always use braces for if/else statements 
+\end{itemize}
+
+\subsection{ANTLR Grammar Files}
+
+For ANTLR source files, use the conventions from class:
+
+\begin{itemize}
+\item Token names in the Lexer are ALLCAPS
+\item Nonterminal names in the Parser are lowercase
+\item Separate ``\verb+|+'' branches in productions go on separate lines 
+\end{itemize}
+
+
+
+
+\section{Project Timeline}
+
+\begin{tabular}{ll}
+September 17 & Project Selected \\
+September 18 & Project Wiki Created \\
+September 25 & Proposal Submitted \\
+October 17   & Grammar and Parser Completed \\
+October 18   & Reference Manual Submitted \\
+December 1   & Tree Walker Completed \\
+December 8   & Interpreter Completed \\
+December 15  & Testing Completed \\
+December 17  & Presentation \\
+December 18  & Final Report Submitted
+\end{tabular}
+
+
+
+
+\section{Roles and Responsibilities}
+
+\begin{tabular}{ll}
+Brian Foo       & Data Classes, Unit System, Function Definitions \\
+Changlong Jiang & Lexer, Statement Nodes, Example Programs, Testing \\
+Ici Li          & Tutorial, Expression Nodes, Built-in Functions \\
+Stuart Sierra   & Team Leader, Design, Documentation, Parser, Tree Walker
+\end{tabular}
+
+
+
+\section{Tools}
+
+\begin{itemize}
+\item Sun Java 1.6 Development Kit
+\item ANTLR 2.7.7
+\item Subversion, hosted by Google Code
+\item GNU Make
+\item JUnit
+\item bash scripts (for testing)
+\end{itemize}
+
+
+\section{Project Log}
+
+The complete project log, generated from Subversion, is included in
+the source file listing at the end of this report as
+\texttt{Changelog}.  This log encompasses changes to both the wiki and
+the source code repository.  Team members can be identified in the log
+by their user names as follows:
+
+\vspace{1em}
+\begin{tabular}{ll}
+Brian Foo       & brianwfoo \\
+Changlong Jiang & ChadJiang \\
+Ici Li          & digitalfobulous \\
+Stuart Sierra   & the.stuart.sierra or ssierr@law.columbia.edu \\
+\end{tabular}

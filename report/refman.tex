@@ -33,7 +33,8 @@ code.  The line break is not considered part of the comment text.
 \subsection{Whitespace}
 
 Whitespace characters---spaces, tabs, and form feed characters---may
-used to separate tokens in the input but are discarded during parsing.
+be used to separate tokens in the input but are discarded during
+parsing.
 
 \subsection{Line Breaks and Semicolons}
 
@@ -79,7 +80,6 @@ loop
 next
 not
 or
-quantity
 return
 set
 step
@@ -162,27 +162,6 @@ allowed.  The elements in a list literal may be expressions; those
 expressions are evaluated and their results are stored in the list.
 
 
-\subsection{Vectors}
-\label{vectors}
-
-Vectors are two-dimensional $x,y$ component pairs.  The components of
-a vector must be numbers, optionally including units (see
-Section~\ref{units}).  If the components of a vector include units,
-both components must have units of the same quantity (see
-Section~\ref{quantities}).
-
-Literal vectors may be written in source code by enclosing the entire
-vector in curly brackets (\verb+{+ and \verb+}+) and separating the
-components with commas.  Whitespace is permitted between vector
-components.  The components in a vector literal may be expressions;
-those expressions are evaluated and their results are stored in the
-vector.
-
-
-Nested vectors, vectors with more than two dimensions, and matrices
-are not supported.
-
-
 
 
 \subsection{Booleans}
@@ -222,48 +201,6 @@ once, at the time the definition is read, and its result is stored in
 the \id{}.
 
 
-\subsection{Quantities}
-\label{quantities}
-
-Quantities are part of the Physicalc system for handling calculations
-involving scientific units.  A quantity represents a physical property
-which can be measured or calculated, independent of the system of
-units used to measure it.  Examples of quantities are mass, length,
-time, velocity, and force.
-
-\subsubsection{Base Quantities}
-
-Base quantities are fundamental quantities that are not mathematically
-derived from other quantities.  The SI unit system has seven base
-quantities: length, time, mass, electric current, temperature, amount
-of substance, and luminous intensity.\cite{si} Other unit systems
-might have different base quantities.
-
-Base quantities are defined with the keyword \verb+quantity+, followed
-by an identifier for the quantity.  
-
-\begin{syntax}
-\key{quantity} \id{}
-\end{syntax}
-
-
-\subsubsection{Derived Quantities}
-
-Derived quantities are defined by mathematical relationships to
-existing quantities.  An example of a derived quantity in the SI
-system is velocity, defined as distance divided by time.
-
-\begin{syntax}
-\key{quantity} \id{} \key{=} \expr{}
-\end{syntax}
-where \expr{} is a restricted expression on previously defined
-quantities.  See Section~\ref{restricted-expressions} for the meaning
-of ``restricted expression.''
-
-An identifier that has been defined as a base quantity may not be
-subsequently redefined as a derived quantity; to do so is an error.
-
-
 \subsection{Units}
 \label{units}
 
@@ -275,14 +212,13 @@ quantity.
 
 Base units are units for base quantities.  Examples of base units in
 the SI system are meters for length, seconds for time, and kilograms
-for mass.\cite{base-unit} Base units are defined by associating them
-with a quantity.
+for mass.\cite{base-unit} Base units are defined simply by giving them
+a name.
 
 \begin{syntax}
-\key{unit} \id{1} \key{for} \id{2}
+\key{unit} \id{}
 \end{syntax}
-where \id{2} is a previously-defined quantity and \id{1} is the name
-of the new unit.
+where \id{} is the name of the new unit.
 
 
 \subsubsection{Derived Units}
@@ -297,16 +233,17 @@ other units.
 \key{unit} \id{} \key{=} \expr{} 
 \end{syntax}
 where \expr{} is a restricted expression on previously defined units.
-See Section~\ref{restricted-expressions} for the meaning of
-``restricted expression.''
+The expression may only consist of previously defined units, numbers,
+parentheses, and the arithmetical operators \verb|+|, \verb|-|,
+\verb|*|, \verb|/|, and \verb|^|.
 
-A derived unit may also be defined as a conversion factor from
-another unit for the same quantity.  Typically, this type of derived
-unit will have a definition \expr{} consisting of a base unit
-multipied by some constant number.  In this way, conversion factors
-between different systems of measurement may be defined.  Those
-conversion factors may be used for automatic unit conversion with the
-\key{in} operator (Section~\ref{in-op}).
+A derived unit may also be defined as a conversion factor from another
+unit.  Typically, this type of derived unit will have a definition
+\expr{} consisting of a base unit multipied by some constant number.
+In this way, conversion factors between different systems of
+measurement may be defined.  Those conversion factors may be used for
+automatic unit conversion with the \key{in} operator
+(Section~\ref{in-op}).
 
 An identifier that has been defined as a base unit may not be
 subsequently redefined as a derived unit; to do so is an error.
@@ -391,12 +328,12 @@ types of expressions are described below.  Expressions may contain
 whitespace, which is ignored, but they may not contain line breaks.
 
 \begin{figure}
+\centering%
 \begin{tabular}{|c|l|c|} \hline
 \bf Operator   & \bf Description     & \bf Associativity \\ \hline
 \verb|( )| & Grouping        & N/A  \\ \hline
 \id{}\verb|[ ]| & List subscript & left  \\ \hline
 \id{}\verb|( )| & Function call & left \\ \hline
-\verb|{ }| & Vector Literal & N/A \\ \hline
 \verb|[ ]| & List Literal   & N/A \\ \hline
 \verb|-|   & Unary minus     & right \\ \hline
 \verb|^|   & Exponentiation  & right \\ \hline
@@ -441,28 +378,24 @@ evaluated before other expressions.  Parentheses may be nested to any
 level (within the bounds of computer memory) and the inner-most
 parenthetical expression will be evaluated first.
 
-Arithmetic may be performed on numbers, vectors, and units.  All
-arithmetical operators are supported when the operands are both
-numbers.  All operations except exponentiation are supported between
-two vectors.  A vector may be multiplied or divided by a number, and a
-number may be multiplied by a vector, but a number may not be divided
-by a vector.  Units may be multiplied and divided with other units,
-numbers, and vectors, but may not be added or subtracted (see
-Section~\ref{combining-units}).  Units may be raised to a numerical
-exponent.  Finally, concatenation is supported for strings and lists
-using the binary \verb|+| operator.  Figure~\ref{binops} summarizes
-the supported binary operations.
+Arithmetic may be performed on numbers, and units.  All arithmetical
+operators are supported when the operands are both numbers.  Units may
+be multiplied and divided with other units and numbers, but may not be
+added or subtracted (see Section~\ref{combining-units}).  Units may be
+raised to a numerical exponent.  Finally, concatenation is supported
+for strings and lists using the binary \verb|+| operator.
+Figure~\ref{binops} summarizes the supported binary operations.
 
 \begin{figure}
-\begin{tabular}{|cl|l|l|l|l|l|} \hline
-        &         & \multicolumn{5}{c|}{Right Operand} \\
-        &         & Number           & Vector           & Unit             & String           & List \\
+\centering%
+\begin{tabular}{|cl|l|l|l|l|} \hline
+        &         & \multicolumn{4}{c|}{Right Operand} \\
+        &         & Number            & Unit             & String           & List \\
 \hline
-        & Number  & \verb|+ - * / ^| & \verb|*|         & \verb|* /|       &                  &                  \\
-Left    & Vector  & \verb|* /|       & \verb|+ - * /|   & \verb|* /|       &                  &                  \\
-Operand & Unit    & \verb|* / ^|     &                  & \verb|* /|       &                  &                  \\
-        & String  &                  &                  &                  & \verb|+|         &                  \\
-        & List    &                  &                  &                  &                  & \verb|+|         \\
+Left    & Number  & \verb|+ - * / ^|  & \verb|* /|       &                  &                  \\
+Operand & Unit    & \verb|* / ^|      & \verb|* /|       &                  &                  \\
+        & String  &                   &                  & \verb|+|         &                  \\
+        & List    &                   &                  &                  & \verb|+|         \\
 \hline
 \end{tabular}
 \caption{Permitted Binary Operations by Operand Type}
@@ -595,23 +528,10 @@ with units, and \expr{2} evaluates to units.  The \key{in} operator
 searches through the set of defined relationships among units and
 quantities to find the correct conversion factor, applies that
 conversion, and returns the result number or vector in the requested
-units.  It is an error if \expr{1} and \expr{2} do not have the same
-quantity, or if a valid conversion factor between the units of
-\expr{1} and the units of \expr{2} cannot be found.
+units.  It is an error if a valid conversion factor between the units
+of \expr{1} and the units of \expr{2} cannot be found.
 
 
-
-
-\subsection{Restricted Expressions}
-\label{restricted-expressions}
-
-Some definitions (Section~\ref{definitions}) refer to ``restricted
-expressions.''  These are expressions involving only numbers,
-identifiers, parentheses, and the arithmetical operators \verb|+|,
-\verb|-|, \verb|*|, \verb|/|, and \verb|^|.  Some restricted
-expressions are described as ``on'' a type, such as units or
-quantities.  In those cases, the restricted expression is futher
-limited to using identifiers only of that type.
 
 
 
@@ -634,8 +554,13 @@ The \textit{string} is interpreted as a path on the local filesystem,
 relative to the current working directory, to a file containing
 Physicalc source code.  That file is read and its contents are
 executed as if they had been included in the current program at the
-point of the \key{load} statement.  Any definitions in the loaded file
-will become part of the running program.
+point of the \key{load} statement.  
+
+The loaded file is evaluated in the same global context as the program
+that called \key{load}---any definitions in the loaded file will
+become part of the running program.  However, top-level variables
+created with \key{set} statements in the loaded program will
+\emph{not} be visible to the main program.
 
 If the file cannot be found or cannot be read, an error results.
 \key{load} is only allowed at the top-level of a program source file;
@@ -785,14 +710,12 @@ not be implemented with normal Physicalc code.
 
 \subsection{print()}
 
-The \key{print()} function takes a single argument, which may be any
-object, and prints it to the output stream, followed by a line break.
-Printing a string prints its contents without the enclosing \verb|"|
-characters.  Lists, vectors, units, and numbers are automatically
-converted to strings with the \verb|toString()| function before being
-printed.  Printing multiple objects with a single call to
-\verb|print()| requires converting them to strings and concatenating
-those strings.
+The \key{print()} function takes any number of arguments, which may be
+of any types, and print them to the output stream, followed by a line
+break.  Printing a string prints its contents without the enclosing
+\verb|"| characters.  Lists, units, and numbers are automatically
+converted to strings as with the \verb|toString()| function before being
+printed.
 
 \subsection{nprint()}
 
@@ -806,39 +729,22 @@ object, to a string.  If the argument is already a string, it is
 simply returned.  Other types of arguments are converted to a string
 that matches their literal syntax.
 
-\subsection{stripUnits()}
+\subsection{getNumber()}
 
-The \key{stripUnits()} function takes an argument of a number with
+The \key{getNumber()} function takes an argument of a number with
 units and removes all units, leaving just the bare number.  If a bare
 unit without any numbers is passed to the function, it returns the
 number one.
 
-\subsection{toPrecision()}
+\subsection{getUnit()}
 
-The \key{toPrecision()} function takes two arguments, a number
-\textit{n} and an integer \textit{i}, and rounds \textit{n} to have
-\textit{i} significant digits.  Rounding is performed using the
-unbiased ``round-to-even'' method.\cite{rounding} If the number
-includes units, those units are preserved in the result.
+The \key{getUnit()} function takes an argument of a number with
+units and removes the number, leaving just the units.
 
 \subsection{toInt()}
 
-The \key{toInt()} rounds its argument to the nearest integer, using
-the same ``round-to-even'' method as \key{toPrecision()}.  If the
-number includes units, those units are preserved in the result.
-
-\subsection{read()}
-
-The \key{read()} function takes no arguments.  It reads a single value
-from the input stream, ignoring all preceeding whitespace and
-continuing up to the first whitespace character.  The value is parsed
-as an expression of numbers and units and returned to the caller.
-
-\subsection{readline()}
-
-The \key{readline()} function, which takes no arguments, reads a line
-from the input stream up to the first linebreak character and returns
-it as a string.
+The \key{toInt()} truncates the decimal part of its argument, leaving
+an integer.
 
 \subsection{exit()}
 

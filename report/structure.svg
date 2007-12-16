@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="765"
+   height="990"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   version="1.0"
+   sodipodi:docbase="/home/stuart/plt/physicalc/svn5/report"
+   sodipodi:docname="structure.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path4252"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path4255"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.75858586"
+     inkscape:cx="382.5"
+     inkscape:cy="495"
+     inkscape:document-units="in"
+     inkscape:current-layer="layer1"
+     width="8.5in"
+     height="11in"
+     units="in"
+     inkscape:window-width="1390"
+     inkscape:window-height="971"
+     inkscape:window-x="0"
+     inkscape:window-y="25" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3144"
+       transform="translate(0,130)">
+      <rect
+         ry="14.954059"
+         y="144.2384"
+         x="90.476822"
+         height="45"
+         width="270"
+         id="rect2160"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         rx="14.954059" />
+      <text
+         id="text3136"
+         y="171.01987"
+         x="113.54967"
+         style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:16px"
+           y="171.01987"
+           x="113.54967"
+           id="tspan3138"
+           sodipodi:role="line">Lexer</tspan></text>
+      <text
+         id="text3140"
+         y="185.01987"
+         x="237.13907"
+         style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="185.01987"
+           x="237.13907"
+           id="tspan3142"
+           sodipodi:role="line">Changlong Jiang</tspan></text>
+    </g>
+    <g
+       id="g3198"
+       transform="translate(0,130)">
+      <rect
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect3159"
+         width="270"
+         height="45"
+         x="90.476822"
+         y="266.2384"
+         ry="14.954059"
+         rx="14.954059" />
+      <text
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         x="113.54967"
+         y="293.01987"
+         id="text3161"><tspan
+           sodipodi:role="line"
+           id="tspan3163"
+           x="113.54967"
+           y="293.01987"
+           style="font-size:16px">Parser</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         x="237.13907"
+         y="307.01987"
+         id="text3165"><tspan
+           sodipodi:role="line"
+           id="tspan3167"
+           x="237.13907"
+           y="307.01987">Stuart Sierra</tspan></text>
+    </g>
+    <rect
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3171"
+       width="270"
+       height="45"
+       x="90.476822"
+       y="510.2384"
+       ry="14.954059"
+       rx="14.954059" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="113.54967"
+       y="537.0199"
+       id="text3173"><tspan
+         sodipodi:role="line"
+         id="tspan3175"
+         x="113.54967"
+         y="537.0199"
+         style="font-size:16px">Tree Walker</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="237.13907"
+       y="551.0199"
+       id="text3177"><tspan
+         sodipodi:role="line"
+         id="tspan3179"
+         x="237.13907"
+         y="551.0199">Stuart Sierra</tspan></text>
+    <text
+       id="text3209"
+       y="653.0199"
+       x="113.54967"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         style="font-size:16px"
+         y="653.0199"
+         x="113.54967"
+         id="tspan3211"
+         sodipodi:role="line">Program Nodes</tspan></text>
+    <rect
+       ry="14.954059"
+       y="626.08459"
+       x="90.323051"
+       height="153.30756"
+       width="289.97644"
+       id="rect3233"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.94244736;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       rx="14.94" />
+    <rect
+       rx="14.94"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.94244736;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3235"
+       width="270.30756"
+       height="153.30756"
+       x="428.94556"
+       y="662.7998"
+       ry="14.954059" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="444.51657"
+       y="688.63574"
+       id="text3237"><tspan
+         sodipodi:role="line"
+         id="tspan3239"
+         x="444.51657"
+         y="688.63574"
+         style="font-size:16px">Data Objects</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="112.70199"
+       y="689.90729"
+       id="text3241"><tspan
+         sodipodi:role="line"
+         id="tspan3243"
+         x="112.70199"
+         y="689.90729">Statements</tspan><tspan
+         sodipodi:role="line"
+         x="112.70199"
+         y="707.40729"
+         id="tspan3245">Expressions</tspan><tspan
+         sodipodi:role="line"
+         x="112.70199"
+         y="724.90729"
+         id="tspan3247">Definitions</tspan><tspan
+         sodipodi:role="line"
+         x="112.70199"
+         y="742.40729"
+         id="tspan10339">Built-in Functions</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px"
+       x="590"
+       y="716"
+       id="text3249"><tspan
+         sodipodi:role="line"
+         id="tspan3251"
+         x="590"
+         y="716"
+         style="font-size:14px">Brian Foo</tspan></text>
+    <text
+       id="text3253"
+       y="723.90729"
+       x="444.702"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         id="tspan3259"
+         y="723.90729"
+         x="444.702"
+         sodipodi:role="line">Numbers</tspan><tspan
+         y="741.40729"
+         x="444.702"
+         sodipodi:role="line"
+         id="tspan3266">Units</tspan><tspan
+         y="758.90729"
+         x="444.702"
+         sodipodi:role="line"
+         id="tspan3268">Lists</tspan><tspan
+         y="776.40729"
+         x="444.702"
+         sodipodi:role="line"
+         id="tspan3270">Strings</tspan><tspan
+         y="793.90729"
+         x="444.702"
+         sodipodi:role="line"
+         id="tspan3272">Booleans</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="262"
+       y="667"
+       id="text3274"><tspan
+         sodipodi:role="line"
+         id="tspan3276"
+         x="262"
+         y="667">Stuart Sierra</tspan><tspan
+         sodipodi:role="line"
+         x="262"
+         y="684.5"
+         id="tspan8365">Brian Foo</tspan><tspan
+         sodipodi:role="line"
+         x="262"
+         y="702"
+         id="tspan8367">Changlong Jiang</tspan><tspan
+         sodipodi:role="line"
+         x="262"
+         y="719.5"
+         id="tspan8369">Ici Li</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       d="M 225.59871,319.8634 L 226,396"
+       id="path3278"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#g3144" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="230"
+       y="358"
+       id="text4447"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4449"
+         x="230"
+         y="358">Token Stream</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       d="M 225.29801,439.41225 L 225.29801,507.13576"
+       id="path4469"
+       inkscape:connector-type="polyline" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="229.36755"
+       y="476.92715"
+       id="text5440"><tspan
+         sodipodi:role="line"
+         id="tspan5442"
+         x="229.36755"
+         y="476.92715">Abstract Syntax Tree</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       d="M 225.29801,556.08444 L 225.96854,624.47848"
+       id="path5444"
+       inkscape:connector-type="polyline" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="228.68542"
+       y="590.2467"
+       id="text6417"><tspan
+         sodipodi:role="line"
+         id="tspan6419"
+         x="228.68542"
+         y="590.2467">Program Node Tree</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25000012;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 293.02153,781.41229 C 293.02153,781.41229 297.32538,820.32985 354.97559,819.54248 C 386.8912,820.25437 410.16392,799.3114 427.23181,785.67388"
+       id="path6421"
+       sodipodi:nodetypes="ccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="287.14734"
+       y="833.95856"
+       id="text8361"><tspan
+         sodipodi:role="line"
+         id="tspan8363"
+         x="287.14734"
+         y="833.95856">Create and manipulate</tspan></text>
+    <g
+       id="g8371"
+       transform="translate(0,12)">
+      <rect
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect8373"
+         width="270"
+         height="45"
+         x="90.476822"
+         y="144.2384"
+         ry="14.954059"
+         rx="14.954059" />
+      <text
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         x="113.54967"
+         y="171.01987"
+         id="text8375"><tspan
+           sodipodi:role="line"
+           id="tspan8377"
+           x="113.54967"
+           y="171.01987"
+           style="font-size:16px">Main / Interpreter</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         x="237.13907"
+         y="185.01987"
+         id="text8379"><tspan
+           sodipodi:role="line"
+           id="tspan8381"
+           x="237.13907"
+           y="185.01987">Stuart Sierra</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;marker-mid:none;marker-end:url(#Arrow1Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       d="M 225.42956,201.8634 L 225.28804,271.11467"
+       id="path8383"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#g8371" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="230.02649"
+       y="236.8212"
+       id="text9354"><tspan
+         sodipodi:role="line"
+         id="tspan9356"
+         x="230.02649"
+         y="236.8212">Character Stream</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 225.53642,81.337748 L 225.53642,153.89114"
+       id="path9358"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="231.27151"
+       y="116.80795"
+       id="text10329"><tspan
+         sodipodi:role="line"
+         id="tspan10331"
+         x="231.27151"
+         y="116.80795">Source Code File</tspan></text>
+    <path
+       sodipodi:nodetypes="cc"
+       id="path10333"
+       d="M 233.49668,781.39071 L 233.49668,901.1494"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="177.32449"
+       y="841.27155"
+       id="text10335"><tspan
+         sodipodi:role="line"
+         id="tspan10337"
+         x="177.32449"
+         y="841.27155">Output</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="497.19208"
+       y="218.98013"
+       id="text10359"><tspan
+         sodipodi:role="line"
+         id="tspan10361"
+         x="497.19208"
+         y="218.98013"
+         style="font-size:24px;font-style:normal">Interpreter</tspan><tspan
+         sodipodi:role="line"
+         x="497.19208"
+         y="248.98013"
+         id="tspan10363"
+         style="font-size:24px;font-style:normal">Structure</tspan></text>
+    <rect
+       rx="14.954059"
+       ry="14.954059"
+       y="540.2384"
+       x="432.47681"
+       height="45"
+       width="270"
+       id="rect2240"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="445.27151"
+       y="562.43707"
+       id="text2242"><tspan
+         sodipodi:role="line"
+         id="tspan2244"
+         x="445.27151"
+         y="562.43707"
+         style="font-style:normal">Symbol Tables</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="588.33112"
+       y="579.61591"
+       id="text2246"><tspan
+         sodipodi:role="line"
+         id="tspan2248"
+         x="588.33112"
+         y="579.61591">Stuart Sierra</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="M 380.15184,631.17375 L 441.34702,587.59536"
+       id="path2250" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 504.39659,586.66817 C 504.39659,586.97723 504.39659,587.2863 504.39659,586.66817 z "
+       id="path3224" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:italic;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="412.45822"
+       y="620.62976"
+       id="text3226"><tspan
+         sodipodi:role="line"
+         id="tspan3228"
+         x="412.45822"
+         y="620.62976">Create and manipulate</tspan></text>
+  </g>
+</svg>
