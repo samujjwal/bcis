@@ -1,3 +1,4 @@
+
 # Calculate Factorial
 # This program is testing fucntion and logical operation
 # Test Program written by Changlong Jiang cj2214@columbia.edu
@@ -32,3 +33,6 @@ function findbiggest(x,y,z)
      print("y is smaller than x")
    done
 done
+
+set x = [7,5,3]
+findbiggest(x[0],x[1],x[2])
