@@ -1,0 +1,59 @@
+\chapter{Tests}
+
+The Physicalc test suite consists of three parts: 1)~interactive
+programs used during development; 2)~unit tests implemented with
+JUnit; and 3)~integration tests that test the whole interpreter,
+implemented with Bash shell scripts.
+
+\section{Interactive Testing During Development}
+
+Several executable Java programs assisted in developing and debugging
+the interpreter.  These files remain in the source tree as
+\texttt{src/Try*.java}.
+
+\textbf{TryLexer} runs the Physicalc lexer on a string, given as a
+command line argument, and prints out the tokens, one per line.
+
+\textbf{TryParser} runs the lexer and parser on a string, given as a
+command line argument, and prints out the abstract syntax tree in a
+Lisp-like syntax.
+
+\textbf{ParseFile} acts like TryParser, but takes a file name as an
+argument and parses the file.
+
+\textbf{TryDatum} executes various arithmetical operations on the
+Datum sub-classes and prints the results.
+
+TryDatum was written by Brian Foo; TryLexer, TryParser, and ParseFile
+were written by Stuart Sierra.
+
+
+
+\section{Unit Tests}
+
+To test the operation of simple expressions in the interpreter, tests
+defined using JUnit\cite{junit} are defined in
+\texttt{test/InterpreterTest.java}.  This class defines an
+``assertPrints'' method which calls the interpreter on a string of
+source code and checks that it produces a certain output.  Due to
+Java's lack of support for multi-line strings in source code, this
+mode of testing is awkward for longer programs.  The Makefile target
+\texttt{test} compiles the interpreter and runs the unit tests.  The
+unit tests framework was written by Stuart Sierra and tests were added
+by Changlong Jiang.
+
+
+
+\section{Integration Tests}
+
+Tests of the complete behavior of the interpreter are implemented with
+the \texttt{runexamples} shell script.  This script looks for files
+named \texttt{*.in} and \texttt{*.out} in the directory
+\texttt{test/examples}.  The ``in'' files are Physicalc source code
+containing one or more ``print'' statements.  The corresponding
+``out'' files contain the text that the program should print.  The
+\texttt{runexamples} script runs the interpreter on each ``in'' file
+and compares its output with its ``out'' file, reporting how they
+differ.  The \texttt{runexamples} script was written by Stuart Sierra;
+test programs were contributed by all team members.  The example files
+are included in the source code section at the end of this chapter.
