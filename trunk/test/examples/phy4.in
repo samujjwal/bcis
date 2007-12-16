@@ -1,3 +1,4 @@
+
 #This is for Calculate the radius of orbit of the Moon
 #Universal Gravitational consatant G=6.67*10^(-11)*Newton*meter^2/kilogram^2
 #Earth Mass is 5.98E24 * kilogram
@@ -14,7 +15,8 @@ set x = 29.53 * day
 nprint("seconds:",x)
 print()
 #print(x in hour)
-print(3600*24*29.53*second in hour)
+set y = 29.53 * 24 * 3600*second
+print("hours:",y in hour)
 
 set Pi = 3.1415926
 set G = 6.67E-11 * newton * (1*meter ^ 2) /(1*kilogram^2)
