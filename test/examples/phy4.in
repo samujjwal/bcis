@@ -10,8 +10,12 @@ load "si.phy"
 
 #set variable
 set x = 29.53 * day
+
 nprint("seconds:",x)
 print()
+#print(x in hour)
+print(3600*24*29.53*second in hour)
+
 set Pi = 3.1415926
 set G = 6.67E-11 * newton * (1*meter ^ 2) /(1*kilogram^2)
 
@@ -20,4 +24,3 @@ set r = ((x*(1*G*(1*masse))^(1/2))/(2*Pi))^(2/3)
 print(r)
 print("Number is:", getNumber(r))
 print("Unit is:",getUnit(r))
-
