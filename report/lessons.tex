@@ -2,9 +2,75 @@
 
 \section{Brian Foo}
 
+The lessons learned from this project were things you can't really
+learn enough of---clear communication with team members, project
+management, and work flow.  More specifically, I learned the
+importance of setting clear goals and responsibilities of each team
+member in order to reach a common end.  On a more technical note, I
+learned the importance of taking my time to solve a design problem
+before diving into it head-first.  This would be exponentially
+rewarded in the future when you are too deep into the project to go
+back.
+
+
 \section{Changlong Jiang}
+
+\begin{enumerate}
+
+\item For the lexer part: I should fully understand the language
+  grammar. The good easy-to-understand, easy-to-use grammar is the
+  important thing for the language design. During the project, we
+  modified our grammar several times to make the whole language
+  concise and easy to use.
+
+\item For the node implementation: I am not good at the Java
+  languagae. I only finished several simple classes. I should improve
+  my skills in Java.
+
+\item For testing: I spent a lot of time in testing, but still some
+  scopes I did not test. Since the relationship between each node is
+  more complex, I should leave more time to do testing. For every bug
+  found in each test I always gave out the detailed informaton and
+  notified other team members.  If I can understand other members'
+  work, I will be able to fix them during my testing, which will save
+  the whole team's time.
+
+\item Need to add detailed comments in every source file, which will
+  be easier for others to understand.
+
+\end{enumerate}
+
 
 \section{Ici Li}
 
+
+
 \section{Stuart Sierra}
 
+Managing coders is much harder than writing code.  It's a challenge
+trying to figure out what people's strengths are and how to use them
+effectively.  On the other hand, having to explain my design so that
+others could implement it forced me to think more carefully about the
+implementation ahead of time, and probably resulted in a better design
+than I would have come up with had I just started banging out code on
+my own.  Perhaps I should have enforced coding standards and unit
+testing more aggressively---this might have left us with fewer bugs to
+fix---but I was reluctant to play a dictator, even a benevolent one,
+with a group I had just met.  I understand now why ``successful''
+programming languages usually have one stubborn individual or large
+coporation calling the shots.
+
+I discovered why so few languages use significant whitespace---it's
+really annoying to implement.  Even though our language only used line
+breaks, not spaces or tabs, as significant characters, it was still
+tricky to get all the parser rules to work correctly.  I had to punt
+on the issue of multi-line expressions by forbidding them altogether.
+
+I made a choice early on that Physicalc would perform decimal-accurate
+arithmetic, without considering the implications.  Java's BigDecimal
+class does the job, but the results were not always what I intended.
+Decimal-accurate arithmetic is a nice idea, but it requires decisions
+about how to handle precision, rounding, and exponents.  We never had
+a clear plan for dealing with these issues, so the final
+implementation represents a series of compromises rather than any
+sound mathematical theory.

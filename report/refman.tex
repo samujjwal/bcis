@@ -180,7 +180,7 @@ and the number zero are both ``true'' in a boolean context.
 \label{definitions}
 
 A typical Physicalc program consists primarily of definitions.  There
-are five types of definitions: quantities, units, constants,
+are four types of definitions: units, constants,
 functions, and aliases.  
 
 A definition permanently associates some identifier with an object.
@@ -189,8 +189,7 @@ not be nested.  Defintions are present in the running program from the
 point at which they are defined until the program terminates.  Defined
 identifiers have global scope, and may not be overridden by local
 variables with the same name.  An identifier, once defined, may be
-redefined, but this will cause the interpreter to print a warning
-message.
+redefined.
 
 \subsection{Note on Definitions Using Expressions}
 
@@ -232,8 +231,7 @@ other units.
 \begin{syntax}
 \key{unit} \id{} \key{=} \expr{} 
 \end{syntax}
-where \expr{} is a restricted expression on previously defined units.
-The expression may only consist of previously defined units, numbers,
+where \expr{} may only consist of previously defined units, numbers,
 parentheses, and the arithmetical operators \verb|+|, \verb|-|,
 \verb|*|, \verb|/|, and \verb|^|.
 
@@ -367,9 +365,9 @@ serves no purpose that the authors can imagine.
 
 Binary operators take one argument on the left and one argument on the
 right. The caret operator (\verb|^|) performs exponentiation, raising
-its left argument to the value of its right argument. The operator
-\verb|^| has highest precedence, followed by unary \verb|-|, followed
-by binary \verb|*| and \verb|/|, followed by binary \verb|+| and
+its left argument to the value of its right argument. The unary \verb|-| 
+has highest precedence, followed by \verb|^|, followed
+by \verb|*| and \verb|/|, followed by binary \verb|+| and
 \verb|-|.
 
 Parentheses are used for grouping expressions and specifying
@@ -378,7 +376,7 @@ evaluated before other expressions.  Parentheses may be nested to any
 level (within the bounds of computer memory) and the inner-most
 parenthetical expression will be evaluated first.
 
-Arithmetic may be performed on numbers, and units.  All arithmetical
+Arithmetic may be performed on numbers and units.  All arithmetical
 operators are supported when the operands are both numbers.  Units may
 be multiplied and divided with other units and numbers, but may not be
 added or subtracted (see Section~\ref{combining-units}).  Units may be
@@ -451,9 +449,8 @@ the element \verb|d| could be referenced as \verb|x[2][1]|.
 
 Built-in or user-defined functions are called with the name of the
 function, an opening parenthesis, an argument list, and a closing
-parenthesis.  No space is permitted between the function name and the
-opening parenthesis.  The parentheses are mandatory even if the
-argument list is empty.
+parenthesis.  The parentheses are mandatory even if the argument list
+is empty.
 
 
 \begin{syntax}
@@ -462,7 +459,10 @@ argument list is empty.
 
 The argument list is a sequence of expressions, separated by commas.
 The number of arguments in the argument list of the function call must
-match the number of arguments in the function definition.
+match the number of arguments in the function definition.  Some
+built-in functions, such as \key{print()} (Section~\ref{builtins}),
+take any number of arguments, but user-defined functions always have a
+fixed number of arguments.
 
 When a function is called, the expressions in the argument list are
 evaluated.  A new local scope is created, and the values of the
@@ -479,9 +479,8 @@ These operators all return a boolean value.
 
 Any two objects may be compared with the equality operator, \verb|=|,
 which returns true if its left operand is of the same type and has the
-same value as its right operand, and false otherwise.  Two vectors are
-equal if both of their components are equal.  Two units are equal if
-they are the same unit.
+same value as its right operand, and false otherwise.  Two units are
+equal only if they are the same unit.
 
 The not-equals operator, \verb|!=|, returns true if its operands are
 not equal under the definition of equality used for \verb|=|, and
@@ -523,13 +522,13 @@ one set of units to another.
 \begin{syntax}
 \expr{1} \key{in} \expr{2}
 \end{syntax}
-where \expr{1} is an expression that evaluates to a number or vector
-with units, and \expr{2} evaluates to units.  The \key{in} operator
-searches through the set of defined relationships among units and
-quantities to find the correct conversion factor, applies that
-conversion, and returns the result number or vector in the requested
-units.  It is an error if a valid conversion factor between the units
-of \expr{1} and the units of \expr{2} cannot be found.
+where \expr{1} is an expression that evaluates to a number with units,
+and \expr{2} evaluates to units.  The \key{in} operator searches
+through the set of defined relationships among units and quantities to
+find the correct conversion factor, applies that conversion, and
+returns the result number in the requested units.  It is an error if a
+valid conversion factor between the units of \expr{1} and the units of
+\expr{2} cannot be found.
 
 
 
@@ -548,13 +547,14 @@ discarded.
 
 The special \key{load} statement reads in additional source files.
 \begin{syntax}
-\key{load} \textit{string}
+\key{load} \key{"}\textit{filename}\key{"}
 \end{syntax}
-The \textit{string} is interpreted as a path on the local filesystem,
-relative to the current working directory, to a file containing
-Physicalc source code.  That file is read and its contents are
-executed as if they had been included in the current program at the
-point of the \key{load} statement.  
+The \textit{filename} is interpreted as a path on the local
+filesystem, relative to the current working directory of the
+interpreter process, to a file containing Physicalc source code.  That
+file is read and its contents are executed as if they had been
+included in the current program at the point of the \key{load}
+statement.
 
 The loaded file is evaluated in the same global context as the program
 that called \key{load}---any definitions in the loaded file will
@@ -577,11 +577,13 @@ An assignment statement evaluates \expr{}, then binds its value to the
 local variable named \id{}.  If \id{} is currently undefined, a new
 local variable is created with scope corresponding to the current
 function body.  It is an error if \id{} is already defined as a global
-object, i.e.\ a measure, unit, function, or constant.
+object, i.e.\ a unit, function, or constant.
 
 Assignment statements may be used outside of a function body, but
 doing so does not create a global variable.  Global variables are not
-supported, only global constants.
+supported, only global constants.  The top-level of a Physicalc
+program has its own scope for local variables, as if it were in the
+body of a function.
 
 
 \subsection{Return}
@@ -600,7 +602,7 @@ evaluated and its value is returned as the value of the function.
 
 \subsection{If/Then/Else}
 
-An if/then/else block begins with the keyword \key{if}, followed by an
+An if/then/else block begins with the keyword \key{if}, followed by a
 boolean expression, followed by the keyword \key{then} and a
 terminator (line break or semicolon).  After \key{then} comes a
 sequence of one or more statements, then any number of \key{elsif}
@@ -649,12 +651,11 @@ expressions and statement blocks are skipped.
 \end{syntax}
 
 While loops evaluate a group of statements as long as a given
-conditional expression remains true.  The conditional expression is
+conditional expression remains true.  The conditional \expr{} is
 evaluated before the statement body on every iteration of the loop.
-If it returns true, the statements are executed.  The first time it
+If it returns true, the \statements{} are executed.  The first time \expr{}
 returns false, control passes to the statement following the
-\key{done} keyword.
-
+\key{done} keyword.  
 
 \subsection{For Loops}
 
