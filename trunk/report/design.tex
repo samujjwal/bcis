@@ -15,14 +15,15 @@ represents a single program structure such as a statement or a
 function call.  Every node class provides an ``eval'' method which is
 responsible for executing the behavior of that node.
 
-The root of a tree is an instance of the Program class.  The
+The root of the tree is an instance of the Program class.  The
 interpreter calls ``eval'' on the Program, which calls ``eval'' on its
 sub-nodes, and so on, recursively, so the node tree executes itself.
 The symbol tables are carried through the tree as arguments to
 ``eval.''  Because Physicalc does not support nested scopes, there are
 never more than two symbol tables, one global and one local, in effect
 at any given time.  The node structure was designed by Stuart Sierra,
-and the sub-classes were implemented by Ici Li and Changlong Jiang.
+and the sub-classes were implemented by Brian Foo, Changlong Jiang,
+and Ici Li.
 
 The data objects manipulated by a Physicalc program---numbers, units,
 lists, and strings---are all sub-classes of the Datum class.  Datum

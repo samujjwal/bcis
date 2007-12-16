@@ -1,0 +1,273 @@
+\chapter{Example Programs}
+
+\section{Example 1: Calculating Factorials}
+
+This program uses \key{for}, \key{while}, and \key{if} statements to
+calculate factorials.
+
+\subsection{Program Source}
+
+\begin{verbatim}
+# Calculate Factorial
+# This program is testing Looping function
+# Test Program written by Changlong Jiang cj2214@columbia.edu
+# Date 12/15/2007 
+
+# use For Loops
+set y=1
+for x from 1 to 10 step 1 do
+set y = y*x
+done
+
+print("use For Loop")
+print(y)  
+
+# use While Loops
+set y=1
+set z=1
+while y <= 10 do
+set z = z * y
+set y = y+1
+done
+
+print("use While Loop")
+print(z) 
+
+#use IF
+print("use While Loop and If")
+set y=1
+set z=1
+while y <= 10 do
+set z = z * y
+  if y>9 then
+    print("y=",y," ","greater than 9, stop")
+    return y;
+  elsif y>6 then
+    print("y=",y," ","greater than 6, continue")
+    print("result=",z)
+  else
+    print("y=",y," ","less and equal than 6,continue")
+    print("result=",z)
+  done
+set y = y+1
+done 
+\end{verbatim}
+
+
+
+\subsection{Output}
+
+\begin{verbatim}
+use For Loop
+3628800.0
+
+use While Loop
+3628800.0
+
+use While Loop and If
+y=1.0 less and equal than 6,continue
+result=1.0
+y=2.0 less and equal than 6,continue
+result=2.0
+y=3.0 less and equal than 6,continue
+result=6.0
+y=4.0 less and equal than 6,continue
+result=24.0
+y=5.0 less and equal than 6,continue
+result=120.0
+y=6.0 less and equal than 6,continue
+result=720.0
+y=7.0 greater than 6, continue
+result=5040.0
+y=8.0 greater than 6, continue
+result=40320.0
+y=9.0 greater than 6, continue
+result=362880.0
+y=10.0 greater than 9, stop 
+\end{verbatim}
+
+
+
+
+\section{Example 2: Factorials and Logical Comparisons}
+
+\subsection{Program Source}
+
+\begin{verbatim}
+# Calculate Factorial
+# This program is testing function and logical operation
+# Test Program written by Changlong Jiang cj2214@columbia.edu
+# Date 12/15/2007 
+
+#this is function for factorial number
+function factorial(x)
+  print("x=",x)
+  set y=1
+  set z=1
+  while y <= x do
+    set z = z * y
+    set y = y+1
+  done
+  nprint(x,"!=")
+  print(z)
+done 
+
+print("use function to calculate factorial")
+factorial(6) 
+
+# this is function to find the biggest number
+function findbiggest(x,y,z)
+   print("x=",x," ","y=",y," ","z=",z)
+   if x>=y and y>=z then
+     print("x is biggest")
+   done
+   if x>=y or y>=z then
+     print("x is not smallest")
+   done
+   if not(y>=x) then
+     print("y is smaller than x")
+   done
+done 
+
+set x = [7,5,3]
+findbiggest(x[0],x[1],x[2])
+\end{verbatim}
+
+\subsection{Output}
+
+\begin{verbatim}
+use function to calculate factorial
+x=6.0
+6.0!=720.0
+x=7.0 y=5.0 z=3.0
+x is biggest
+x is not smallest
+y is smaller than x 
+\end{verbatim}
+
+
+
+
+
+\section{Example 3: Calculating the Mass of the Sun}
+
+This physics program was published by the University of
+Oregon\cite{sunmass}: ``Estimate the mass of the sun given the Earth's
+distance from the sun \(r = 1.50 \times 10^{11}m\).  Assume the Earth
+follows a circular orbit instead of an elliptical one.  \(G = 6.67
+\times 10^{-11} Nm^{2}/kg^{2}\).''
+
+With the solution:
+\begin{eqnarray*}
+F_{g} & = & F_{c} = ma_{c} = m_{earth}r\omega^{2} = Gm_{earth}m_{sun}/r^{2} \\
+m_{sun} & = & r^{3}\omega^{2}/G \\
+365 days & = & 3.15 \times 10^{7}s \\
+1 \mathrm{rotation} & = & 2 \pi rad \\
+\omega & = & 2 \pi rad / 3.15 \times 10^{7}s = 1.99 \times 10^{-7} rad/s \\
+m_{sun} & = & (1.50 \times 10^{11}m)^{3}(1.99 \times 10^{-7} rad/s)^{2}/6.67 \times 10^{-11} Nm^{2}/kg^{2} \\
+m_{sun} & = & 2.01 \times 10^{30}kg
+\end{eqnarray*}
+
+
+\subsection{Program Source}
+
+\begin{verbatim}
+# This is for Sun Mass Calculation
+# Estimate the mass of the sun given the Earth's distance from the sun
+# r=1.50*10^11 meter
+# Assume the Earch follows a circular orbit
+# Universal Gravitational consatant G=6.67*10^(-11)*Newton*meter^2/kilogram^2
+# source from http://zebu.uoregon.edu/~probs/mech/grav
+# test program written by Changlong Jiang : cj2214@columbia.edu
+# Date 12/15/2007 
+
+# define the unit
+unit second
+unit minute = 60 * second
+unit hour = 60 * minute
+unit day = 24 * hour
+unit year = 365 * day 
+unit meter
+alias m for meter
+unit kilogram
+unit newton = m * kilogram / second ^ 2 
+
+# define the variable and calculate
+set x = 1 * year
+set Pi = 3.1415926
+set omiga = 2 * Pi/x
+set G = 6.67E-11 * newton * (1*m ^2) / (1 *kilogram ^ 2)
+set r = 1.50E11 * m
+set mass = (1*r^3) * (1*omiga^2)/G 
+
+#print result
+print(mass) 
+\end{verbatim}
+
+\subsection{Output}
+
+\begin{verbatim}
+2.0086045922465554E30*kilogram 
+\end{verbatim}
+
+
+
+\section{Example 4: Calculating the Radius of the Moon's Orbit}
+
+This physics problem was published by the Unversity of
+Oregon\cite{moonorbit}: ``The orbital period (T) of the Moon around
+the Earth is 29.53 days. Calculate the radius of orbit of the Moon
+assuming the orbit is circular. You are given the Universal
+Gravitation Constant, \(G = 6.67 \times 10^{-11} Nm^{2}/kg^{2}\), and
+the mass of the Earth, \(M_{e} = 5.98 \times 10^{24} kg\).''
+
+The solution is just lengthy enough to make typing it out in \LaTeX{}
+a pain, so take our word (or the University of Oregon's) for it that
+it works out to \(r = 4.04 \times 10^{8} m = 404,000 km\).
+
+
+\subsection{Program Source}
+
+\begin{verbatim}
+#This is for Calculate the radius of orbit of the Moon
+#Universal Gravitational consatant G=6.67*10^(-11)*Newton*meter^2/kilogram^2
+#Earth Mass is 5.98E24 * kilogram
+#Source from http://zebu.uoregon.edu/~probs/mech/grav/distmoon
+#Test Program written by Changlong Jiang : cj2214@columbia.edu
+#Date 12/15/2007 
+
+#load the pre-defined unit
+load "si.phy" 
+
+#set variable
+set x = 29.53 * day 
+nprint("seconds:",x)
+print()
+
+#print(x in hour)
+set y = 29.53 * 24 * 3600*second
+print("Number is:", getNumber(y))
+print("Unit is:",getUnit(y))
+print("hours:",y in hour) 
+
+set Pi = 3.1415926
+set G = 6.67E-11 * newton * (1*meter ^ 2) /(1*kilogram^2) 
+set masse = 5.98E24 * kilogram
+set r = ((x*(1*G*(1*masse))^(1/2))/(2*Pi))^(2/3)
+print(r)
+print("Number is:", getNumber(r))
+print("Unit is:",getUnit(r))) 
+\end{verbatim} 
+
+\subsection{Output}
+
+\begin{verbatim}
+seconds:2551392.0*second
+Number is:2551392.0
+Unit is:second
+hours:708.72*hour
+4.036521081066972E8*meter^1.0
+Number is:4.036521081066972E8
+Unit is:meter^1.0
+\end{verbatim}
+
