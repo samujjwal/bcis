@@ -23,13 +23,6 @@ make
 
 for infile in test/examples/phy*.in
 do
-    outfile=`echo "$infile" | sed -e 's/\.in/.out/'`
-    actual="$outfile.actual"
     echo "Testing $infile"
-    java physicalc.Main $infile > $actual
-    if diff -bu $outfile $actual
-    then
-	echo "OK"
-	rm $actual
-    fi
+   java physicalc.Main $infile 
 done
