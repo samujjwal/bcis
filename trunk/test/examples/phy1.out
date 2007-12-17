@@ -1,1 +1,24 @@
-for testing factorial
+use For Loop
+3628800.0
+use While Loop
+3628800.0
+use While Loop and If
+y=1.0 less and equal than 6,continue
+result=1.0
+y=2.0 less and equal than 6,continue
+result=2.0
+y=3.0 less and equal than 6,continue
+result=6.0
+y=4.0 less and equal than 6,continue
+result=24.0
+y=5.0 less and equal than 6,continue
+result=120.0
+y=6.0 less and equal than 6,continue
+result=720.0
+y=7.0 greater than 6, continue
+result=5040.0
+y=8.0 greater than 6, continue
+result=40320.0
+y=9.0 greater than 6, continue
+result=362880.0
+y=10.0 greater than 9, stop
