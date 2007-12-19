@@ -3,7 +3,10 @@ package physicalc;
 import java.lang.*;
 
 /** TypeError is raised when an operation cannot be performed because
- * the types of its arguments are incompatible. */
+ * the types of its arguments are incompatible.
+ *
+ * @author Brian Foo, bwf2101@columia.edu
+ */
 public class TypeError extends InterpreterError {
 
     String errorMessage;

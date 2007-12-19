@@ -8,6 +8,7 @@ import antlr.collections.AST;
 /** Load implements the "load" statement.
  * 
  * @see Node
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class Load extends Node {
 

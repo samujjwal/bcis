@@ -1,1 +1,117 @@
 \chapter{Tutorial}
+
+Physicalc is a language that is designed as a tool for students to
+learn physics, chemistry, and other sciences that involve the use of
+scientific units. Physicalc not only enables users to quickly convert
+between different metric systems, but allows for the automatic
+simplification of quantities of units that are multiplied or
+divided. 
+
+As an education tool, Physicalc is quite useful for a student or
+educator that has a solid grasp of algebra. Although existing software
+tools such as Mathematica and \acro{matlab}\cite{matlab} have algebraic functionality, they
+do not have tools that can handle physical constants and unit
+conversions. There are dozens of frameworks out there and most of them
+have been around much longer than Physicalc. Why should you care about
+yet another framework?
+
+Physicalc is a simple language, and as such, requires a simple
+explanation for its mechanics. In creating Physicalc, we drew
+inspiration from the existing syntax for other languages, such as
+Basic and Perl. The basic constructs of the programming language are
+very similar to other languages. How does Physicalc achieve
+efficiency?
+
+Part of the answer lies in Java, the language in which Physicalc is
+written. Java offers a wealth of resources and is particulary strong
+in the area of tokenizing and parsing. These tools allow Physicalc to
+quickly break down functions, units, and conditional statements very
+efficiently. Many things that are very simple to do in Physicalc are
+not even possible in most other languages. Physicalc takes full
+advantage of this. The rest of the answer is in two of Physicalc's
+guiding principles: less software and convention over configuration.
+
+Less software means you write fewer lines of code to implement your
+physics or chemistry application. Keeping your code small means faster
+development and fewer bugs, which makes your code easier to
+understand, maintain, and enhance. Very shortly, you will see how
+Physicalc cuts your code burden.
+
+Convention over configuration means an end to verbose XML header files
+or lengthy libraries. Instead of configuration files, a Physicalc
+program uses a few simple programming conventions that allow it to
+figure out everything through simplicity in the form of unit
+definitions, and function calls.
+
+The following program prints ``Hello world'' followed by a line
+break. Using the \key{nprint()} command will print the same output without a
+line break.
+
+\begin{verbatim}
+print("Hello world")
+\end{verbatim}
+
+In physicalc, every command is on its own line. The simple \key{set}
+command stores a numeric value into a variable. In the following
+example, the value 1 is stored into variables $x$ and $y$. The
+next portion of the code performs operations under the condition that
+$y$ remains less than or equal to 10. The product of $z$ and $y$ is
+stored into the variable z, overwriting the previous value, and the
+value of $y + 1$ is stored into variable $y$. In the loop, $y$ converges
+towards 10, so the loop will not be infinite. The \key{done} statement
+indicates the loop's endpoint, and must be placed after every
+conditional statement and loop.
+
+\begin{verbatim}
+set y=1
+set z=1
+while y <= 10 do
+  set z = z * y
+  set y = y+1
+done
+\end{verbatim}
+
+The first line in the following program is a comment. Comments are not
+read by the computer, and are used for human reference only. The
+following program contains a function. A function is a subroutine that
+is called by the computer to perform a small task. A function takes in
+what is called a parameter. In this case, the parameter that is
+accepted by function \key{test} is the variable $x$. After the function is
+defined, \key{test} is called by the program, passing in a value of 6
+as the $x$ parameter. 6 is then fed into \key{test}, and is output by
+function \key{test}.
+
+\begin{verbatim}
+#this is a function
+function test(x)
+  print("x contains ", x)
+  print(x)
+done
+
+print("use function to print x's contents")
+test(6)
+\end{verbatim}
+
+ 
+
+Perhaps what Physicalc is most useful for is defining physical
+units. Anyone who has taken an introductory Physics or Chemistry
+course understands the difficulties and complexities that are
+associated with units and physical constants. Physicalc allows you to
+define whatever constants you need to perform a certain
+calculation. Each such definition is signified by the \key{unit} command
+prefix. Starting with the most basic unit definitions first,
+consecutive unit definitions can add complexities to physics
+programs. In the following program, \key{second} is defined as a base unit,
+and a \key{minute} is defined as 60 seconds. When the \key{print()} function is
+called, Physicalc will print the contents of minute in simplest
+terms. In this case, \key{print} will display \key{60*second}.
+ 
+
+\begin{verbatim}
+# define the unit
+unit second
+unit minute = 60 * second
+
+print(minute)
+\end{verbatim}

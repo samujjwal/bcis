@@ -1,5 +1,8 @@
 package physicalc;
 
+/**
+ * @author Stuart Sierra, ss2806@columbia.edu
+ */
 public class PrintFunction extends Function {
 
     public PrintFunction() { ; }

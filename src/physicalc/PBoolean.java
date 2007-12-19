@@ -2,6 +2,9 @@ package physicalc;
 
 import java.lang.*;
 
+/**
+ * @author Brian Foo, bwf2101@columia.edu
+ */
 public class PBoolean extends Datum {
 
     protected Boolean boolValue;

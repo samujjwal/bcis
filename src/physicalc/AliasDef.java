@@ -1,5 +1,7 @@
 package physicalc;
 
+/** @author Ici Li, il2117@columbia.edu
+ */
 public class AliasDef extends Def {
 
     private String newSymb;

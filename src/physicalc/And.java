@@ -3,6 +3,7 @@ package physicalc;
 /** And is a node implementing the "and" logical operator.
  *
  * @see Node
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class And extends Logical  {
     private Expr left;

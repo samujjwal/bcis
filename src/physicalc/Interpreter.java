@@ -11,6 +11,8 @@ import antlr.collections.AST;
  *
  * To use this class, create an instance of it and call "eval",
  * passing in a stream for the code you want to run.
+ *
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class Interpreter {
 

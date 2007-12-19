@@ -4,6 +4,7 @@ package physicalc;
  * the numeric negative of its argument.
  *
  * @see Node
+ * @author Ici Li, il2117@columbia.edu
  */
 public class Unary extends Op {
     private Expr op;

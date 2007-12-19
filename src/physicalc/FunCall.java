@@ -7,6 +7,7 @@ import java.util.*;
  *
  * @see Node
  * @see Function
+ * @author Brian Foo, bwf2101@columia.edu
  */
 public class FunCall extends Expr {
 

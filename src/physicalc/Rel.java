@@ -6,6 +6,7 @@ import java.lang.String;
  * equals and not-equals.
  *
  * @see Node
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class Rel extends Logical {
     private Expr left;

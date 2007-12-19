@@ -26,6 +26,7 @@ import physicalc.*;
  * the number of the token type, which you can find in the
  * ANTLR-generated file src/physicalc/PhysiLexerTokenTypes.txt .
  *
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class TryLexer {
     public static void main(String [] args) {

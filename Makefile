@@ -1,3 +1,6 @@
+# Makefile for Physicalc
+# By Stuart Sierra, ss2806@columbia.edu
+
 # Path to the Java runtime interpreter
 JAVA = java
 

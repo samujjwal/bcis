@@ -1,5 +1,6 @@
 package physicalc;
 
+/** @author Ici Li, il2117@columbia.edu */
 public class ExitFunction extends Function {
 
     public ExitFunction() { ; }

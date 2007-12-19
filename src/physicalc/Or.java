@@ -3,6 +3,7 @@ package physicalc;
 /** Or is a node implementing the "or" logical operator.
  *
  * @see Node
+ * @author Ici Li, il2117@columbia.edu
  */
 public class Or extends Expr {
     private Expr left;

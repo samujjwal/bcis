@@ -3,7 +3,9 @@ package physicalc;
 import java.lang.*;
 
 /** PString is the string data class which is
-	basically a front for java's String class */
+	basically a front for java's String class 
+* @author Brian Foo, bwf2101@columia.edu 
+*/
 public class PString extends Datum  {
 
 	protected String sValue;

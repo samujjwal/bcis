@@ -3,6 +3,9 @@ package physicalc;
 import java.io.*;
 import java.lang.String;
 
+/** Main executable class
+ * @author Stuart Sierra, ss2806@columbia.edu
+*/
 class Main {
 
     public static void main(String[] args) {

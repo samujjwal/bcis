@@ -1,5 +1,9 @@
 package physicalc;
 
+/** "break" statement
+ *
+ * @author Stuart Sierra, ss2806@columbia.edu
+ */
 public class Break extends Stmt {
 
     public Break() {

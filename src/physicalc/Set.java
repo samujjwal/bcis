@@ -2,6 +2,9 @@ package physicalc;
 
 import java.lang.String;
 
+/**
+ * @author Stuart Sierra, ss2806@columbia.edu
+ */
 public class Set extends Stmt {
 
     LValue lvalue;

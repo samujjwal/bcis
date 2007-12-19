@@ -7,6 +7,8 @@ package physicalc;
  * This is an abuse of the Java exception mechanism, but it's the
  * easiest way to unwind the stack, since Java does not provide a
  * general-purpose condition system like Common Lisp.
+ *
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public abstract class ControlSignal extends RuntimeException {
 }

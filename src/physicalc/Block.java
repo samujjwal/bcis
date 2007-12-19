@@ -8,6 +8,8 @@ import java.util.List;
  *
  * Evaluating a block evaluates all its sub-nodes in order, and
  * returns the value of the last node.
+ *
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class Block extends Stmt {
 

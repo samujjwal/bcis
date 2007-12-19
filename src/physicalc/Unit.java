@@ -7,6 +7,7 @@ package physicalc;
  *
  * @see SymbolTable
  * @see Set
+ * @author Brian Foo, bwf2101@columia.edu
  */
 public class Unit implements RuntimeObject {
 

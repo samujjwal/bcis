@@ -6,7 +6,9 @@ import java.lang.*;
  * Physicalc program.
  *
  * The methods in Datum just raise errors.  Sub-classes must override
- * the supported operations. */
+ * the supported operations. 
+ * @author Stuart Sierra, ss2806@columbia.edu
+*/
 public abstract class Datum {
 
     /** Returns the result of this + that.  Does not modify this. */

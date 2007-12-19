@@ -7,6 +7,7 @@ import java.util.List;
 /** A ParamList is a container for a list of function parameters.  It
  * is used in function definitions.
  *
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class ParamList extends Expr {
 

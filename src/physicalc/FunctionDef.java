@@ -1,5 +1,8 @@
 package physicalc;
 
+/** Function Definitions
+ * @author Brian Foo, bwf2101@columia.edu
+ */
 public class FunctionDef extends Def {
 
 	private String id;

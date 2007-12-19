@@ -1,5 +1,8 @@
 package physicalc;
 
+/**
+ * @author Ici Li, il2117@columbia.edu
+ */
 public class NPrintFunction extends Function {
 
     public NPrintFunction() { ; }

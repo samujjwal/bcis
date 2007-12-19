@@ -1,5 +1,7 @@
 package physicalc;
 
+/** @author Ici Li, il2117@columbia.edu
+ */
 public class ConstantDef extends Def {
 
     private String id1;
