@@ -6,6 +6,7 @@ import java.lang.String;
  * implements LValue, so it can be assigned in a "Set" statement.
  *
  * @see Node
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class Id extends Expr implements LValue {
 

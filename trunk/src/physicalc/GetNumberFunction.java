@@ -1,5 +1,8 @@
 package physicalc;
 
+/**
+ * @author Brian Foo, bwf2101@columia.edu
+ */
 public class GetNumberFunction extends Function {
 
     public GetNumberFunction() { ; }

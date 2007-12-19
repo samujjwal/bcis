@@ -6,7 +6,9 @@ import java.util.*;
 
 /** PUnit is the symbolic data class which includes
 	the algebraic manipulation of symbolic units
-	stored as HashMaps */
+	stored as HashMaps 
+*
+* @author Brian Foo, bwf2101@columia.edu */
 public class PUnit extends Datum  {
 
 	protected String name;  					// ie. minute

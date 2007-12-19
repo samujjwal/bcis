@@ -4,7 +4,9 @@ import java.lang.*;
 import java.util.*;
 
 /** PList is the list data structure which
-	basically a front for java's ArrayList class */
+ * basically a front for java's ArrayList class 
+ * @author Brian Foo, bwf2101@columia.edu
+ */
 public class PList extends Datum  {
 
 	protected ArrayList<Datum> list;

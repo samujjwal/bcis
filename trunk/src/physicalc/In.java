@@ -3,6 +3,7 @@ package physicalc;
 /** In is a node implementing the "in" unit-conversion operator.
  *
  * @see Node
+ * @author Brian Foo, bwf2101@columia.edu
  */
 public class In extends Op  {
     private Expr left;

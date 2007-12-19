@@ -8,6 +8,7 @@ import java.util.*;
  *
  * @see SymbolTable
  * @see FunCall
+ * @author Brian Foo, bwf2101@columia.edu
  */
 public class Function implements RuntimeObject {
 

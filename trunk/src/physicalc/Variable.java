@@ -7,6 +7,7 @@ package physicalc;
  *
  * @see SymbolTable
  * @see Set
+ * @author Ici Li, il2117@columbia.edu
  */
 public class Variable implements RuntimeObject {
 

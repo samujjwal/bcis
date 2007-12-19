@@ -35,6 +35,7 @@ package physicalc;
  * @see Program
  * @see Interpreter
  * @see SymbolTable
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public abstract class Node {
 

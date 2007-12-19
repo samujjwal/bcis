@@ -17,6 +17,7 @@ import physicalc.*;
  *
  *    java TryAst "Physicalc code here"
  *
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class TryParser {
     public static void main(String [] args) {

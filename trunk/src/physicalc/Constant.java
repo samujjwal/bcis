@@ -5,6 +5,7 @@ package physicalc;
  *
  * @see SymbolTable
  * @see ConstantDef
+ * @author Ici Li, il2117@columbia.edu
  */
 public class Constant implements RuntimeObject {
     

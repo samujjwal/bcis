@@ -8,6 +8,8 @@ import java.util.*;
  * @see Node
  * @see PList
  * @see Set
+ *
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class Access extends Expr implements LValue {
 

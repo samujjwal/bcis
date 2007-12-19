@@ -14,6 +14,7 @@ import java.util.HashMap;
  * interface.  
  *
  * @see RuntimeObject
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class SymbolTable {
 

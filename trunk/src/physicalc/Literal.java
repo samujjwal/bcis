@@ -4,6 +4,7 @@ package physicalc;
  * number or a list.
  *
  * @see Node
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class Literal extends Expr {
     private Datum value;

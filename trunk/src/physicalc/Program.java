@@ -11,6 +11,8 @@ import java.util.List;
  *
  * A Program creates its own top-level symbol table for variables
  * defined outisde of any function definitions.
+ *
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class Program extends Node {
 

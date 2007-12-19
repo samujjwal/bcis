@@ -19,6 +19,7 @@ import physicalc.*;
  *
  *    java ParseFile filename
  *
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public class ParseFile {
     public static void main(String [] args) {

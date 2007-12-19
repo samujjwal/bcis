@@ -7,7 +7,8 @@ import java.lang.Math;
 	intergers, decimals, and exponents.
 	This is similar to the abstract Number class in java,
 	but will convert all types into a Double object before
-	algebraic processing */
+	algebraic processing 
+* @author Brian Foo, bwf2101@columia.edu */
 public class PUnitPair extends Datum  {
 
 	protected PNumber number;

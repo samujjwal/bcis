@@ -7,6 +7,7 @@ package physicalc;
  * @see Id
  * @see Access
  * @see Set
+ * @author Stuart Sierra, ss2806@columbia.edu
  */
 public interface LValue {
 
