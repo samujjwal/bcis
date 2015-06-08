@@ -1,0 +1,1 @@
+This page is superseded by the final PDF version, project\_proposal.pdf, available in the Downloads section.
